@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Environment
+.env
+
+# IDE
+.idea/
+.vscode/
+
+# Database
+*.db
+
+# Reports
+reports/*.xlsx
+reports/*.pdf
+
+# Logs
+logs/
+*.log
+
+# Playwright
+playwright-report/
+test-results/
+
+# Screenshots
+screenshots/
+
+# OS
+.DS_Store
+Thumbs.db
+
+*.pyc
+reports/
+
+legacy-assets/
+# Test scripts
+tests/

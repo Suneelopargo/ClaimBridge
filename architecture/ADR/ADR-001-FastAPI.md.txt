@@ -1,0 +1,11 @@
+ADR-001
+
+Decision:
+
+Use FastAPI instead of Spring Boot.
+
+Reason:
+
+- Native Playwright integration
+- Simpler deployment
+- Better fit for Python automation

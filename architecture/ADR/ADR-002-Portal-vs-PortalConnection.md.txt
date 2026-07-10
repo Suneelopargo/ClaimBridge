@@ -1,0 +1,9 @@
+ADR-002
+
+Decision:
+
+Separate Portal and PortalConnection.
+
+Reason:
+
+One payer portal may have multiple hospital-specific connections.

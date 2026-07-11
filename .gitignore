@@ -37,7 +37,7 @@ screenshots/
 Thumbs.db
 
 *.pyc
-reports/
+
 
 legacy-assets/
 # Test scripts

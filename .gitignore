@@ -38,7 +38,8 @@ Thumbs.db
 
 *.pyc
 
-
+node_modules/
+package-lock.json
 legacy-assets/
 # Test scripts
 tests/

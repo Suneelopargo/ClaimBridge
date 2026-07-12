@@ -42,3 +42,8 @@ Thumbs.db
 legacy-assets/
 # Test scripts
 tests/
+
+data/reconciliation/downloads/
+data/reconciliation/processed/
+data/reconciliation/failed/
+

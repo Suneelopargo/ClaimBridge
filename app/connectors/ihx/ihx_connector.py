@@ -4,6 +4,7 @@ import logging
 from typing import Optional
 from datetime import datetime, timezone
 
+from app.config import IHX_RECONCILIATION_EXPORT_TIMEOUT_MS
 from app.connectors.base_connector import BaseConnector, ConnectorError
 from app.connectors.ihx import selectors
 from app.graph.graph_mail_client import GraphMailClient
@@ -351,4 +352,65 @@ class IHXConnector(BaseConnector):
                 self.page.wait_for_timeout(5000)
 
         raise ConnectorError("IHX pagination failed after retries") from last_error
+
+    def _click_update_reconciliation_report_if_available(self) -> None:
+        update_link = self.page.get_by_text(
+            selectors.UPDATE_RECONCILIATION_REPORT_TEXT,
+            exact=True,
+        ).first
+
+        try:
+            update_link.wait_for(state="visible", timeout=10000)
+
+            logger.info(
+                "[IHX][Reconciliation] Clicking Update Reconciliation Report"
+            )
+
+            update_link.click()
+
+            self.page.wait_for_timeout(3000)
+
+        except Exception:
+            logger.info(
+                "[IHX][Reconciliation] Update Reconciliation Report "
+                "link not found or not required"
+            )
+
+    def _wait_for_reconciliation_visual(self, frame) -> None:
+        """
+        Wait until the embedded Power BI report has rendered actual report data.
+
+        Detecting the iframe alone is insufficient because Power BI may still be
+        displaying its loading logo.
+        """
+        logger.info(
+            "[IHX][Reconciliation] Waiting for Power BI visual to load"
+        )
+
+        ready_text = frame.get_by_text(
+            selectors.RECONCILIATION_REPORT_READY_TEXT,
+            exact=False,
+        ).first
+
+        try:
+            ready_text.wait_for(
+                state="visible",
+                timeout=IHX_RECONCILIATION_EXPORT_TIMEOUT_MS,
+            )
+
+            # Give Power BI a few seconds to finish visual controls and menus.
+            frame.wait_for_timeout(5000)
+
+            logger.info(
+                "[IHX][Reconciliation] Power BI visual is ready"
+            )
+
+        except Exception as exc:
+            self.safe_screenshot(
+                "reconciliation_power_bi_visual_not_ready"
+            )
+
+            raise ConnectorError(
+                "Power BI reconciliation report did not finish loading"
+            ) from exc
 

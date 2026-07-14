@@ -1,7 +1,8 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 import app.logging_config as logging_config
-from app.config import APP_NAME
+from app.config import APP_NAME, CORS_ALLOWED_ORIGINS
 from app.database import test_db_connection
 from app.routers.claim_dashboard_router import router as dashboard_router
 from app.routers.ihx_router import router as ihx_router
@@ -20,6 +21,14 @@ from app.routers.auth_router import router as auth_router
 
 app = FastAPI(
     title=APP_NAME,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=CORS_ALLOWED_ORIGINS or ["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 

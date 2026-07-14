@@ -32,7 +32,7 @@ def sync_ihx_claims(
         with IHXConnector(
                 username=IHX_USERNAME,
                 password=IHX_PASSWORD,
-                headless=False,
+                headless=True,
                 slow_mo=300,
         ) as connector:
 

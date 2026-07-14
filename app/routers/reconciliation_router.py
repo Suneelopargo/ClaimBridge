@@ -43,7 +43,7 @@ def download_ihx_reconciliation_report():
         with IHXReconciliationConnector(
             username=IHX_USERNAME,
             password=IHX_PASSWORD,
-            headless=False,
+            headless=True,
             slow_mo=300,
         ) as connector:
             stage = "IHX login and OTP"

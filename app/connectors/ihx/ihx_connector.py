@@ -45,19 +45,79 @@ class IHXConnector(BaseConnector):
 
     def submit_login(self) -> None:
         self.click(selectors.LOGIN_BUTTON)
-        logger.info("[IHX] Login submitted")
+
+        logger.info("=" * 80)
+        logger.info("[IHX] Login button clicked")
+        logger.info("=" * 80)
+
+        self.page.wait_for_timeout(5000)
+
+        try:
+            logger.info("[IHX] URL After Login : %s", self.page.url)
+            logger.info("[IHX] Title After Login : %s", self.page.title())
+        except Exception as exc:
+            logger.warning("Unable to read URL/Title : %s", exc)
 
     def wait_for_otp_screen(self) -> bool:
         try:
-            self.wait_for_element(
+            logger.info("=" * 80)
+            logger.info("[IHX] Waiting for OTP screen...")
+            logger.info("=" * 80)
+
+            self.page.wait_for_timeout(5000)
+
+            logger.info("[IHX] Current URL : %s", self.page.url)
+
+            try:
+                logger.info("[IHX] Current Title : %s", self.page.title())
+            except Exception:
+                pass
+
+            try:
+                html = self.page.content()
+                logger.info("=" * 80)
+                logger.info("PAGE HTML START")
+                logger.info(html[:10000])
+                logger.info("PAGE HTML END")
+                logger.info("=" * 80)
+            except Exception as exc:
+                logger.warning("Unable to read HTML : %s", exc)
+
+            self.safe_screenshot("before_otp_wait")
+
+            body_text = self.page.locator("body").inner_text().lower()
+
+            if "captcha" in body_text:
+                raise ConnectorError("IHX displayed CAPTCHA")
+
+            if "access denied" in body_text:
+                raise ConnectorError("IHX Access Denied")
+
+            if "invalid" in body_text:
+                raise ConnectorError("Invalid Username or Password")
+
+            logger.info("[IHX] Waiting for OTP field...")
+
+            self.page.wait_for_selector(
                 selectors.OTP_DIGIT_PREFIX.format(0),
                 timeout=60000,
+                state="visible",
             )
+
             logger.info("[IHX] OTP screen detected")
             return True
+
         except Exception as exc:
+            logger.exception("[IHX] OTP screen detection failed")
+            try:
+                logger.info("[IHX] Final URL : %s", self.page.url)
+                logger.info("[IHX] Final Title : %s", self.page.title())
+            except Exception:
+                pass
+
             self.safe_screenshot("otp_screen_not_found")
             raise ConnectorError("IHX OTP screen not detected") from exc
+
 
     def login_until_otp(self) -> dict:
         try:

@@ -14,6 +14,7 @@ from app.routers.reconciliation_report_router import router as reconciliation_re
 from app.routers.reconciliation_filter_router import (
     router as reconciliation_filter_router,
 )
+from app.routers.auth_router import router as auth_router
 
 
 
@@ -29,6 +30,7 @@ app.include_router(reconciliation_router)
 app.include_router(reconciliation_query_router)
 app.include_router(reconciliation_report_router)
 app.include_router(reconciliation_filter_router)
+app.include_router(auth_router)
 
 
 

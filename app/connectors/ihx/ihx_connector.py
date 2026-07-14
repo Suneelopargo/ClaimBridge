@@ -18,7 +18,7 @@ class IHXConnector(BaseConnector):
         self,
         username: str,
         password: str,
-        headless: bool = False,
+        headless: bool = True,
         timeout: int = 30000,
         slow_mo: int = 200,
     ):

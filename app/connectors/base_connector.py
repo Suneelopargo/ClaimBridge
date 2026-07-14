@@ -29,7 +29,7 @@ class BaseConnector:
     def __init__(
         self,
         connector_name: str,
-        headless: bool = TRue,
+        headless: bool = True,
         timeout: int = 30000,
         slow_mo: int = 0,
     ):

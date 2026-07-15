@@ -18,7 +18,6 @@ from app.routers.reconciliation_filter_router import (
 from app.routers.auth_router import router as auth_router
 
 
-
 app = FastAPI(
     title=APP_NAME,
 )

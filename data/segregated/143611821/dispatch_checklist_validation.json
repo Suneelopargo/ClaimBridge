@@ -6,10 +6,10 @@
   "summary": {
     "totalChecklistItems": 18,
     "totalRequired": 16,
-    "availableRequired": 7,
-    "missingRequired": 9,
-    "reviewRequiredPages": 5,
-    "readinessPercent": 44,
+    "availableRequired": 8,
+    "missingRequired": 8,
+    "reviewRequiredPages": 4,
+    "readinessPercent": 50,
     "overallStatus": "REVIEW_REQUIRED"
   },
   "checklistValidation": [
@@ -88,7 +88,7 @@
       "groupCodes": [],
       "status": "AVAILABLE",
       "matchedFiles": [
-        "10_kyc_document.pdf",
+        "10_patient_id_proof.pdf",
         "11_patient_id_proof.pdf",
         "12_patient_id_proof.pdf",
         "13_patient_id_proof.pdf"
@@ -106,11 +106,12 @@
       "groupCodes": [],
       "status": "AVAILABLE",
       "matchedFiles": [
+        "10_patient_id_proof.pdf",
         "11_patient_id_proof.pdf",
         "12_patient_id_proof.pdf",
         "13_patient_id_proof.pdf"
       ],
-      "matchCount": 3,
+      "matchCount": 4,
       "remarks": "Multiple pages/documents found"
     },
     {
@@ -189,10 +190,12 @@
         "OT_NOTES"
       ],
       "groupCodes": [],
-      "status": "MISSING",
-      "matchedFiles": [],
-      "matchCount": 0,
-      "remarks": "Required document not found"
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "23_case_paper.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
     },
     {
       "itemNo": "13",
@@ -294,7 +297,7 @@
       "pageNumber": 4,
       "outputFile": "04_review_required.pdf",
       "documentType": "UNKNOWN",
-      "reason": "The document contains terms and conditions for authorization and a checklist of documents to be submitted for claim settlement, but it does not have a clear title or content matching any specific allowed document type.",
+      "reason": "The document contains terms and conditions for authorization and a checklist of documents to be submitted for claim settlement, but it does not have a clear title or content matching any specific allowed documentType.",
       "confidence": 0.5
     },
     {
@@ -308,21 +311,14 @@
       "pageNumber": 21,
       "outputFile": "21_review_required.pdf",
       "documentType": "UNKNOWN",
-      "reason": "Document is a deposit receipt, not matching any allowed documentType values.",
-      "confidence": 0.75
+      "reason": "Document is a deposit receipt, not a recognized insurance claim document type. Insufficient confidence to classify as known document types.",
+      "confidence": 0.6
     },
     {
       "pageNumber": 22,
       "outputFile": "22_review_required.pdf",
       "documentType": "UNKNOWN",
-      "reason": "Document title is CHEMO THERAPY ORDER FORM which is not in allowed documentType values, and no clear claim or billing info present.",
-      "confidence": 0.6
-    },
-    {
-      "pageNumber": 23,
-      "outputFile": "23_review_required.pdf",
-      "documentType": "UNKNOWN",
-      "reason": "No clear document title or billing details visible; content appears to be a form or record related to chemotherapy orders but lacks sufficient identifiers or billing information.",
+      "reason": "Document title is 'CHEMOTHERAPY ORDER FORM' which is not in allowed documentType values. Content is a chemotherapy order form, but no matching documentType. Confidence low due to mismatch.",
       "confidence": 0.5
     }
   ],
@@ -388,11 +384,12 @@
       "outputFile": "patient_id_proof_packet.pdf",
       "filePath": "data\\claim-pack\\vijayamaniu-h-m\\patient_id_proof_packet.pdf",
       "pageNumbers": [
+        10,
         11,
         12,
         13
       ],
-      "pageCount": 3,
+      "pageCount": 4,
       "status": "AVAILABLE"
     },
     {

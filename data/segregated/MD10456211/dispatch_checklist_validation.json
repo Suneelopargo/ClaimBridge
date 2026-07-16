@@ -1,0 +1,418 @@
+{
+  "claimId": "MD10456211",
+  "patientName": "Mrunalini S Deshpande",
+  "patientFolder": "mrunalini-s-deshpande",
+  "sourceManifest": "data\\segregated\\MD10456211\\manifest.json",
+  "summary": {
+    "totalChecklistItems": 18,
+    "totalRequired": 16,
+    "availableRequired": 10,
+    "missingRequired": 6,
+    "reviewRequiredPages": 4,
+    "readinessPercent": 62,
+    "overallStatus": "REVIEW_REQUIRED"
+  },
+  "checklistValidation": [
+    {
+      "itemNo": "1",
+      "checklistItem": "Claim Form",
+      "required": true,
+      "expectedDocumentTypes": [
+        "CLAIM_FORM"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "08_claim_form.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "2",
+      "checklistItem": "GIPSA / Insurance / TPA Declaration",
+      "required": true,
+      "expectedDocumentTypes": [
+        "GIPSA_DECLARATION"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "16_gipsa_declaration.pdf",
+        "17_gipsa_declaration.pdf",
+        "19_gipsa_declaration.pdf"
+      ],
+      "matchCount": 3,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "3",
+      "checklistItem": "Approval / Referral Letter / GOP",
+      "required": true,
+      "expectedDocumentTypes": [
+        "APPROVAL_LETTER",
+        "GOP_FINAL_APPROVAL",
+        "CASHLESS_AUTHORIZATION_LETTER"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "09_approval_letter.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "4",
+      "checklistItem": "Preauthorization Form",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PREAUTHORIZATION_FORM"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "10_preauthorization_form.pdf",
+        "11_preauthorization_form.pdf",
+        "12_preauthorization_form.pdf",
+        "13_preauthorization_form.pdf"
+      ],
+      "matchCount": 4,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "5",
+      "checklistItem": "KYC Details",
+      "required": true,
+      "expectedDocumentTypes": [
+        "KYC_DOCUMENT",
+        "PATIENT_ID_PROOF",
+        "PROPOSER_ID_PROOF"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "20_patient_id_proof.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "6",
+      "checklistItem": "Patient Photo ID Proof",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PATIENT_ID_PROOF"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "20_patient_id_proof.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "7",
+      "checklistItem": "Patient Photo",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PATIENT_PHOTO"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "8",
+      "checklistItem": "Final Bill Summary and Detailed Bill",
+      "required": true,
+      "expectedDocumentTypes": [
+        "FINAL_HOSPITAL_BILL",
+        "DETAILED_BILL_BREAKUP",
+        "BILL_CONTINUATION"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "02_final_hospital_bill.pdf",
+        "04_bill_continuation.pdf",
+        "05_bill_continuation.pdf",
+        "06_bill_continuation.pdf"
+      ],
+      "matchCount": 4,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "9",
+      "checklistItem": "Discharge Summary",
+      "required": true,
+      "expectedDocumentTypes": [
+        "DISCHARGE_SUMMARY"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "22_discharge_summary.pdf",
+        "24_discharge_summary.pdf"
+      ],
+      "matchCount": 2,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "10",
+      "checklistItem": "Payment / Refund Receipt / Voucher",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PAYMENT_RECEIPT",
+        "REFUND_RECEIPT"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "03_payment_receipt.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "11",
+      "checklistItem": "Indoor Case Papers",
+      "required": true,
+      "expectedDocumentTypes": [
+        "CASE_PAPER",
+        "OT_NOTES"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "13",
+      "checklistItem": "Investigation Reports and Films",
+      "required": true,
+      "expectedDocumentTypes": [
+        "INVESTIGATION_REPORT",
+        "LAB_REPORT",
+        "RADIOLOGY_REPORT"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "23_investigation_report.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "14",
+      "checklistItem": "Implant Sticker with Invoice",
+      "required": false,
+      "expectedDocumentTypes": [
+        "IMPLANT_STICKER_INVOICE"
+      ],
+      "groupCodes": [],
+      "status": "NOT_AVAILABLE",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Optional document not found"
+    },
+    {
+      "itemNo": "15",
+      "checklistItem": "Pharmacy Details",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PHARMACY_DETAILS",
+        "PHARMACY_BILL"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "16",
+      "checklistItem": "Package / Profile Break-up",
+      "required": true,
+      "expectedDocumentTypes": [
+        "DETAILED_BILL_BREAKUP"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "18",
+      "checklistItem": "Consent Forms",
+      "required": true,
+      "expectedDocumentTypes": [
+        "CONSENT_FORM"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "19",
+      "checklistItem": "Prescription Details",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PRESCRIPTION"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "20",
+      "checklistItem": "Non-Medical Details",
+      "required": false,
+      "expectedDocumentTypes": [
+        "NON_MEDICAL_DETAILS"
+      ],
+      "groupCodes": [],
+      "status": "NOT_AVAILABLE",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Optional document not found"
+    }
+  ],
+  "reviewRequiredPages": [
+    {
+      "pageNumber": 14,
+      "outputFile": "14_review_required.pdf",
+      "documentType": "UNKNOWN",
+      "reason": "Document is a medical form to be filled by treating doctor with diagnosis and treatment details but lacks clear title or labels matching allowed document types.",
+      "confidence": 0.5
+    },
+    {
+      "pageNumber": 15,
+      "outputFile": "15_review_required.pdf",
+      "documentType": "UNKNOWN",
+      "reason": "Document contains patient admission details but lacks clear document title and other key identifiers; insufficient information to classify confidently.",
+      "confidence": 0.6
+    },
+    {
+      "pageNumber": 18,
+      "outputFile": "18_review_required.pdf",
+      "documentType": "UNKNOWN",
+      "reason": "No clear document title or specific patient, claim, or billing information visible. Content appears to be terms or conditions related to billing but does not match any specific allowed document type with high confidence.",
+      "confidence": 0.5
+    },
+    {
+      "pageNumber": 21,
+      "outputFile": "21_review_required.pdf",
+      "documentType": "UNKNOWN",
+      "reason": "Document contains insurance card details but no clear hospital claim form or bill information; low confidence due to unclear content and no visible claim or billing data.",
+      "confidence": 0.5
+    }
+  ],
+  "groupedDocuments": [
+    {
+      "groupCode": "FINAL_BILL_PACKET",
+      "displayName": "Final Bill Summary and Detailed Bill",
+      "outputFile": "final_bill_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\final_bill_packet.pdf",
+      "pageNumbers": [
+        2,
+        4,
+        5,
+        6
+      ],
+      "pageCount": 4,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "GOP_APPROVAL_PACKET",
+      "displayName": "Approval / Referral Letter / GOP",
+      "outputFile": "gop_approval_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\gop_approval_packet.pdf",
+      "pageNumbers": [
+        9
+      ],
+      "pageCount": 1,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "PREAUTHORIZATION_FORM_PACKET",
+      "displayName": "Preauthorization Form",
+      "outputFile": "preauthorization_form_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\preauthorization_form_packet.pdf",
+      "pageNumbers": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "pageCount": 4,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "KYC_PACKET",
+      "displayName": "KYC Details",
+      "outputFile": "kyc_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\kyc_packet.pdf",
+      "pageNumbers": [
+        20
+      ],
+      "pageCount": 1,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "PATIENT_ID_PROOF_PACKET",
+      "displayName": "Patient Photo ID Proof",
+      "outputFile": "patient_id_proof_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\patient_id_proof_packet.pdf",
+      "pageNumbers": [
+        20
+      ],
+      "pageCount": 1,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "DISCHARGE_SUMMARY_PACKET",
+      "displayName": "Discharge Summary",
+      "outputFile": "discharge_summary_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\discharge_summary_packet.pdf",
+      "pageNumbers": [
+        22,
+        24
+      ],
+      "pageCount": 2,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "PAYMENT_RECEIPT_PACKET",
+      "displayName": "Payment / Refund Receipt / Voucher",
+      "outputFile": "payment_receipts_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\payment_receipts_packet.pdf",
+      "pageNumbers": [
+        3
+      ],
+      "pageCount": 1,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "REPORTS_PACKET",
+      "displayName": "Investigation Reports and Films",
+      "outputFile": "investigation_reports_packet.pdf",
+      "filePath": "data\\claim-pack\\mrunalini-s-deshpande\\investigation_reports_packet.pdf",
+      "pageNumbers": [
+        23
+      ],
+      "pageCount": 1,
+      "status": "AVAILABLE"
+    }
+  ]
+}

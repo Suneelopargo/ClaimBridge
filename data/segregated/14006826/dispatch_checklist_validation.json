@@ -1,0 +1,404 @@
+{
+  "claimId": "14006826",
+  "patientName": "Ram Bahadur",
+  "patientFolder": "ram-bahadur",
+  "sourceManifest": "data\\segregated\\14006826\\manifest.json",
+  "summary": {
+    "totalChecklistItems": 18,
+    "totalRequired": 16,
+    "availableRequired": 9,
+    "missingRequired": 7,
+    "reviewRequiredPages": 3,
+    "readinessPercent": 56,
+    "overallStatus": "REVIEW_REQUIRED"
+  },
+  "checklistValidation": [
+    {
+      "itemNo": "1",
+      "checklistItem": "Claim Form",
+      "required": true,
+      "expectedDocumentTypes": [
+        "CLAIM_FORM"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "06_claim_form.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "2",
+      "checklistItem": "GIPSA / Insurance / TPA Declaration",
+      "required": true,
+      "expectedDocumentTypes": [
+        "GIPSA_DECLARATION"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "13_gipsa_declaration.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "3",
+      "checklistItem": "Approval / Referral Letter / GOP",
+      "required": true,
+      "expectedDocumentTypes": [
+        "APPROVAL_LETTER",
+        "GOP_FINAL_APPROVAL",
+        "CASHLESS_AUTHORIZATION_LETTER"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "10_approval_letter.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "4",
+      "checklistItem": "Preauthorization Form",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PREAUTHORIZATION_FORM"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "07_preauthorization_form.pdf",
+        "09_preauthorization_form.pdf",
+        "11_preauthorization_form.pdf",
+        "12_preauthorization_form.pdf"
+      ],
+      "matchCount": 4,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "5",
+      "checklistItem": "KYC Details",
+      "required": true,
+      "expectedDocumentTypes": [
+        "KYC_DOCUMENT",
+        "PATIENT_ID_PROOF",
+        "PROPOSER_ID_PROOF"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "14_kyc_document.pdf",
+        "15_patient_id_proof.pdf",
+        "16_kyc_document.pdf",
+        "17_patient_id_proof.pdf"
+      ],
+      "matchCount": 4,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "6",
+      "checklistItem": "Patient Photo ID Proof",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PATIENT_ID_PROOF"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "15_patient_id_proof.pdf",
+        "17_patient_id_proof.pdf"
+      ],
+      "matchCount": 2,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "7",
+      "checklistItem": "Patient Photo",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PATIENT_PHOTO"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "8",
+      "checklistItem": "Final Bill Summary and Detailed Bill",
+      "required": true,
+      "expectedDocumentTypes": [
+        "FINAL_HOSPITAL_BILL",
+        "DETAILED_BILL_BREAKUP",
+        "BILL_CONTINUATION"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "02_final_hospital_bill.pdf",
+        "03_bill_continuation.pdf"
+      ],
+      "matchCount": 2,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "9",
+      "checklistItem": "Discharge Summary",
+      "required": true,
+      "expectedDocumentTypes": [
+        "DISCHARGE_SUMMARY"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "18_discharge_summary.pdf",
+        "19_discharge_summary.pdf",
+        "20_discharge_summary.pdf",
+        "21_discharge_summary.pdf"
+      ],
+      "matchCount": 4,
+      "remarks": "Multiple pages/documents found"
+    },
+    {
+      "itemNo": "10",
+      "checklistItem": "Payment / Refund Receipt / Voucher",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PAYMENT_RECEIPT",
+        "REFUND_RECEIPT"
+      ],
+      "groupCodes": [],
+      "status": "AVAILABLE",
+      "matchedFiles": [
+        "05_payment_receipt.pdf"
+      ],
+      "matchCount": 1,
+      "remarks": "Document found"
+    },
+    {
+      "itemNo": "11",
+      "checklistItem": "Indoor Case Papers",
+      "required": true,
+      "expectedDocumentTypes": [
+        "CASE_PAPER",
+        "OT_NOTES"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "13",
+      "checklistItem": "Investigation Reports and Films",
+      "required": true,
+      "expectedDocumentTypes": [
+        "INVESTIGATION_REPORT",
+        "LAB_REPORT",
+        "RADIOLOGY_REPORT"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "14",
+      "checklistItem": "Implant Sticker with Invoice",
+      "required": false,
+      "expectedDocumentTypes": [
+        "IMPLANT_STICKER_INVOICE"
+      ],
+      "groupCodes": [],
+      "status": "NOT_AVAILABLE",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Optional document not found"
+    },
+    {
+      "itemNo": "15",
+      "checklistItem": "Pharmacy Details",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PHARMACY_DETAILS",
+        "PHARMACY_BILL"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "16",
+      "checklistItem": "Package / Profile Break-up",
+      "required": true,
+      "expectedDocumentTypes": [
+        "DETAILED_BILL_BREAKUP"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "18",
+      "checklistItem": "Consent Forms",
+      "required": true,
+      "expectedDocumentTypes": [
+        "CONSENT_FORM"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "19",
+      "checklistItem": "Prescription Details",
+      "required": true,
+      "expectedDocumentTypes": [
+        "PRESCRIPTION"
+      ],
+      "groupCodes": [],
+      "status": "MISSING",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Required document not found"
+    },
+    {
+      "itemNo": "20",
+      "checklistItem": "Non-Medical Details",
+      "required": false,
+      "expectedDocumentTypes": [
+        "NON_MEDICAL_DETAILS"
+      ],
+      "groupCodes": [],
+      "status": "NOT_AVAILABLE",
+      "matchedFiles": [],
+      "matchCount": 0,
+      "remarks": "Optional document not found"
+    }
+  ],
+  "reviewRequiredPages": [
+    {
+      "pageNumber": 4,
+      "outputFile": "04_review_required.pdf",
+      "documentType": "UNKNOWN",
+      "reason": "No clear document title or content to classify; only header information present without billing or claim details.",
+      "confidence": 0.5
+    },
+    {
+      "pageNumber": 8,
+      "outputFile": "08_review_required.pdf",
+      "documentType": "UNKNOWN",
+      "reason": "Document contains terms and conditions for authorization and list of required documents for claim settlement but no clear document title or patient/claim details visible.",
+      "confidence": 0.5
+    },
+    {
+      "pageNumber": 22,
+      "outputFile": "22_review_required.pdf",
+      "documentType": "UNKNOWN",
+      "reason": "Document is a treatment schedule card with patient name, treatment dates, and signatures. No billing or claim form details visible.",
+      "confidence": 0.75
+    }
+  ],
+  "groupedDocuments": [
+    {
+      "groupCode": "FINAL_BILL_PACKET",
+      "displayName": "Final Bill Summary and Detailed Bill",
+      "outputFile": "final_bill_packet.pdf",
+      "filePath": "data\\claim-pack\\ram-bahadur\\final_bill_packet.pdf",
+      "pageNumbers": [
+        2,
+        3
+      ],
+      "pageCount": 2,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "GOP_APPROVAL_PACKET",
+      "displayName": "Approval / Referral Letter / GOP",
+      "outputFile": "gop_approval_packet.pdf",
+      "filePath": "data\\claim-pack\\ram-bahadur\\gop_approval_packet.pdf",
+      "pageNumbers": [
+        10
+      ],
+      "pageCount": 1,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "PREAUTHORIZATION_FORM_PACKET",
+      "displayName": "Preauthorization Form",
+      "outputFile": "preauthorization_form_packet.pdf",
+      "filePath": "data\\claim-pack\\ram-bahadur\\preauthorization_form_packet.pdf",
+      "pageNumbers": [
+        7,
+        9,
+        11,
+        12
+      ],
+      "pageCount": 4,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "KYC_PACKET",
+      "displayName": "KYC Details",
+      "outputFile": "kyc_packet.pdf",
+      "filePath": "data\\claim-pack\\ram-bahadur\\kyc_packet.pdf",
+      "pageNumbers": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "pageCount": 4,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "PATIENT_ID_PROOF_PACKET",
+      "displayName": "Patient Photo ID Proof",
+      "outputFile": "patient_id_proof_packet.pdf",
+      "filePath": "data\\claim-pack\\ram-bahadur\\patient_id_proof_packet.pdf",
+      "pageNumbers": [
+        15,
+        17
+      ],
+      "pageCount": 2,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "DISCHARGE_SUMMARY_PACKET",
+      "displayName": "Discharge Summary",
+      "outputFile": "discharge_summary_packet.pdf",
+      "filePath": "data\\claim-pack\\ram-bahadur\\discharge_summary_packet.pdf",
+      "pageNumbers": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "pageCount": 4,
+      "status": "AVAILABLE"
+    },
+    {
+      "groupCode": "PAYMENT_RECEIPT_PACKET",
+      "displayName": "Payment / Refund Receipt / Voucher",
+      "outputFile": "payment_receipts_packet.pdf",
+      "filePath": "data\\claim-pack\\ram-bahadur\\payment_receipts_packet.pdf",
+      "pageNumbers": [
+        5
+      ],
+      "pageCount": 1,
+      "status": "AVAILABLE"
+    }
+  ]
+}

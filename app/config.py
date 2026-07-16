@@ -10,6 +10,7 @@ def _get_csv_env(name: str, default: str = "") -> list[str]:
     raw_value = os.getenv(name, default)
     return [item.strip() for item in raw_value.split(",") if item.strip()]
 
+
 APP_NAME = os.getenv("APP_NAME", "India Claims Automation")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
@@ -42,4 +43,26 @@ IHX_RECONCILIATION_EXPORT_TIMEOUT_MS = int(
 CORS_ALLOWED_ORIGINS = _get_csv_env(
     "CORS_ALLOWED_ORIGINS",
     "http://localhost:5173,http://127.0.0.1:5173,https://claimbridgeui.vercel.app",
+)
+
+
+CLAIM_PACKET_INPUT_DIR = Path(
+    os.getenv(
+        "CLAIM_PACKET_INPUT_DIR",
+        "data/incoming-claim-packets",
+    )
+)
+
+CLAIM_PACKET_SEGREGATED_DIR = Path(
+    os.getenv(
+        "CLAIM_PACKET_SEGREGATED_DIR",
+        "data/segregated",
+    )
+)
+
+CLAIM_PACKET_GROUPED_DIR = Path(
+    os.getenv(
+        "CLAIM_PACKET_GROUPED_DIR",
+        "data/claim-pack",
+    )
 )

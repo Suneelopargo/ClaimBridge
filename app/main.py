@@ -16,6 +16,9 @@ from app.routers.reconciliation_filter_router import (
     router as reconciliation_filter_router,
 )
 from app.routers.auth_router import router as auth_router
+from app.routers.claim_packet_router import (
+    router as claim_packet_router,
+)
 
 
 app = FastAPI(
@@ -24,7 +27,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=CORS_ALLOWED_ORIGINS or ["*"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -39,8 +47,7 @@ app.include_router(reconciliation_query_router)
 app.include_router(reconciliation_report_router)
 app.include_router(reconciliation_filter_router)
 app.include_router(auth_router)
-
-
+app.include_router(claim_packet_router)
 
 
 @app.get("/")

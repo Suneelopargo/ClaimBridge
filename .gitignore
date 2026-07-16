@@ -47,4 +47,6 @@ tests/
 data/reconciliation/downloads/
 data/reconciliation/processed/
 data/reconciliation/failed/
-
+data/claim-pack
+data/incoming-claim-packets
+data/segregated

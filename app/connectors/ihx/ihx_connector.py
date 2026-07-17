@@ -19,7 +19,7 @@ class IHXConnector(BaseConnector):
         username: str,
         password: str,
         headless: bool = True,
-        timeout: int = 30000,
+        timeout: int = 120000,
         slow_mo: int = 200,
     ):
         super().__init__(

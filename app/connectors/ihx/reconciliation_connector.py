@@ -92,7 +92,7 @@ class IHXReconciliationConnector(IHXConnector):
                 exact=True,
             ).first,
             "Reporting and Analytics",
-            timeout_ms=30000,
+            timeout_ms=120000,
         )
 
         try:
@@ -122,7 +122,7 @@ class IHXReconciliationConnector(IHXConnector):
             self._safe_click(
                 locator,
                 "Update Reconciliation Report",
-                timeout_ms=10000,
+                timeout_ms=120000,
                 retries=2,
             )
             self.page.wait_for_timeout(2000)

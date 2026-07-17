@@ -31,7 +31,7 @@ class BaseConnector:
         self,
         connector_name: str,
         headless: bool = True,
-        timeout: int = 30000,
+        timeout: int = 120000,
         slow_mo: int = 0,
     ):
         self.connector_name = connector_name

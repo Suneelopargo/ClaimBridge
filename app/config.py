@@ -66,3 +66,14 @@ CLAIM_PACKET_GROUPED_DIR = Path(
         "data/claim-pack",
     )
 )
+
+IHX_RECONCILIATION_MAX_RETRIES = int(
+    os.getenv("IHX_RECONCILIATION_MAX_RETRIES", "4")
+)
+
+IHX_RECONCILIATION_REPORT_STABILIZE_MS = int(
+    os.getenv(
+        "IHX_RECONCILIATION_REPORT_STABILIZE_MS",
+        "3000",
+    )
+)

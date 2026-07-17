@@ -13,6 +13,7 @@ from playwright.sync_api import (
     sync_playwright,
 )
 
+from app.connectors.ihx import selectors
 
 logger = logging.getLogger(__name__)
 
@@ -50,14 +51,44 @@ class BaseConnector:
         logger.info("[%s] Starting browser", self.connector_name)
 
         self.playwright = sync_playwright().start()
+
         self.browser = self.playwright.chromium.launch(
             headless=self.headless,
             slow_mo=self.slow_mo,
+            args=[
+                "--window-size=1920,1200",
+                "--disable-dev-shm-usage",
+            ],
         )
 
-        self.context = self.browser.new_context()
+        self.context = self.browser.new_context(
+            viewport={
+                "width": 1920,
+                "height": 1200,
+            },
+            screen={
+                "width": 1920,
+                "height": 1200,
+            },
+            device_scale_factor=1,
+            accept_downloads=True,
+        )
+
         self.page = self.context.new_page()
+
+        # Explicitly reinforce the viewport.
+        self.page.set_viewport_size({
+            "width": 1920,
+            "height": 1200,
+        })
+
         self.page.set_default_timeout(self.timeout)
+
+        logger.info(
+            "[%s] Browser started: headless=%s viewport=1920x1200",
+            self.connector_name,
+            self.headless,
+        )
 
         return self.page
 
@@ -170,3 +201,4 @@ class BaseConnector:
             self.safe_screenshot("connector_error")
 
         self.close_browser()
+

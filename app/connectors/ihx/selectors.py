@@ -79,11 +79,7 @@ EXPORT_BUTTON_TEXT = "Export"
 CANCEL_BUTTON_TEXT = "Cancel"
 
 # Common Power BI visual menu buttons/fallbacks.
-POWER_BI_MORE_OPTIONS = (
-    "button[aria-label*='More options'], "
-    "button[title*='More options'], "
-    "[aria-label*='More options']"
-)
+
 
 POWER_BI_EXPORT_DATA_MENU_TEXT = "Export data"
 
@@ -110,9 +106,21 @@ UPDATE_RECONCILIATION_REPORT_TEXT = "Update Reconciliation Report"
 # Change this only if the IHX report layout changes.
 RECONCILIATION_REPORT_READY_TEXT = "Patient Name"
 
+POWER_BI_MORE_OPTIONS = (
+    "button[aria-label*='More options'], "
+    "button[title*='More options'], "
+    "[role='button'][aria-label*='More options'], "
+    "[data-testid*='more-options'], "
+    "[aria-label*='More options']"
+)
+
+
 POWER_BI_VISUAL_CONTAINER = (
     ".visual-container, "
     ".visualContainer, "
     "[class*='visual-container'], "
-    "[class*='visualContainer']"
+    "[class*='visualContainer'], "
+    "[data-visual-id], "
+    "visual-container"
 )
+

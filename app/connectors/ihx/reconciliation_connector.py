@@ -11,6 +11,7 @@ from app.config import (
     IHX_RECONCILIATION_DOWNLOAD_DIR,
     IHX_RECONCILIATION_EXPORT_TIMEOUT_MS,
     IHX_RECONCILIATION_MAX_RETRIES,
+    IHX_RECONCILIATION_READY_TEXTS,
     IHX_RECONCILIATION_REPORT_STABILIZE_MS,
     IHX_RECONCILIATION_REPORT_URL,
 )
@@ -162,18 +163,96 @@ class IHXReconciliationConnector(IHXConnector):
         raise ConnectorError("Power BI frame was not detected")
 
     def _wait_for_visual(self, frame: Any) -> None:
+        elapsed_ms = 0
+        poll_ms = 2000
+        ready_texts = [
+            text for text in IHX_RECONCILIATION_READY_TEXTS if text.strip()
+        ] or [selectors.RECONCILIATION_REPORT_READY_TEXT]
+
+        while elapsed_ms < IHX_RECONCILIATION_EXPORT_TIMEOUT_MS:
+            if self._frame_looks_ready(frame, ready_texts):
+                return
+
+            frame.wait_for_timeout(poll_ms)
+            elapsed_ms += poll_ms
+
+        details = self._collect_visual_timeout_diagnostics(frame, ready_texts)
+        raise ConnectorError(
+            "Power BI reconciliation visual did not finish loading "
+            f"within {IHX_RECONCILIATION_EXPORT_TIMEOUT_MS}ms. {details}"
+        )
+
+    def _frame_looks_ready(self, frame: Any, ready_texts: list[str]) -> bool:
+        for text in ready_texts:
+            try:
+                if frame.get_by_text(text, exact=False).count() > 0:
+                    return True
+            except Exception:
+                continue
+
         try:
-            frame.get_by_text(
-                selectors.RECONCILIATION_REPORT_READY_TEXT,
-                exact=False,
-            ).first.wait_for(
-                state="visible",
-                timeout=IHX_RECONCILIATION_EXPORT_TIMEOUT_MS,
+            if self._dialog_visible(frame):
+                return True
+        except Exception:
+            pass
+
+        try:
+            if frame.locator(selectors.POWER_BI_MORE_OPTIONS).count() > 0:
+                return True
+        except Exception:
+            pass
+
+        try:
+            visual_count = frame.locator(
+                selectors.POWER_BI_VISUAL_CONTAINER
+            ).count()
+            loading_count = frame.locator(
+                selectors.POWER_BI_LOADING_INDICATORS
+            ).count()
+
+            if visual_count > 0 and loading_count == 0:
+                return True
+        except Exception:
+            pass
+
+        return False
+
+    def _collect_visual_timeout_diagnostics(
+        self,
+        frame: Any,
+        ready_texts: list[str],
+    ) -> str:
+        try:
+            matched = []
+
+            for text in ready_texts:
+                try:
+                    if frame.get_by_text(text, exact=False).count() > 0:
+                        matched.append(text)
+                except Exception:
+                    continue
+
+            visual_count = frame.locator(
+                selectors.POWER_BI_VISUAL_CONTAINER
+            ).count()
+            loading_count = frame.locator(
+                selectors.POWER_BI_LOADING_INDICATORS
+            ).count()
+            more_options_count = frame.locator(
+                selectors.POWER_BI_MORE_OPTIONS
+            ).count()
+
+            return (
+                f"frame_url='{frame.url}', "
+                f"ready_text_matches={matched or 'none'}, "
+                f"visual_containers={visual_count}, "
+                f"loading_indicators={loading_count}, "
+                f"more_options_controls={more_options_count}"
             )
-        except PlaywrightTimeoutError as exc:
-            raise ConnectorError(
-                "Power BI reconciliation visual did not finish loading"
-            ) from exc
+        except PlaywrightTimeoutError:
+            return "Diagnostics unavailable (Playwright timeout while collecting state)"
+        except Exception as exc:
+            return f"Diagnostics unavailable ({exc})"
 
     def _stabilize(self, frame: Any) -> None:
         try:

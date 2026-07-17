@@ -4,6 +4,8 @@ import logging
 from typing import Optional
 from datetime import datetime, timezone
 
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
 from app.config import IHX_RECONCILIATION_EXPORT_TIMEOUT_MS
 from app.connectors.base_connector import BaseConnector, ConnectorError
 from app.connectors.ihx import selectors
@@ -209,9 +211,30 @@ class IHXConnector(BaseConnector):
         }
 
     def open_claim_tracking(self) -> None:
-        self.goto(selectors.INPATIENT_CLAIMS_URL)
-        self.wait_for_element(selectors.CLAIMS_TABLE_HEADER, timeout=60000)
-        self.wait_for_element(selectors.CLAIMS_TABLE_BODY, timeout=60000)
+        target_path = "/claims/in-patient"
+        current_url = (self.page.url or "").lower()
+
+        if target_path not in current_url:
+            try:
+                self.goto(selectors.INPATIENT_CLAIMS_URL)
+            except PlaywrightTimeoutError as exc:
+                current_url = (self.page.url or "").lower()
+                logger.warning(
+                    "[IHX] Timed out opening in-patient claims URL; current URL: %s",
+                    self.page.url,
+                )
+                self.safe_screenshot("inpatient_claims_navigation_timeout")
+
+                # IHX can render the claims table even when goto times out.
+                if target_path not in current_url:
+                    raise ConnectorError(
+                        "IHX in-patient claims page did not open before timeout"
+                    ) from exc
+        else:
+            logger.info("[IHX] Already on in-patient claims URL: %s", self.page.url)
+
+        self.wait_for_element(selectors.CLAIMS_TABLE_HEADER, timeout=90000)
+        self.wait_for_element(selectors.CLAIMS_TABLE_BODY, timeout=90000)
         logger.info("[IHX] In-patient claims page opened")
 
     def extract_table_headers(self) -> list[str]:

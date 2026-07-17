@@ -40,6 +40,11 @@ IHX_RECONCILIATION_EXPORT_TIMEOUT_MS = int(
     os.getenv("IHX_RECONCILIATION_EXPORT_TIMEOUT_MS", "120000")
 )
 
+IHX_RECONCILIATION_READY_TEXTS = _get_csv_env(
+    "IHX_RECONCILIATION_READY_TEXTS",
+    "Patient Name,Claim No,Claim Number,UHID,Payer",
+)
+
 CORS_ALLOWED_ORIGINS = _get_csv_env(
     "CORS_ALLOWED_ORIGINS",
     "http://localhost:5173,http://127.0.0.1:5173,https://claimbridgeui.vercel.app",

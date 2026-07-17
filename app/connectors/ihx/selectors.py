@@ -124,3 +124,11 @@ POWER_BI_VISUAL_CONTAINER = (
     "visual-container"
 )
 
+POWER_BI_LOADING_INDICATORS = (
+    "[aria-label*='Loading'], "
+    "[title*='Loading'], "
+    "[data-testid*='loading'], "
+    "[role='progressbar'], "
+    ".logoBar"
+)
+

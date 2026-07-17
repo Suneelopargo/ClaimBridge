@@ -10,11 +10,20 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
+# Install OS packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        poppler-utils && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
+
+# Install Playwright browser
 RUN python -m playwright install --with-deps chromium
+
 COPY . .
 
 # Create folders used by the application

@@ -13,6 +13,13 @@ from app.models.reconciliation_manual_details import (
 )
 from app.models.activity_log import ActivityLog
 from app.models.user import User
+from app.models.validation_rule import ValidationRule
+from app.models.validation_rule_version import ValidationRuleVersion
+from app.models.validation_rule_document_type import (
+    ValidationRuleDocumentType,
+)
+from app.models.claim_validation_run import ClaimValidationRun
+from app.models.claim_validation_result import ClaimValidationResult
 
 
 def main():

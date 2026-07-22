@@ -20,6 +20,7 @@ from app.routers.activity_log_router import router as activity_log_router
 from app.routers.claim_packet_router import (
     router as claim_packet_router,
 )
+from app.routers import claim_validation_router
 
 
 app = FastAPI(
@@ -50,6 +51,9 @@ app.include_router(reconciliation_filter_router)
 app.include_router(auth_router)
 app.include_router(activity_log_router)
 app.include_router(claim_packet_router)
+app.include_router(
+    claim_validation_router.router
+)
 
 
 @app.get("/")

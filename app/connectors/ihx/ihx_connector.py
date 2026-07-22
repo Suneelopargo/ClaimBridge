@@ -47,7 +47,33 @@ class IHXConnector(BaseConnector):
 
     def submit_login(self) -> None:
         self.click(selectors.LOGIN_BUTTON)
+        self.page.wait_for_timeout(5000)
 
+        logger.info("Login form visible: %s",
+                    self.page.locator("#login-form").is_visible())
+
+        logger.info("Current URL: %s", self.page.url)
+
+        # Print any Ant Design validation errors
+        try:
+            errors = self.page.locator(".ant-form-item-explain-error").all_inner_texts()
+            logger.info("Validation errors: %s", errors)
+        except Exception:
+            pass
+
+        # Print any toast messages
+        try:
+            toasts = self.page.locator(".ant-message").all_inner_texts()
+            logger.info("Toast messages: %s", toasts)
+        except Exception:
+            pass
+
+        # Print any alert banners
+        try:
+            alerts = self.page.locator(".ant-alert").all_inner_texts()
+            logger.info("Alerts: %s", alerts)
+        except Exception:
+            pass
         logger.info("=" * 80)
         logger.info("[IHX] Login button clicked")
         logger.info("=" * 80)
@@ -102,7 +128,7 @@ class IHXConnector(BaseConnector):
 
             self.page.wait_for_selector(
                 selectors.OTP_DIGIT_PREFIX.format(0),
-                timeout=60000,
+                timeout=120000,
                 state="visible",
             )
 
@@ -380,6 +406,40 @@ class IHXConnector(BaseConnector):
                 logger.info("[IHX] Batch page limit reached: %s", max_pages)
                 break
             self.page.wait_for_timeout(5000)
+            # Login form still visible?
+            if self.page.locator("#login-form").is_visible():
+
+                logger.error(
+                    "[IHX] Login form is still visible after submit."
+                )
+
+                # Ant Design validation messages
+                try:
+                    errors = self.page.locator(
+                        ".ant-form-item-explain-error"
+                    ).all_inner_texts()
+
+                    if errors:
+                        logger.error(
+                            "[IHX] Validation errors: %s",
+                            errors,
+                        )
+                except Exception:
+                    pass
+
+                # Toast notifications
+                try:
+                    messages = self.page.locator(
+                        ".ant-message"
+                    ).all_inner_texts()
+
+                    if messages:
+                        logger.error(
+                            "[IHX] Toast messages: %s",
+                            messages,
+                        )
+                except Exception:
+                    pass
             moved = self.goto_next_page_with_retry()
             if not moved:
                 break

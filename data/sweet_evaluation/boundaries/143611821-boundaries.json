@@ -1,0 +1,1306 @@
+{
+  "packetId": "143611821",
+  "manifestPath": "data\\segregated\\143611821\\manifest.json",
+  "totalPages": 27,
+  "inventoryPages": 27,
+  "boundaryCounts": {
+    "START": 17,
+    "CONTINUATION": 6,
+    "AMBIGUOUS": 4
+  },
+  "startPages": [
+    1,
+    2,
+    3,
+    5,
+    7,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    21,
+    22,
+    24,
+    25,
+    27
+  ],
+  "continuationPages": [
+    4,
+    16,
+    17,
+    18,
+    19,
+    23
+  ],
+  "ambiguousPages": [
+    6,
+    11,
+    20,
+    26
+  ],
+  "ambiguousPageCount": 4,
+  "droppedPages": 0,
+  "pageIntegrityValid": true,
+  "pages": [
+    {
+      "pageNumber": 1,
+      "finalDocumentType": "COVERING_LETTER",
+      "rawDocumentType": "CHECKLIST",
+      "boundaryType": "START",
+      "score": 100,
+      "confidence": 1.0,
+      "reviewRequired": false,
+      "reasons": [
+        "First packet page always starts a group."
+      ],
+      "signals": [
+        {
+          "code": "FIRST_PACKET_PAGE",
+          "direction": "START",
+          "weight": 100,
+          "score": 100,
+          "reason": "First packet page always starts a group."
+        }
+      ]
+    },
+    {
+      "pageNumber": 2,
+      "finalDocumentType": "CHECKLIST",
+      "rawDocumentType": "CHECKLIST",
+      "boundaryType": "START",
+      "score": 66,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Document family changed from COVERING_LETTER to CHECKLIST.",
+        "bill_number changed between adjacent pages.",
+        "patient_name changed between adjacent pages.",
+        "Document date changed between adjacent pages.",
+        "Current and previous pages share strong claim or bill identifiers.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "CHECKLIST is usually a standalone document instance."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from COVERING_LETTER to CHECKLIST."
+        },
+        {
+          "code": "BILL_NUMBER_CHANGE",
+          "direction": "START",
+          "weight": 20,
+          "score": 20,
+          "reason": "bill_number changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "SAME_STRONG_IDENTIFIERS",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages share strong claim or bill identifiers."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        },
+        {
+          "code": "LIKELY_STANDALONE_DOCUMENT",
+          "direction": "START",
+          "weight": 15,
+          "score": 15,
+          "reason": "CHECKLIST is usually a standalone document instance."
+        }
+      ]
+    },
+    {
+      "pageNumber": 3,
+      "finalDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "boundaryType": "START",
+      "score": 91,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: CASHLESS_AUTHORIZATION_LETTER.",
+        "Detected header title agrees with the current page classification.",
+        "Document family changed from CHECKLIST to AUTHORIZATION.",
+        "patient_name changed between adjacent pages.",
+        "Document date changed between adjacent pages.",
+        "Current page contains continuation, appendix or authorization-continuation language.",
+        "Current and previous pages share strong claim or bill identifiers.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "Current explicit title is followed by a compatible continuation page."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: CASHLESS_AUTHORIZATION_LETTER."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from CHECKLIST to AUTHORIZATION."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "CONTINUATION_LANGUAGE",
+          "direction": "CONTINUATION",
+          "weight": 30,
+          "score": -30,
+          "reason": "Current page contains continuation, appendix or authorization-continuation language."
+        },
+        {
+          "code": "SAME_STRONG_IDENTIFIERS",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages share strong claim or bill identifiers."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 4,
+      "finalDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "boundaryType": "CONTINUATION",
+      "score": -45,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family.",
+        "Current page contains continuation, appendix or authorization-continuation language.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "CONTINUATION_LANGUAGE",
+          "direction": "CONTINUATION",
+          "weight": 30,
+          "score": -30,
+          "reason": "Current page contains continuation, appendix or authorization-continuation language."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 5,
+      "finalDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "boundaryType": "START",
+      "score": 45,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: CASHLESS_AUTHORIZATION_LETTER.",
+        "Detected header title agrees with the current page classification.",
+        "Current and previous pages belong to the same document family.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "Three-page family continuity supports keeping the current page with adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: CASHLESS_AUTHORIZATION_LETTER."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 6,
+      "finalDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "boundaryType": "AMBIGUOUS",
+      "score": -15,
+      "confidence": 0.575,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: FINAL_HOSPITAL_BILL.",
+        "Current and previous pages belong to the same document family.",
+        "Current page contains continuation, appendix or authorization-continuation language.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "Repeated title was discounted because stronger continuation evidence exists within the same family."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: FINAL_HOSPITAL_BILL."
+        },
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "CONTINUATION_LANGUAGE",
+          "direction": "CONTINUATION",
+          "weight": 30,
+          "score": -30,
+          "reason": "Current page contains continuation, appendix or authorization-continuation language."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 7,
+      "finalDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+      "boundaryType": "START",
+      "score": 88,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: PREAUTHORIZATION_FORM.",
+        "Current and previous pages belong to the same document family.",
+        "Current page numbering restarts at page 1.",
+        "Document date changed between adjacent pages.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: PREAUTHORIZATION_FORM."
+        },
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "PAGE_NUMBER_RESTART",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Current page numbering restarts at page 1."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 8,
+      "finalDocumentType": "PREAUTHORIZATION_FORM",
+      "rawDocumentType": "PREAUTHORIZATION_FORM",
+      "boundaryType": "START",
+      "score": 143,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: PREAUTHORIZATION_FORM.",
+        "Detected header title agrees with the current page classification.",
+        "Document family changed from AUTHORIZATION to PREAUTHORIZATION.",
+        "Current page numbering restarts at page 1.",
+        "patient_name changed between adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: PREAUTHORIZATION_FORM."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from AUTHORIZATION to PREAUTHORIZATION."
+        },
+        {
+          "code": "PAGE_NUMBER_RESTART",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Current page numbering restarts at page 1."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 9,
+      "finalDocumentType": "GIPSA_DECLARATION",
+      "rawDocumentType": "GIPSA_DECLARATION",
+      "boundaryType": "START",
+      "score": 133,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: GIPSA_DECLARATION.",
+        "Detected header title agrees with the current page classification.",
+        "Document family changed from PREAUTHORIZATION to DECLARATION.",
+        "Document amount changed between adjacent pages.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "GIPSA_DECLARATION is usually a standalone document instance."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: GIPSA_DECLARATION."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from PREAUTHORIZATION to DECLARATION."
+        },
+        {
+          "code": "TOTAL_AMOUNT_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document amount changed between adjacent pages."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        },
+        {
+          "code": "LIKELY_STANDALONE_DOCUMENT",
+          "direction": "START",
+          "weight": 15,
+          "score": 15,
+          "reason": "GIPSA_DECLARATION is usually a standalone document instance."
+        }
+      ]
+    },
+    {
+      "pageNumber": 10,
+      "finalDocumentType": "PATIENT_ID_PROOF",
+      "rawDocumentType": "PATIENT_ID_PROOF",
+      "boundaryType": "START",
+      "score": 43,
+      "confidence": 0.9867,
+      "reviewRequired": false,
+      "reasons": [
+        "Document family changed from DECLARATION to PATIENT_ID.",
+        "patient_name changed between adjacent pages.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from DECLARATION to PATIENT_ID."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 11,
+      "finalDocumentType": "PATIENT_ID_PROOF",
+      "rawDocumentType": "PATIENT_ID_PROOF",
+      "boundaryType": "AMBIGUOUS",
+      "score": -20,
+      "confidence": 0.6,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        }
+      ]
+    },
+    {
+      "pageNumber": 12,
+      "finalDocumentType": "PROPOSER_ID_PROOF",
+      "rawDocumentType": "PROPOSER_ID_PROOF",
+      "boundaryType": "START",
+      "score": 43,
+      "confidence": 0.9867,
+      "reviewRequired": false,
+      "reasons": [
+        "Document family changed from PATIENT_ID to PROPOSER_ID.",
+        "patient_name changed between adjacent pages.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from PATIENT_ID to PROPOSER_ID."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 13,
+      "finalDocumentType": "PATIENT_ID_PROOF",
+      "rawDocumentType": "PATIENT_ID_PROOF",
+      "boundaryType": "START",
+      "score": 43,
+      "confidence": 0.9867,
+      "reviewRequired": false,
+      "reasons": [
+        "Document family changed from PROPOSER_ID to PATIENT_ID.",
+        "patient_name changed between adjacent pages.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from PROPOSER_ID to PATIENT_ID."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 14,
+      "finalDocumentType": "PROPOSER_ID_PROOF",
+      "rawDocumentType": "PROPOSER_ID_PROOF",
+      "boundaryType": "START",
+      "score": 38,
+      "confidence": 0.9533,
+      "reviewRequired": false,
+      "reasons": [
+        "Document family changed from PATIENT_ID to PROPOSER_ID.",
+        "patient_name changed between adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from PATIENT_ID to PROPOSER_ID."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 15,
+      "finalDocumentType": "FINAL_HOSPITAL_BILL",
+      "rawDocumentType": "FINAL_HOSPITAL_BILL",
+      "boundaryType": "START",
+      "score": 81,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Document family changed from PROPOSER_ID to BILL.",
+        "Current page numbering restarts at page 1.",
+        "patient_name changed between adjacent pages.",
+        "Document date changed between adjacent pages.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from PROPOSER_ID to BILL."
+        },
+        {
+          "code": "PAGE_NUMBER_RESTART",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Current page numbering restarts at page 1."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 16,
+      "finalDocumentType": "BILL_CONTINUATION",
+      "rawDocumentType": "BILL_CONTINUATION",
+      "boundaryType": "CONTINUATION",
+      "score": -89,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family.",
+        "Type changed from FINAL_HOSPITAL_BILL to BILL_CONTINUATION inside the same family.",
+        "Current page number sequentially follows the previous page.",
+        "Document date changed between adjacent pages.",
+        "Document amount changed between adjacent pages.",
+        "Current and previous pages share strong claim or bill identifiers.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "Three-page family continuity supports keeping the current page with adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "TYPE_CHANGE_WITHIN_FAMILY",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Type changed from FINAL_HOSPITAL_BILL to BILL_CONTINUATION inside the same family."
+        },
+        {
+          "code": "SEQUENTIAL_PAGE_NUMBER",
+          "direction": "CONTINUATION",
+          "weight": 60,
+          "score": -60,
+          "reason": "Current page number sequentially follows the previous page."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "TOTAL_AMOUNT_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document amount changed between adjacent pages."
+        },
+        {
+          "code": "SAME_STRONG_IDENTIFIERS",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages share strong claim or bill identifiers."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 17,
+      "finalDocumentType": "BILL_CONTINUATION",
+      "rawDocumentType": "BILL_CONTINUATION",
+      "boundaryType": "CONTINUATION",
+      "score": -102,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family.",
+        "Current page number sequentially follows the previous page.",
+        "Document amount changed between adjacent pages.",
+        "Current and previous pages share strong claim or bill identifiers.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "Three-page family continuity supports keeping the current page with adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "SEQUENTIAL_PAGE_NUMBER",
+          "direction": "CONTINUATION",
+          "weight": 60,
+          "score": -60,
+          "reason": "Current page number sequentially follows the previous page."
+        },
+        {
+          "code": "TOTAL_AMOUNT_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document amount changed between adjacent pages."
+        },
+        {
+          "code": "SAME_STRONG_IDENTIFIERS",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages share strong claim or bill identifiers."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 18,
+      "finalDocumentType": "BILL_CONTINUATION",
+      "rawDocumentType": "BILL_CONTINUATION",
+      "boundaryType": "CONTINUATION",
+      "score": -102,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family.",
+        "Current page number sequentially follows the previous page.",
+        "Document amount changed between adjacent pages.",
+        "Current and previous pages share strong claim or bill identifiers.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "Three-page family continuity supports keeping the current page with adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "SEQUENTIAL_PAGE_NUMBER",
+          "direction": "CONTINUATION",
+          "weight": 60,
+          "score": -60,
+          "reason": "Current page number sequentially follows the previous page."
+        },
+        {
+          "code": "TOTAL_AMOUNT_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document amount changed between adjacent pages."
+        },
+        {
+          "code": "SAME_STRONG_IDENTIFIERS",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages share strong claim or bill identifiers."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 19,
+      "finalDocumentType": "BILL_CONTINUATION",
+      "rawDocumentType": "BILL_CONTINUATION",
+      "boundaryType": "CONTINUATION",
+      "score": -102,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family.",
+        "Current page number sequentially follows the previous page.",
+        "Document date changed between adjacent pages.",
+        "Current and previous pages share strong claim or bill identifiers.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "Three-page family continuity supports keeping the current page with adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "SEQUENTIAL_PAGE_NUMBER",
+          "direction": "CONTINUATION",
+          "weight": 60,
+          "score": -60,
+          "reason": "Current page number sequentially follows the previous page."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "SAME_STRONG_IDENTIFIERS",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages share strong claim or bill identifiers."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 20,
+      "finalDocumentType": "FINAL_HOSPITAL_BILL",
+      "rawDocumentType": "FINAL_HOSPITAL_BILL",
+      "boundaryType": "AMBIGUOUS",
+      "score": -22,
+      "confidence": 0.61,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family.",
+        "Type changed from BILL_CONTINUATION to FINAL_HOSPITAL_BILL inside the same family.",
+        "Document date changed between adjacent pages.",
+        "Current and previous pages share strong claim or bill identifiers.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "TYPE_CHANGE_WITHIN_FAMILY",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Type changed from BILL_CONTINUATION to FINAL_HOSPITAL_BILL inside the same family."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "SAME_STRONG_IDENTIFIERS",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages share strong claim or bill identifiers."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 21,
+      "finalDocumentType": "PAYMENT_RECEIPT",
+      "rawDocumentType": "PAYMENT_RECEIPT",
+      "boundaryType": "START",
+      "score": 191,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: PAYMENT_RECEIPT.",
+        "Detected header title agrees with the current page classification.",
+        "Document family changed from BILL to PAYMENT.",
+        "Current page numbering restarts at page 1.",
+        "bill_number changed between adjacent pages.",
+        "Document date changed between adjacent pages.",
+        "Document amount changed between adjacent pages.",
+        "Header token pattern changed; this is only a weak supporting signal.",
+        "PAYMENT_RECEIPT is usually a standalone document instance."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: PAYMENT_RECEIPT."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from BILL to PAYMENT."
+        },
+        {
+          "code": "PAGE_NUMBER_RESTART",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Current page numbering restarts at page 1."
+        },
+        {
+          "code": "BILL_NUMBER_CHANGE",
+          "direction": "START",
+          "weight": 20,
+          "score": 20,
+          "reason": "bill_number changed between adjacent pages."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        },
+        {
+          "code": "TOTAL_AMOUNT_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document amount changed between adjacent pages."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        },
+        {
+          "code": "LIKELY_STANDALONE_DOCUMENT",
+          "direction": "START",
+          "weight": 15,
+          "score": 15,
+          "reason": "PAYMENT_RECEIPT is usually a standalone document instance."
+        }
+      ]
+    },
+    {
+      "pageNumber": 22,
+      "finalDocumentType": "TREATMENT_ORDER",
+      "rawDocumentType": "TREATMENT_ORDER",
+      "boundaryType": "START",
+      "score": 38,
+      "confidence": 0.9533,
+      "reviewRequired": false,
+      "reasons": [
+        "Document family changed from PAYMENT to TREATMENT_ORDER.",
+        "Document date changed between adjacent pages."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from PAYMENT to TREATMENT_ORDER."
+        },
+        {
+          "code": "DOCUMENT_DATE_CHANGE",
+          "direction": "START",
+          "weight": 8,
+          "score": 8,
+          "reason": "Document date changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 23,
+      "finalDocumentType": "UNKNOWN",
+      "rawDocumentType": "UNKNOWN",
+      "boundaryType": "CONTINUATION",
+      "score": -45,
+      "confidence": 0.99,
+      "reviewRequired": true,
+      "reasons": [
+        "Document family changed from TREATMENT_ORDER to UNKNOWN.",
+        "Unknown page is followed by a strong new-document start, so it likely continues the previous group.",
+        "Three-page reasoning: unknown page precedes a strong next-document start and likely continues the previous document."
+      ],
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from TREATMENT_ORDER to UNKNOWN."
+        },
+        {
+          "code": "UNKNOWN_BEFORE_STRONG_NEXT_START",
+          "direction": "CONTINUATION",
+          "weight": 35,
+          "score": -35,
+          "reason": "Unknown page is followed by a strong new-document start, so it likely continues the previous group."
+        }
+      ]
+    },
+    {
+      "pageNumber": 24,
+      "finalDocumentType": "DISCHARGE_SUMMARY",
+      "rawDocumentType": "DISCHARGE_SUMMARY",
+      "boundaryType": "START",
+      "score": 105,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: DISCHARGE_SUMMARY.",
+        "Detected header title agrees with the current page classification.",
+        "Document family changed from UNKNOWN to DISCHARGE_SUMMARY."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: DISCHARGE_SUMMARY."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "START",
+          "weight": 30,
+          "score": 30,
+          "reason": "Document family changed from UNKNOWN to DISCHARGE_SUMMARY."
+        }
+      ]
+    },
+    {
+      "pageNumber": 25,
+      "finalDocumentType": "DISCHARGE_SUMMARY",
+      "rawDocumentType": "DISCHARGE_SUMMARY",
+      "boundaryType": "START",
+      "score": 55,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: DISCHARGE_SUMMARY.",
+        "Detected header title agrees with the current page classification.",
+        "Current and previous pages belong to the same document family.",
+        "Three-page family continuity supports keeping the current page with adjacent pages.",
+        "Current explicit title is followed by a compatible continuation page."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: DISCHARGE_SUMMARY."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        }
+      ]
+    },
+    {
+      "pageNumber": 26,
+      "finalDocumentType": "DISCHARGE_SUMMARY",
+      "rawDocumentType": "DISCHARGE_SUMMARY",
+      "boundaryType": "AMBIGUOUS",
+      "score": -15,
+      "confidence": 0.575,
+      "reviewRequired": false,
+      "reasons": [
+        "Current and previous pages belong to the same document family.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    },
+    {
+      "pageNumber": 27,
+      "finalDocumentType": "DISCHARGE_SUMMARY",
+      "rawDocumentType": "DISCHARGE_SUMMARY",
+      "boundaryType": "START",
+      "score": 60,
+      "confidence": 0.99,
+      "reviewRequired": false,
+      "reasons": [
+        "Explicit document title detected in the header region: DISCHARGE_SUMMARY.",
+        "Detected header title agrees with the current page classification.",
+        "Current and previous pages belong to the same document family.",
+        "Header token pattern changed; this is only a weak supporting signal."
+      ],
+      "signals": [
+        {
+          "code": "EXPLICIT_TITLE_IN_HEADER",
+          "direction": "START",
+          "weight": 65,
+          "score": 65,
+          "reason": "Explicit document title detected in the header region: DISCHARGE_SUMMARY."
+        },
+        {
+          "code": "TITLE_MATCHES_CLASSIFICATION",
+          "direction": "START",
+          "weight": 10,
+          "score": 10,
+          "reason": "Detected header title agrees with the current page classification."
+        },
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "CONTINUATION",
+          "weight": 20,
+          "score": -20,
+          "reason": "Current and previous pages belong to the same document family."
+        },
+        {
+          "code": "WEAK_HEADER_CHANGE",
+          "direction": "START",
+          "weight": 5,
+          "score": 5,
+          "reason": "Header token pattern changed; this is only a weak supporting signal."
+        }
+      ]
+    }
+  ]
+}

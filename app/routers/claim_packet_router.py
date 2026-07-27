@@ -1,9 +1,12 @@
+from pathlib import Path
+
 from fastapi import APIRouter, File, UploadFile
 
 from app.document_processing.packet_service import (
     classify_and_segregate_claim_packet,
-    validate_against_dispatch_checklist
+    validate_against_dispatch_checklist,
 )
+
 
 router = APIRouter(
     prefix="/api/claim-packets",
@@ -17,11 +20,25 @@ async def process_claim_packet(
     claim_id: str | None = None,
     patient_name: str | None = None,
 ):
-    return await classify_and_segregate_claim_packet(
-        file=file,
-        claim_id=claim_id,
-        patient_name=patient_name,
-    )
+    filename = Path(
+        file.filename or ""
+    ).name
+
+    if not filename.lower().endswith(".pdf"):
+        return {
+            "success": False,
+            "source": "SWEET_RESOLVER_PACKET_PROCESSING",
+            "error": "Only PDF claim packets are supported",
+        }
+
+    try:
+        return await classify_and_segregate_claim_packet(
+            file=file,
+            claim_id=claim_id,
+            patient_name=patient_name,
+        )
+    finally:
+        await file.close()
 
 
 @router.post("/validate-checklist")

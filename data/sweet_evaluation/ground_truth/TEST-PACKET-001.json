@@ -1,0 +1,39 @@
+{
+  "packetId": "TEST-PACKET-001",
+  "sourceFile": "sample.pdf",
+  "annotatedBy": "Sriram",
+  "annotationDate": "2026-07-23",
+  "notes": "Synthetic evaluation packet",
+  "pages": [
+    {
+      "pageNumber": 1,
+      "documentType": "DISCHARGE_SUMMARY",
+      "boundaryType": "START",
+      "documentGroupId": "DS-001"
+    },
+    {
+      "pageNumber": 2,
+      "documentType": "DISCHARGE_SUMMARY",
+      "boundaryType": "CONTINUATION",
+      "documentGroupId": "DS-001"
+    },
+    {
+      "pageNumber": 3,
+      "documentType": "DISCHARGE_SUMMARY",
+      "boundaryType": "END",
+      "documentGroupId": "DS-001"
+    },
+    {
+      "pageNumber": 4,
+      "documentType": "FINAL_HOSPITAL_BILL",
+      "boundaryType": "START",
+      "documentGroupId": "BILL-001"
+    },
+    {
+      "pageNumber": 5,
+      "documentType": "FINAL_HOSPITAL_BILL",
+      "boundaryType": "END",
+      "documentGroupId": "BILL-001"
+    }
+  ]
+}

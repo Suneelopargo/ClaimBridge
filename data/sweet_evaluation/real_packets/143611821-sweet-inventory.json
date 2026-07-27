@@ -1,0 +1,2193 @@
+{
+  "packetId": "143611821",
+  "totalPages": 27,
+  "summary": {
+    "packetId": "143611821",
+    "totalPages": 27,
+    "inventoryPages": 27,
+    "directlyClassifiedPages": 20,
+    "initiallyUncertainPages": 0,
+    "contextRecoveredPages": 0,
+    "finalReviewPages": 0,
+    "reviewReductionPercent": 0.0,
+    "classifiedPages": 27,
+    "reviewRequiredPages": 0,
+    "unresolvedPages": 0,
+    "statusCounts": {
+      "CLASSIFIED": 27
+    },
+    "documentTypeCounts": {
+      "COVERING_LETTER": 1,
+      "CHECKLIST": 1,
+      "CASHLESS_AUTHORIZATION_LETTER": 5,
+      "PREAUTHORIZATION_FORM": 1,
+      "GIPSA_DECLARATION": 1,
+      "PATIENT_ID_PROOF": 3,
+      "PROPOSER_ID_PROOF": 2,
+      "FINAL_HOSPITAL_BILL": 2,
+      "PAYMENT_RECEIPT": 2,
+      "BILL_CONTINUATION": 3,
+      "CHEMO THERAPY ORDER FORM": 1,
+      "TREATMENT_ORDER": 1,
+      "DISCHARGE_SUMMARY": 4
+    },
+    "droppedPages": 0,
+    "pageIntegrityValid": true,
+    "pageIntegrityErrors": []
+  },
+  "pages": [
+    {
+      "page_id": "58d9b753-9f9b-4320-b893-20b2a8de5578",
+      "packet_id": "143611821",
+      "page_number": 1,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CHECKLIST",
+      "final_document_type": "COVERING_LETTER",
+      "confidence": 0.97,
+      "classification_source": "RULE",
+      "candidates": [
+        {
+          "document_type": "CHECKLIST",
+          "confidence": 0.95,
+          "reason": "Document contains a checklist of claim documents submitted with claim number, patient name, bill number, and total bill amount. The title and content indicate it is a dispatch checklist for insurance claim documents.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "VIJAYAMANIU H M",
+        "claim_number": "143611821",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "Medi Assist Insurance TPA Pvt Ltd.",
+        "bill_number": "ICR-23139"
+      },
+      "financial_metadata": {
+        "document_date": "14.07.2026",
+        "total_amount": "Rs. 77,296 /-"
+      },
+      "evidence": {
+        "extracted_text": "1\n2\n3\n4\n5\n7\n8\n9\nSL.No\n1\n2\n3\n4\n5\n6\n7\n8\n[Receipt for patient paid amount I yes\n1 ments uploaded in MB+ Vs the original\n': FS-“_:\"\"-\"“\"\" dRrrr! luo I \\Q3€11ga[OU\nHealthCare Global Enterprises Ltd\n# 44_45/21 2nd Cross, Raja Ram Mohan Roy Extn., (Off. Lalbagh Double\n91 80 4020 6000 1 info@hcgoncology.com I www.hcgoncology.com I CIN\n:GH I\nadding life to years Date :14.07.20026\nBill No: ICR-23139\nControl No- :115\nThe Specialist\nin Cancer CareTO,\nMe(Ii Assist Insurance TPA Pvt Ltd.,\n58/IA, Singha Sandra Village\nHosur Main Road, Begur Hobil\nBangalore South lbluk -560061\nWe hereby Confirm that all details /documents uploaded in the MB+ are as per original claim documents which Mn\nbe couriered/submitted to Medi Assist later .\nWe hereby confirm that we have mentioned TPA name and Insurer Name (in Payable by column) in the Bill\nchanges will be done later on the bill and details provided .\nand no\nCLAIM NUMBER 143611821\nPATIENT VIJAYAMANIU H M\nDOA 13.07.2026\nDOD 13.07.2026\nTotal Bill Amount Rs. 77,296 /-\nDiscount Amount Rs.8,502 /-\nRs.15,150 /-Total Patient Paid Amout\nMedi Assist Final Authorised Amount Rs. 53,644 /-\nTick (_/) to confirm attachmentDocument Details\nOriginal Claim Form/Preauthorisation\nform yes\nyes\nyes\nyes\nyes\nID proof of beneficiary\nID proof and PAN card of Primary\nBeneficiary for bills more than 1 lac--\nOriginal Final Bill duly signe\nd by Patient/ Attendant\nOriginal Discharge Summary\nOther bills\nOriginal Investigation reports\nSticker / Invoice of implants\nLtd..888+eMery'is a\n4512\nqajaram\nBan!!atc\n2nd Cross,\nan Roy Extn.,\nreo560 027\nRoad), Bangalore - 560027: L15200KA1998PLC023489\nMmedabaj I Baroda I Bhawngar I Chennai I GulaG I Ddhi I Gulbarga I HuUI I tanF>ur I Kenya I Manga Im I Mumbai I Mysore I Nagk I Ongie I Ranchi I ShimcW I Tanzania I TrUly IVjayawadajVzag\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "CHECKLIST",
+          "originalRawDocumentType": "CHECKLIST",
+          "normalizedRawDocumentType": "CHECKLIST",
+          "rawDocumentType": "CHECKLIST",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION",
+          "evidenceDecisions": [
+            {
+              "ruleCode": "COVERING_LETTER_CONFIRMATION",
+              "documentType": "COVERING_LETTER",
+              "confidence": 0.97,
+              "priority": 100,
+              "priorityName": "EXPLICIT_TITLE",
+              "mayOverrideClassification": true,
+              "reasons": [
+                "Contains a distinctive submission confirmation addressed to the payer or TPA.",
+                "Contains claim and bill summary details."
+              ]
+            }
+          ],
+          "evidenceRuleCode": "COVERING_LETTER_CONFIRMATION",
+          "classificationPriority": 100,
+          "classificationPriorityName": "EXPLICIT_TITLE",
+          "previousDocumentType": "CHECKLIST"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": null,
+      "next_page_number": 2,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95.",
+        "Evidence rule COVERING_LETTER_CONFIRMATION [EXPLICIT_TITLE]: Contains a distinctive submission confirmation addressed to the payer or TPA. Contains claim and bill summary details."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "aad27cfc-50fe-438e-b3e9-4f72c8e34872",
+      "packet_id": "143611821",
+      "page_number": 2,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CHECKLIST",
+      "final_document_type": "CHECKLIST",
+      "confidence": 0.99,
+      "classification_source": "RULE",
+      "candidates": [
+        {
+          "document_type": "CHECKLIST",
+          "confidence": 0.95,
+          "reason": "Document title is 'DESPATCH CHECKLIST' and contains a detailed list of documents with check marks, patient and claim details are present.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "vijayamani",
+        "claim_number": "143611821",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "Medi Assist",
+        "bill_number": "1CQ-23139"
+      },
+      "financial_metadata": {
+        "document_date": "13/07/26",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "ReG\nThe Specialist\nin Cancer Care\nadding life to years\nn}Hq man ftL4361L881 u\npate ofAdmissioi : \\ a 1 c) I\nName of Patient :\nClaim No. :\nI \\Date of Discharge :\nPayer Name :\nSl.\nNo\n1\n7\n8\n10\niT:\n12\n13\n14\n15\n16\n17\n18.\n19\n20\n21\n22\n23\n23.1\n23.2\n23.3\n23.4\n23.5\n23.6\nB\ngDl\negggB\nPrepared By :\nName : 1 /1/VeryI / , I Name :\nSignature :\nDate :\nDESPATCH\nCHECKLIST\n.a£\nI .at\n'S SPS NJ:if\nDocumentList of Documents\nPreauthrisation Form\nClaim Form-(momFiM\nGIPSAPPN/Insurance/TPm=ij=r=iaTa\nKYC Form & Details (Proposer) (Signed form & ID proof copy)\nPatient Photo ID proof(Medic31 card/Insurance\ncard/corporate Emp ID@M Govt. ID\\Etc.\n1\nsupporting the diagnosis & plan of treatment\n£onsent Forms (if any)\n>proval \\ Refferal letter /GOP (Pre & final approval)\ncharge/Death/Transfer Summary\nTreatment Plan, Progress Notes, OTT;-iRI\n’_.. investigation Reports\nLaboratory/Radiotogym;jii\nCT/MRI/X-Ray/USG Films\nr g Invoice, etc\nBlood Component Stickers\nPatient Photo during admission/Procedure/Surgery site/etc.\nPolice FIR/Medico Legal Certificate (MLC)-if applicable\nlai Bill (Summary & detailed)\nPayment & RefUnd Receipt / Voucher\nPackage / Profile Break-up (if any)\nl\nPharmacy Details (with Batch no. and expiry date)\nl\nTotal No. of documents\nVerified\nSignature :\nDate :\nDoc.No.: 1tF\nHCG/CORP/B&ICHECK/02/RO/E\nDate :\nBill No.\nDoc. Source I Doc. Type\nBinhg/Cr,dit D„k I Original\nmilan-–amTi=/=;i\n=ii;=MjaMRRGi\nPatient/Insured I Photocopy\nPatient/Insured I Photocopy\nBilling/Credit Desk\nBilling/Credit Desk\nNursing\nNursing\nNursing\nNursing\nMt\nNursin!\nNursing\nOT/Nursing\nNursing\nBilling/Credit Desk\nBilling/Credit Desk\nBilling/Credit Desk\nBilling/Credit Desk\nPharma\nBy :\nI\nna\n\\eQ ' Q313q\nAttached\n(Y/N)\nOriginal\nOriginal\nOriginal\nPhotocopy\nOriginal\nOriginal\nOriginal\nOriginal & Photocopy\nOriginal / Photocopy\nOriginal\nPhotocopy\nOriginal\nOriginal & Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Photocopy\nOriginal / Pho{ocopy\n\\_==A\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "CHECKLIST",
+          "originalRawDocumentType": "CHECKLIST",
+          "normalizedRawDocumentType": "CHECKLIST",
+          "rawDocumentType": "CHECKLIST",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION",
+          "evidenceDecisions": [
+            {
+              "ruleCode": "DISPATCH_CHECKLIST_TITLE",
+              "documentType": "CHECKLIST",
+              "confidence": 0.99,
+              "priority": 100,
+              "priorityName": "EXPLICIT_TITLE",
+              "mayOverrideClassification": true,
+              "reasons": [
+                "Visible dispatch checklist title detected."
+              ]
+            }
+          ],
+          "evidenceRuleCode": "DISPATCH_CHECKLIST_TITLE",
+          "classificationPriority": 100,
+          "classificationPriorityName": "EXPLICIT_TITLE",
+          "previousDocumentType": "CHECKLIST"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 1,
+      "next_page_number": 3,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95.",
+        "Evidence rule DISPATCH_CHECKLIST_TITLE [EXPLICIT_TITLE]: Visible dispatch checklist title detected."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "331c98b1-ad84-4101-b7ad-753080ecc7b0",
+      "packet_id": "143611821",
+      "page_number": 3,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "final_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "confidence": 0.99,
+      "classification_source": "RULE",
+      "candidates": [
+        {
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "confidence": 0.95,
+          "reason": "Document title is 'Cashless Authorization Letter' with patient details, insurance details, treatment details, and authorization summary including total bill amount and authorized amount.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Vijaya Mani H M",
+        "claim_number": "143611821",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "United India Insurance Co. Ltd.",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "13 Jul 2026",
+        "total_amount": "77296"
+      },
+      "evidence": {
+        "extracted_text": "Cashless Authorization Letter {14351 1821 )\n<Please quote this efennce number in oR future correspondence}\nal Medi Assist\nMedi Assist Insurance TPA Pvt. Ltd\nDate :13 Jul 2026 17:27\nTo,\nThe Administrator / Medical Superintendent,\nHealthcare Global Enterprises (Hcg),\n4445/2 2nd Cross, R R Mohan Roy Ext, Bengaluru, Bengaluru, Karnataka: 5600271\nHospital ID: (50139)\nRohini Id: 8900080184510\nDear Partner,\nWith reference to your request (143611821 ) for final cashtess pre-authorization, we here by authorize INR 53644 against your final bm amount INR 77296. The\ndetails of the pre-authorization are as follows\nPatient Details\nPatient Name\nRelation to Primary Beneficiary\nAge\nGender\nInsurance Company\nMedi Assist ID\nPolicy Holder\nIP No\nPolicy No.\nPolicy/Plan Period\nPrimary Beneficiary\nInsurer Claim No\nInsurer Member ID\nTreatment DetaIls\nProvisional Diagnosis\nExpected/Actual Date Of Admission\nTreating Doctor\nProcedure / Treatment Planned\nEstimated/Actual Date of Discharge\nRoom Category Occupied\nLength Of Stay\nEligible Room Category\nTotal Authorized amount Rs 536&t (Indian Rupees Fifty Three Thousand Six Hundred and Forty Four only),\nAuthorization Remarks :\nAuthorization Summary\nTotal bill amount (INR)\nOther Deductions(INFly\nCopay {INFI)\nHospital Discount (INfl)\nDeductibles (INR)\nTotal Authorized Amount{INR)\nAmount to be paid by Insured (INFI)\nBWFp9w\nVijaya Mani H M\nMother\n48\nF\nUnited India Insurance Co. Ltd.\n4054360853\nFidelity Business Services India Private Limited\n5004002825PI 14225389_Parents_Topup\n24 Oct 2025 to 23 Oct 2026\nSharath B\nU llC)2301 8852214374814960\nMalignant neoplasm of nipple and areola\n13 Jul 2026 12:00 AM\ngovind\nImmunotherapy\n13 JuI 2026 12:00 PM\nGeneral/Economy ward\na\nunspecified female breast\n77296\n1738\n13412\n8502\n0\n53644\n15150\ntI\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "originalRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "normalizedRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION",
+          "evidenceDecisions": [
+            {
+              "ruleCode": "CASHLESS_AUTHORIZATION_TITLE",
+              "documentType": "CASHLESS_AUTHORIZATION_LETTER",
+              "confidence": 0.99,
+              "priority": 100,
+              "priorityName": "EXPLICIT_TITLE",
+              "mayOverrideClassification": true,
+              "reasons": [
+                "Explicit Cashless Authorization Letter title detected."
+              ]
+            }
+          ],
+          "evidenceRuleCode": "CASHLESS_AUTHORIZATION_TITLE",
+          "classificationPriority": 100,
+          "classificationPriorityName": "EXPLICIT_TITLE",
+          "previousDocumentType": "CASHLESS_AUTHORIZATION_LETTER"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 2,
+      "next_page_number": 4,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95.",
+        "Evidence rule CASHLESS_AUTHORIZATION_TITLE [EXPLICIT_TITLE]: Explicit Cashless Authorization Letter title detected."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "c27f6b07-bb9b-41ec-94a4-bbaf0eb865ef",
+      "packet_id": "143611821",
+      "page_number": 4,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "final_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "confidence": 0.95,
+      "classification_source": "RULE",
+      "candidates": [
+        {
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "confidence": 0.7,
+          "reason": "The document contains terms and conditions for authorization, instructions for claim settlement, and references to cashless authorization and claim processing, indicating it is a cashless authorization letter.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "United India Insurance Co. Ltd.",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "I)etai led list of deductions have been shared with the claimant\nTerms and conditions for authorization:\n1\nE::rgTI: DJHI Jv:: :I• !: c:FS n: : : Ic:)i :t:: aol; p:: : :foe;IT I::r:1:::F:PaT: IIZiT;ii: =J;E :dea; ::: :aLTi l;:££raujkaaBiva ;i:1 : ; E: i IETIF Yard ? non admissible\namounts 7including additional charges due to opting higher room rent than eligibilitY/choosing sepante line of tnatment which is not\nenvisaged/considered in Package) . . . . .. .\n&et;ork'provider shall not make any recoverY from the deposit amount collected from the insured except for Pe .T?t.towerds pon adpissit?If afEElnts\nii;cl:;iRgP;ldioona1 cnarges due to opting hiLlier room rent than eligibility/choosing separate line of treatment which is not end%ged/can$ideFed in\nrnTLa£ZN of unauthoHzed nmveW of any additional amount from the insured in excess of Agreed Package Rates. the authorized TPA/Insuranc?\ncompany reserves the right to recover the same or get the same refunded to the poIicY hc)Idet #om the netwotk provider and/or take necessaIY acUon as\nprovided under the MOU\n;vhere treatment / procedure to be carried out by a Doctor/Surgeon of insured's choice (not empaneled with the Hospital) network provider maY give\ntreatment after obtaining specific consent of the policyholder\ni;pgAs a Bi-investigatibn;1 / diagnostic tests! eta witch are not related to the condition for which admission is sought are no} agmissible\nE;i>;nses ;Ie exctuded which ari not covered / not payable as per health insurance policy terms and conditions are not admissible\nExbenses related to medicines/drugs incurred post discharge and Differential cost borne by the policyholder maY be reimbursed bY Insurer subject to\nterms and conditions of the policy\n2\n3,\n4.\n5.\n6.\n7\n8\n9,\nThe following documents must be submItted in full within 7 daYS from date of discharge to enable settlement of claim:\n1\n2.\n3.\n4.\n5,\nOriginal cashless claim form in IRDAI format\nGovernment ID proof and Medi Assist ID card of the patient along with KYC form\nDetailed discharge summary with Main hospital bill along with Break'up of the bill amount being claimed\nCash memos from the HospKals / Chemists supported by proper prescriptions\nDiagnostic Test Reports. X-ray films, and Receipts supported by note from the attending Medical Practitioner / Surgeon recommending\ntests\nOriginal sticker for all the implants & high value consumables\nSurgeon's Certificate stating the nature of operaUon performed and Surgeon's Bin and Receipt\nCerificates from attending Medical Practitioner / Surgeon giving patient's condition and advice on discharge\nCopy of the receipt for the amount settled by the patient / representative\nFinal hospital bills should be issued in the name of United India Insurance Co. Ltd. as a payer for paYment of cashless claims. This is\nrequirement for claim settlement.\nPlease send cashless documents to the address mentioned in the last page of the letter. (Beneath signature)\nsuch diagnostic\n6\n7\n8\n9\n10.\n11.\na mandatory\nNote: As per Modified Guidelines on Standards and Benchmarks for Hospitals in the Provider Network issued by IRDAI ade Circular Ref:\nIRDA/HLT/REG/GDUI 14/07/2018 dated 27th July 2018, your Hospital is mandatodty required to Register with ROHINI and obtain either Pre-enbY level\nCertificate (or higher level of certificate) issued by NABH or State Level Certificate (or higher level of certificate) under NQAS, issued by National Health\nSystems Resources Centre (NHSRC) on or before July 26, 2019\nQUICK LINKS:\nFor partner hospital\nView this claim on IHX. Not on IHX yet? Sign Up now\nWarm Regards,\n+\nMedi Assist Insurance TPA Pvt. Ltd\nON: U85199KAI 999PTC025676\nCashless Processing Centre\n#58/1 A Singha sandra\nHosur Main Road\nBegur Post\nBangalore. PIN - 560068\nHelpline: 0120.6937324\nDisclaimen The TPA extends the cashtess facility subject to the standard terms & conditions of the policy and the information provided in the cashless request form. We suggest that the\npatient continues with the treatment as advised by the treating doctor. irrespective of the pre.authorization/c8shless facility.\nApp ~& d Connect ($f h\nTHIS iS A SYSTEM GENERATED CORRESPONDENCE , PLEASE DO NOT REPLY TO THIS EMAil\nQi 20 ;8 tvledi Assist\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "originalRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "normalizedRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION",
+          "evidenceDecisions": [
+            {
+              "ruleCode": "CASHLESS_AUTHORIZATION_CONTENT",
+              "documentType": "CASHLESS_AUTHORIZATION_LETTER",
+              "confidence": 0.95,
+              "priority": 60,
+              "priorityName": "STRONG_CONTENT",
+              "mayOverrideClassification": true,
+              "reasons": [
+                "Authorization terminology and cashless settlement structure detected."
+              ]
+            }
+          ],
+          "evidenceRuleCode": "CASHLESS_AUTHORIZATION_CONTENT",
+          "classificationPriority": 60,
+          "classificationPriorityName": "STRONG_CONTENT",
+          "previousDocumentType": "CASHLESS_AUTHORIZATION_LETTER"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 3,
+      "next_page_number": 5,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.70.",
+        "Evidence rule CASHLESS_AUTHORIZATION_CONTENT [STRONG_CONTENT]: Authorization terminology and cashless settlement structure detected."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "1bc3a20b-02fa-46f4-861e-dcb45b52ff3e",
+      "packet_id": "143611821",
+      "page_number": 5,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "final_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "confidence": 0.99,
+      "classification_source": "RULE",
+      "candidates": [
+        {
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "confidence": 0.95,
+          "reason": "Document title states 'Cashless Authorization Letter' with authorization details, patient details, and pre-authorization amount.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Vijaya Mani H M",
+        "claim_number": "143611821",
+        "mrn": "",
+        "ip_number": "74.225.188.137",
+        "payer_name": "United India Insurance Co. Ltd.",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "12 Jul 2026",
+        "total_amount": "41600"
+      },
+      "evidence": {
+        "extracted_text": "Cashless Authorization Letter (143611821 )\n(Please quote this reference number in all future correspondence)\nEXWIWa TWa am\n@II Medi Assisi\nAuthorization is valid for Admission up to 28 Jul 2026\n(in case of non receipt of final bill & discharge summary within 7 days from discharge date, Authorization(s) issued for this\nhospitalization would be treated as void)\nlllllllll @jljlIJLILl@111111111\nDate :12 Jul 2026 17:51\nTo,\nThe Administrator / Medical Superintendent,\nHealthcare Global Enterprises (Hcg),\n4445/2 2nd Cross, R R Mohan Roy Ext, Bengaluru, Bengalum, Karnataka, 560027,\nHospital ID: (50139)\nRohini Id: 8900080184510\nDear Partner,\nWith reference to your request (14361182 1) for cashless pre-authorization, we hereby authorize INR 41600 against an estimated\ncost of INR 80000. The details of the pre-authorization are as follows\nPatient Details\nPatient Name\nRelation to Primary Beneficiary\nVijaya Mani H M\nMother\n48\nUnited India Insurance Co. Ltd.\n4054360853\nFidelity Business Services India Private Limited\n74.225.188.137\n5004002825P114225389 Parents Topup\n24 Oct 2025 to 23 Oct 2026\nSharath B\na748149\nF\nAge\nGender\nInsurance Company\nMedi Assist ID\nPolicy Holder\nIP No.\nPolicy No.\nPolicy Period\nPrimary Beneficiary\nPrimary Beneficiary Employee ID\nInsurer Claim No\nInsurer Member ID UIIC230188522 14a748 14960\nTreatment Details\nProvisional Diagnosis\nExpected Date Of Admission\nTreating Doctor\nProcedure / Treatment Planned\nEstimated Date of Discharge\nRoom Category Occupied\nLength Of Stay\nEligible Room Category\nMalignant neoplasm of nipple and areola, left female breast\n13 Jul 2026 12:00 PM\ngovind\nMonoclonal Antibody treatment\n14 Jul 2026 12:00 PM\nGeneral/Economy ward\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "originalRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "normalizedRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION",
+          "evidenceDecisions": [
+            {
+              "ruleCode": "CASHLESS_AUTHORIZATION_TITLE",
+              "documentType": "CASHLESS_AUTHORIZATION_LETTER",
+              "confidence": 0.99,
+              "priority": 100,
+              "priorityName": "EXPLICIT_TITLE",
+              "mayOverrideClassification": true,
+              "reasons": [
+                "Explicit Cashless Authorization Letter title detected."
+              ]
+            }
+          ],
+          "evidenceRuleCode": "CASHLESS_AUTHORIZATION_TITLE",
+          "classificationPriority": 100,
+          "classificationPriorityName": "EXPLICIT_TITLE",
+          "previousDocumentType": "CASHLESS_AUTHORIZATION_LETTER"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 4,
+      "next_page_number": 6,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95.",
+        "Evidence rule CASHLESS_AUTHORIZATION_TITLE [EXPLICIT_TITLE]: Explicit Cashless Authorization Letter title detected."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "888c75b0-6877-4b9f-aa1b-24452351fd51",
+      "packet_id": "143611821",
+      "page_number": 6,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "final_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "confidence": 0.99,
+      "classification_source": "RULE",
+      "candidates": [
+        {
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "confidence": 0.85,
+          "reason": "Document contains authorization remarks, approved amount, package and non-package case details, and terms and conditions for authorization, consistent with a cashless authorization letter.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "12 Jul 2026",
+        "total_amount": "41600"
+      },
+      "evidence": {
+        "extracted_text": "1 Pre-Auth Processed 12 Jul 2026 17:'H 80000 41600\nTotal Authorized amount Rs 41600 (Indian Rupees Forty One Thousand Six Hundred onIY)•\nAuthorization Remarks :\nINITIAL APPROVAL GIVEN\ne Please be advised that the claim will be processed according to the policy terms, eligible room categorY / Package, and\nailment cappings defined in your insurance policy.\n, To ensure timely processing1 please submit mandatory investigation reports and the final bill. For further details regarding\nthe other required documents, please refer to APPENDIX 2\n+ Please note that Mandatory Copay of 20.00% will be applicable on your claim.\nALL APPROVALS GIVEN ARE AS PER THE AILMENT/PROCEDURE SUBMiTrED BY THE HOSPITAL. ANY\nCHANGES MAY LEAD TO A REVISED APPROVAL\nHospital Agreed Tariff :\nI. Package Case\nAgreed Package Rate NA\nPackage charges exclude cost towards implants/co-morbidity/extended stay\nII. Non Package Case\nRoom Type Room Rent Nursing\nNA NA NA\nConsultation Visit Charges/ Surgeon's fee/ OT/ Anaesthetist : As per customary and reasonable charges\nAuthorization Summary\nTotal bill amount (INFI) 80000\n28000\n10400\nOther Deductions(INR)+\nCopay (INR)\nDeductibles (INR) 0\nTotal Authorized Amount(IW 41600\nAmount to be paid by Insured (INIt) 38400 (Will be determined upon receipt of final bill and\ndischarge summary)\n*Deduction Details\nS.no Description\nBill\nAmount\n(INR)\nDeducted\nAmount\n(INR)\nAdmissible\nAmount Deduction Reason\n(INR)\nI EstimateAmount 80000 28000 52000 Estimated Approval :-28000.00\nAPPENDIX 1: TERMS AND CONDITIONS FOR AUTHORIZATION\n1 Cashless authorization letter issued on the basis of information provided in pre authorization form. In case of\nmisrepresentation/concealment of facts, any material difference/deviation/ discrepancy in information is observed in\ndischarge summary / IPD records then cashless authorization stand null & void, At any point of claim processing Insurer or\nTPA reserves right to raise queries for any other document to ascertain the admissibility of claim\nKYC (know your customer) details of proposer/employee/beneficiary are mandatory for claim payout above Rs. 1 lakh\nNetwork provider shall not collect any additional amount from the individual in excess of Agreed Package Rates except cost\ntowards non admissible amounts (including additional charges due to opting higher room rent than eligibility/choosing\nseparate line of treatment which is not envisaged/considered in Package)\nNetwork provider shall not make any recovery from the deposit amount collected from the insured except for the cost towards\n2.\n3\n4\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "originalRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "normalizedRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION",
+          "evidenceDecisions": [
+            {
+              "ruleCode": "CASHLESS_AUTHORIZATION_TITLE",
+              "documentType": "CASHLESS_AUTHORIZATION_LETTER",
+              "confidence": 0.99,
+              "priority": 100,
+              "priorityName": "EXPLICIT_TITLE",
+              "mayOverrideClassification": true,
+              "reasons": [
+                "Explicit Cashless Authorization Letter title detected."
+              ]
+            }
+          ],
+          "evidenceRuleCode": "CASHLESS_AUTHORIZATION_TITLE",
+          "classificationPriority": 100,
+          "classificationPriorityName": "EXPLICIT_TITLE",
+          "previousDocumentType": "CASHLESS_AUTHORIZATION_LETTER"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 5,
+      "next_page_number": 7,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.85.",
+        "Evidence rule CASHLESS_AUTHORIZATION_TITLE [EXPLICIT_TITLE]: Explicit Cashless Authorization Letter title detected."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "4f80855b-53ec-4846-a60c-e4c5a75193b1",
+      "packet_id": "143611821",
+      "page_number": 7,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "final_document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "confidence": 0.95,
+          "reason": "The document title clearly states 'REQUEST FOR CASHLESS HOSPITALISATION FOR HEALTH INSURANCE POLICY'. It contains patient details, insurer details, treating doctor, diagnosis, and admission date, consistent with a cashless authorization form.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "Medi Assist Insurance TPA Pvt Ltd",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "13/09/2022",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "REQUEST FOR CASHLESS HOSPITALISATION FOR HEALTH INSURANCE POLICy\nPART C (ReVISed) TO BE FILLED W BLOCK LEttERS\n3 : :: : i ::: ;; i t a 1 :R w Hyyy JA AA H A A hA A1H A HUI A H runHH HRH HHDErAILS OF THIRD PARTY ADMiNi£rRATOR v U\na) Name of TPA company: Medi Assist Insurance TPA Pvt Ltd b) Phone no: 080 22068666\nTO BE FILLED BY INSURED/PATIENT\nc) Toll Free Fax no.: 1800 425 9559\n]nnHnDnnnnnEEnE] [aa) Name of the patient:\n,'.:“nnnnnnnaHnnB\n\"“„'“„.'-„ w\"„\"„„\"„„ nnnnnnnnunnHnDDunnHn „,„„„„;mnnnnnT\nL) UcupaUon of insured patkm: [][][][][][][][][][][][][][][][][][]\nm) Address of insured patient:\nTO BE FILLED BY THE TREATING DOCTOR/HOSPITAL\n\"“\"\"'\"'nnnnEnnnnE\nc) Name of Illness/disease with presenting complaints: d) Relevant clinical findings:\na) Name dthetreathIgdoaoc in madam@id 1184841 lnnnnnnnnn\nCpr3,\naEEHnnEn\ne.2) Past history of present ailment if any\nf) Provisional diagnosis:\nnnnnnnnnnn\nf.1) ICD lO code\ng) Proposed line of UntmeM [] Medical management []Surgical management [] hensM care [] hvesUgaHon []Non4HQpahctnameM\nh) if investigation and/or medical management, provide details: h.1) Route of drug administration\n[]M n Oral\nne/\\zola73\n+lP-'•arP\nhtxo orIgJ r)i) if Surgical name of surgery;\nnnnnnnnEaH\ni.1) ICD 10 PCS code\nj) if other treatments provide details: k) How did injury occur\nL) in case daddent: L is it RTA: []Yes @ ii. Date of injury: EILIEIEIE][][][] iii. Mpaned to Police: []Yes []No iv. FIR no.: [][][][][][][]\nv, Injury/Disease caused due to substance abuse/alcohol consumption: []Yes ar vi-Test conducted toestabHsh thi b if yes attach npMK []Yes [P\nm)in„„dm,t,rn©, G== p == L [– ––q A == dupeaedda,dda„e,y, E] []E]E][][][f]a\nDETAILS OF THE PATIENT\nb ) T i rn e o f a d rrI i s s i o n : n E1 m [] c ) T h i s i s [] a n emerge neve a ph n ned has pRa liza tion eve IPDf/a) Date of admission:\nO R,om type, [ Ze) Days in ICU: == Days\nd) Expected no. of days stay in hospital: Days ZIPa\nPage 1 of 2 1 Version: 25.06.2019\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "originalRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "normalizedRawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "rawDocumentType": "CASHLESS_AUTHORIZATION_LETTER",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 6,
+      "next_page_number": 8,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "5f27378c-55d8-4267-b24c-f0359d42ee55",
+      "packet_id": "143611821",
+      "page_number": 8,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PREAUTHORIZATION_FORM",
+      "final_document_type": "PREAUTHORIZATION_FORM",
+      "confidence": 0.85,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "PREAUTHORIZATION_FORM",
+          "confidence": 0.85,
+          "reason": "Document title clearly states 'REQUEST FOR CASHLESS HOSPITALISATION FOR HEALTH INSURANCE POLICY' and contains expected cost fields and patient declaration typical of a preauthorization form.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Vijayamani",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": "801000"
+      },
+      "evidence": {
+        "extracted_text": "b';,\nREQUEST FOR CASHLESS HOSPITALISATION FOR HEALTH INSURANCE POLICy\nPART C (Revised) TO BE FILLED IN BLocK LErrERSMoa- Aall%+\ng) Per Day Room Rent + Nursing & Service charges + Patient’s Diet: “ [IIllE[][WiI\n„[IFI hI\n',-FIFIFIFTF7i\ntHONDat\nRs.\n„HI ]no[maDE\nRs.\nRs\nP. Mandatory past history of any chronic illness. If yes\n[] 1. Di'b'tes\n[] 2. Heart Disease\n[] 3. Hypertension\n[] 4. Hyperlipidemias\n[] S a 0 s t e o a n h A t i s\n[] 6. Anhma/ COPD/8ronchitis\n[] 7. Cancer\n8. Alcohol or drug abuse\n[] 9. Any HM or STD / related ailments\n10. Any other ailment give details:\n’H\nh) Expected cost for investigation + diagnostics:\ni) ICU Charges:\nj) OT Charges:\nk) Professional fees Surgeon + Anesthetist fees + Consultation charges:\nL) Medicines + Consumables cost of Implants: (speciQ if applicable)\nm) Other hospital expenses if any:\nn) All inclusive package charges if any applicable\no) Sum Total expected cost of hospitalization\ni.tA ap?MY\nle confirm having read understood and agreed to the declaration of\n]anDDunnHUBanDDonnEDnuna) Name of the treating doctor:\nc) Registration No. with State code:b) Qualif\\cation:\nDECLARATION (PLEASE READ VERY CAREFULLY)\nDECLARATION BY THE PATIENT / REPRESEMIATIVE\na. I agree to allow the hospital to submit all original documents pertaining to hospitalization to the Insurer/TPA after the discharge. I agree to sign on the Final Bill & the Discharge Summary, before\nmy discharge\nb. Payment to hospital is governed by the terms and conditions of the policv. In case the Insurer /TPA is not liable to settle the hospital bill, I undertake to settle the bill as per the terms and cor\\di-\nHons of the policv\nc. All non-medical expenses and expenses not relevant to current hospitalization and the amounts over & above the limit authorized by the Insurer/FPA not governed by the terms and conditions of\nthe policy will be paid by me\nd. I hereby declare to abide by the terms and conditions of the policy and if at any time the facts disclosed by me are found to be false or incorrect I forfeit my claim and agree to indemnify the\ne. I agree and understand that TPA is in no way warranting the service of the hospital & that the Insurer /TPA is in no way guaranteeing that the services provided by the hospital will be ofapartic-\nular quality or standard\nf. I hereby warrant the truth of the forgoing particulars in every respect and I agree that if I have made or shall make any false or untrue statement. suppression or ooncealment with respect to the\nclaim, my right to claim reimbursement of the said expenses shall be absolutely forfeited\ng. I agree to indemnify the hospital against all expenses incurred on my behalf, which are not reimbursed by the Insurer/ TPA.\nh. -1/We authorize Insurance Company/FPA to contact me/us through mobile/email for any update on this claim’\nnsurer / TPA\na) Patient’s / Insured’s name:\nH\nmonDoanDaDDEDunBOunDanDnunn'\"\"\" w„” nDnunnanDHannaanDonnonb) Contact number:\nd) Patient’s / Insured’s signature:\n““: HaEmnHnE \"\"\" Damn\nHosPrrAL DECLARATION\na. We have no objection to any authorized TPA/Inst£HdCompany omdal verWng documents pertaining to hospitalization\nb. All valid original documents duly countersigned by the insured / patient as per the checklist below will be sent to TP/V Insurance Company within 7 days of the patient’s discharge\nc. We agree that TPA / Insurance Company will not be Liable to make the payment in the event of any discrepancy between the facts in this form and discharge summary or other documents.\nd. The patient declaration has been signed by the patient or by his representative in our presence\ne. We agree to provide clarifications for the queries raised regarding this hospitalization and we take the sole responsibility for any delay in offering clarifications\nf. We will abide by the terms and conditions agreed in the MOU\ng. We confirm that no additional amount would be collected from the insured in excess of Agreed Package Rates except costs towards non-admissible amounts (including additional charges due to\nopting higher room rent than eligibility choosing separate line of treatment which is not envisaged/ considered in package)\nh. We confirm that no recoveries would be made from the deposit amount collected from the Insured except for costs tawards non-admissible amounts (including additional charges due to opting\nhigher room rent than eligibility/ choosing separate line of treatment which is not envisaged/considered in package)\ni. In the event of unauthorized recovery of any additional amount from the Insured in excess of Agreed Package Rates. the authorized TPA / Insurance Company reserves the right to recover the\nsame from us (the Network Provider) and,/or take necessary action, as provided under the MOU or applicable laws.\n1\n2\n3\n4.\n5.\nDOCUMENTS TO BE PROVIDED BY THE HOSPITAL IN SUPPORT OF THE CLAIM\nDetailed Discharge Summary and all Bills from the hospital,\nCash Memos from the Hospitals / Chemists supported by proper prescription\nReceipts and Pathological Test Reports from Pathologists, Supported by note from the attending Medical Practitioner /\nSurgeon's Certificate stating nature of Operation performed and Surgeon's Bill and Receipt\nCertificates from attending Medical Practitioner / Surgeon that the patient is fully cured\nSurgeon recommending such pathological\n0\nDb\nreHospital sAI\nNo.44.45/2, 2nd Cross\nRajaram Mohan Roy Extn\nIF\nDate:\nDoctor's signature:\nPage 1 of 2 1 Version: 25.06.2019\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PREAUTHORIZATION_FORM",
+          "originalRawDocumentType": "PREAUTHORIZATION_FORM",
+          "normalizedRawDocumentType": "PREAUTHORIZATION_FORM",
+          "rawDocumentType": "PREAUTHORIZATION_FORM",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 7,
+      "next_page_number": 9,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.85."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "9c0a6958-a3ac-41ce-8707-246f08d01c9c",
+      "packet_id": "143611821",
+      "page_number": 9,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "GIPSA_DECLARATION",
+      "final_document_type": "GIPSA_DECLARATION",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "GIPSA_DECLARATION",
+          "confidence": 0.95,
+          "reason": "Document title 'PPN NETWORK-DECLARATION BY PATIENT/PATIENT'S ATTENDANT' and content related to insurance policy declaration, patient and attendant details, insurance company, and policy number indicate this is a GIPSA_DECLARATION form.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Vijaya mani",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "United India Insurance",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "13/07/26",
+        "total_amount": "80000"
+      },
+      "evidence": {
+        "extracted_text": "PPN\n\\\nae\nDeclaration regarding Insurance Policy {Strike off the option which is not applicable)\n(i) Declaration when patient has no insurance policy:\n• I declare that I do not have any insurana policy.\n(ii) Declaration when patient has insurance policy:\n• I declare that I have following Insurance Policies\n:::':::::=\\i/–rHUl+a ,7'Ta.ha\n2) Whether patient opted for Eligible Room Category under\nPolicy:Yes / No\n3) in case, policyholder wishes to avail better fadlity :\nName of the Additio\nwhich costs\nOn my own option, I wish to avail above better facility and I hereby agree to pay on my free will, after\nbeing explained in detail by the Hospital authority in my own and understandable language about the\nabove mentioned Additional Facility/Proadun/Treatment and associated cost of it, which is over and\nabove the agreed PPN tariff.Further, if I opt to go for final bill reimbursement with insurance company,\nrespective insurance company will reimburse only as pe ragreed PPN tariffrates and balana amount will\nbe borne by myself or patient only.\nI have also been explained that when room servim of a category better than eligible room re nt is availed\nby the patient, not only the differen6e in room rent but also an equal proportion of all other charges\nassociated with the treatment shall be borne by me.\nHealthcare Global Enterprises Ltd .\nSignatubbt A4.:4.$/.?,..gp£l..Q IPggl....\nNam8dRf8HbWlq8j_%WEji$b?&Hospitat Seal\nBangalore-560 OZ? ' '\n'id:\\3:;,It’. attendant :\nSignature\nName of the Pa\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "GIPSA_DECLARATION",
+          "originalRawDocumentType": "GIPSA_DECLARATION",
+          "normalizedRawDocumentType": "GIPSA_DECLARATION",
+          "rawDocumentType": "GIPSA_DECLARATION",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 8,
+      "next_page_number": 10,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "7c3c6860-b2c4-412f-ac39-6c028698b965",
+      "packet_id": "143611821",
+      "page_number": 10,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PATIENT_ID_PROOF",
+      "final_document_type": "PATIENT_ID_PROOF",
+      "confidence": 0.85,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "PATIENT_ID_PROOF",
+          "confidence": 0.85,
+          "reason": "Document contains patient identification details including name, MA-ID, DOB, relation, primary member, policy holder, and contact number. No billing or claim form details present.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Vijaya Mani H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "Fidelity Business Services India Private Limited - FMR",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "} nV }Fn#.IJ:yrnFf Ihlep.Tr' Ifdr\n+\nTbis card is only for identification and is not an audIOIization to proceed with the\ntreatment or a guarantee for payment\nIn the case of photoless identitY cards issued to beneficiaries, acceptable proof of\nidendt\\, such as Aadhar Card/PassDort/Driver License/ Ratioi Cara / Vol 6IS IDCard\nPAN Card should be presented at hospitals\nTlris non-transferable identification card is valid at selected Network Hospitals & will\nenable Card tlolder to avail caslrless Irospitalization only on the basis of\npreauthorintion by Medi Assist\nFor the latest updated Network Hospital list, logon to www.mediassisapa.in\nValidity of the card is subject to the holder being covered under valid policy of Insurer\nName:\nMA-ID:\nMjaya Mani H M\n4054360853\nEmployee code:\nRelation :\na748149\nDOB\nMother\nPrimary Member:\nValid Upto:\n01 Jan 1977\nSharath B\n23 Oct 2026\nMEI)1 ASSIST iNSURANCE. WA PRIVATE I..IMITf\":IJ\nTower D, 4th Floor, IBC Knob’ledge Park, 4/1, BaaaergbaKa Road, K.M.Layout, Bengaluru, Karnataka560029.CIN: u85199}c41999Prc025676\nWebsite: mediassisttpa.in Email: FidelityjDmediassist.inPolicy Holder: Fidelity Business Services India Private\nLimited - FMR\n(;PP FT&tPd (1l} : 994';3'29J6 ! ?-39: 12\nContact number: 04068213673\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PATIENT_ID_PROOF",
+          "originalRawDocumentType": "PATIENT_ID_PROOF",
+          "normalizedRawDocumentType": "PATIENT_ID_PROOF",
+          "rawDocumentType": "PATIENT_ID_PROOF",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 9,
+      "next_page_number": 11,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.85."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "0653ad9b-7501-420f-b18b-8c16afcbc9c0",
+      "packet_id": "143611821",
+      "page_number": 11,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PATIENT_ID_PROOF",
+      "final_document_type": "PATIENT_ID_PROOF",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "PATIENT_ID_PROOF",
+          "confidence": 0.95,
+          "reason": "The document contains patient identification details such as name, MA-ID, DOB, relation, primary member, and policy holder information. It also includes instructions about the card usage and identification, indicating it is an identification proof document.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Vijaya Mani H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "Fidelity Business Services India Private Limited",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "•\nTlris card is only for identincaaon and is not an audroazadon to proceed with the\ntreatment or a guarantee for payment\nIn the case of photoless identitY cards tssued to beneficiaries, acceptable proof of\nidentjty such as Aadhar Card.'PassDort/Diver License/ Ration Card / VOt6IS IDCard /\nPAN Card should be presented at hospitals.\nThis non-transferable identification card is valid at selected Network Hospitals & xviII\nenable Card Holder to avail casllless hospitalization only on the basis of\npreauthori7adon by Medi Assist\nFor the latest updated Network Hospital list, logon to www.mediassisttpa.in\nValidity of the card is subject to the holder being covered under valid policy of Tnsunr\nName:\nMA-ID:\nMjaya Mani H M\n4054360853\nEmployee code:\nRelation :\na748 149\nDOB\nMother\nPrimary Member\nValid Upto:\n01 Jan 1977\nSharath B\n23 Oct 2026\nMt,DI ASSIST iNSUR AN( if 'fPA PRIVATE, !„liVtITliIJ\nTower D, 4th Floor. IBC Knowledge Park. 4/1, Banneqhatta Road, K.M.Layout, Bengaluru, Kabataka560029.(;IN: U851991CAICB97FC025676\n\\\\7ebsite: mediassisttpa.in Email: Fidelity+rmediassist.inPolicy Holder: Fidelity Business Services India Private\nLimited\nGenerated Cm : aSNO-:a:6 !? 33: i?\nContact number: 04068213673\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PATIENT_ID_PROOF",
+          "originalRawDocumentType": "PATIENT_ID_PROOF",
+          "normalizedRawDocumentType": "PATIENT_ID_PROOF",
+          "rawDocumentType": "PATIENT_ID_PROOF",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 10,
+      "next_page_number": 12,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "28851630-8627-49a9-b04e-c62a4d378197",
+      "packet_id": "143611821",
+      "page_number": 12,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PROPOSER_ID_PROOF",
+      "final_document_type": "PROPOSER_ID_PROOF",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "PROPOSER_ID_PROOF",
+          "confidence": 0.95,
+          "reason": "The document is a Permanent Account Number Card issued by the Income Tax Department of India, which is used as an identity proof. It contains the cardholder's name, father's name, date of birth, and photograph.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "BHARATH B",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "INCOME TAX DEPARTMENT GOVT. OF INDIA",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "::$$\nIS\n&iilsD\n&X}-\nG\n($\nLil\nfr>aa\nT 4 & b r n n n P a = + r U r b:bn H + + 4 % + = n\n\\\na ahrb Vb Vb nbl 14 v r nab +baCS nb rhob vb nb+.\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PROPOSER_ID_PROOF",
+          "originalRawDocumentType": "PROPOSER_ID_PROOF",
+          "normalizedRawDocumentType": "PROPOSER_ID_PROOF",
+          "rawDocumentType": "PROPOSER_ID_PROOF",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 11,
+      "next_page_number": 13,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "ff3f01d5-fc46-40a4-a991-ca1b1b7a2820",
+      "packet_id": "143611821",
+      "page_number": 13,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PATIENT_ID_PROOF",
+      "final_document_type": "PATIENT_ID_PROOF",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "PATIENT_ID_PROOF",
+          "confidence": 0.95,
+          "reason": "The document is a government-issued ID card with patient photo, name, and DOB, indicating it is a patient ID proof.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Vijaya Mani H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "Government of India",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "7/12/26, 1 :59 PM Inbox - Billing bio - Outlook\ncHI\n}};;j\ni4:1:i:3+)!11i;!\n\\{\n10\ng El\nGO\na paL § •:Ti a)(B\n=&\ni?aSr\n&\nnhl..\n&R\n&\n,n \\\n, I, ,L\n10\n\\a\n\"'Q\nfjT ?q\n}\nf\nI\nt\n(\nC)a<\n(B\n3\n3\n(D\n=PP\nQ-Hq\nIHIBHlnBHIHI\n3a\n4FPnjl+\na)\naa\n&\ng\n’ft\na\n. i\n\\\na\nI;II:;\n! : •##F=\n:ff? ! i :\nfir;\nhttPs://outlook.cloud.microsoft/mail/0/id/AAQkADIyNWVkNDMLTVIM2UtNGYYNv04ZTdhLWMxNWNiMDBmMGZkZaAQAJrsY29NXVFNkIMNqUB. 2/3\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PATIENT_ID_PROOF",
+          "originalRawDocumentType": "PATIENT_ID_PROOF",
+          "normalizedRawDocumentType": "PATIENT_ID_PROOF",
+          "rawDocumentType": "PATIENT_ID_PROOF",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 12,
+      "next_page_number": 14,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "01d6570b-350e-44e5-9b97-dd96777a1e81",
+      "packet_id": "143611821",
+      "page_number": 14,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PROPOSER_ID_PROOF",
+      "final_document_type": "PROPOSER_ID_PROOF",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "PROPOSER_ID_PROOF",
+          "confidence": 0.95,
+          "reason": "Document is a Permanent Account Number Card (PAN Card) issued by Income Tax Department, Govt. of India, used as an identity proof. No hospital or insurance claim details present.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "BYRE GOWDA B",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "27/07/2023",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "7/12/26, 1:59 PM Inbox - Billing bio - Outlook\nggjaP'] $7$\n80TP834 Syn\n®Y:q8: GQW;BA- a\nARCA}{ APPA\n@\n:PQ??$23\nhttps://outlook.t..kwd.m:c.rosoftMail/0/id/AAQkAD jyNWVkNDViLTVIM2UtNbYvNv04ZTdhLWMxNWNIMDBmMGZkZaAQAGoGZrCOz31Dh711hCJ 1 1 /1\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PROPOSER_ID_PROOF",
+          "originalRawDocumentType": "PROPOSER_ID_PROOF",
+          "normalizedRawDocumentType": "PROPOSER_ID_PROOF",
+          "rawDocumentType": "PROPOSER_ID_PROOF",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 13,
+      "next_page_number": 15,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "5d425a4a-229d-4053-afab-9f3b29333fbf",
+      "packet_id": "143611821",
+      "page_number": 15,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "FINAL_HOSPITAL_BILL",
+      "final_document_type": "FINAL_HOSPITAL_BILL",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "FINAL_HOSPITAL_BILL",
+          "confidence": 0.95,
+          "reason": "Document titled 'In-Patient Bill CREDIT BILL / BILL OF SUPPLY' with detailed billing line items, patient details, bill number, and total amount clearly visible.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Mrs. VIJAYAMANI H M",
+        "claim_number": "143611821",
+        "mrn": "KABHD.0000152326",
+        "ip_number": "BHDIP33803",
+        "payer_name": "Medi Assist India (TPA) Pvt.Ltd.",
+        "bill_number": "KABHD-ICR-23139"
+      },
+      "financial_metadata": {
+        "document_date": "13-Jul-2026",
+        "total_amount": "68794.00"
+      },
+      "evidence": {
+        "extracted_text": "adding life to years\n#14-45/2, 2nd Cross Raja Ram Mohan Roy Extn.(Off Lalbagh Double Road),\nBangalore = 560027 1\nTel: +91- 6358888802;7406499999 a@tg\nCIN : U15200KA1998PLC023489\nCard No. :\nIn-Patient Bill GSTIN : 07AAACC8412H2ZV\nCREDIT BILL / BILL OF SUPPLY\nHSN 999311 (InPatient Services)\n999334(Accomidation for Adults)\nM Ta-\nAge\nGaurdian's\nRddress\n: 49 Yrs Gender : Female\nBHARATH\n: #177,NEAR GANESHA TEMPLE ,CHIKKASANDRA\nBANGALORE ,Bangalore,Karnataka,India\nUHID : KABHD.0000152326\nIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIEIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIE iIIIIIIIIIII 1111111111\nFmmi TH\nIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII\nIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIliIIIIIIIIIIIIIIIIIIIIIIIIII\nContact No. : 91-9901766209\nDoctor Name\nSpeciality\nWard/Bed Type\nBed No\nEligible Bed\nBillable Bed\nPayer\nmr ovind ia;a\n: Medical Oncology\nGENEAL F2\n: 62023 (General)\n: General\n: General\nMii7Fsmmfamvt.Ltd.\nl®llM\nBill Date & Time\n(\n13-Jul-2026 05:47:25 PM\nApprovalID/ClaimID\nPolicy Number\nInsuranceCompany\n143611821\nMedi Assist India (TPA) Pvt.Ltd.\nGSTIN\nCard Number :\nAdmission Date aMBill Amount : ?68,794.00 Tml MT1%:36 AM\nAmount in words : Rupees\nNinety-Four Only\nSixty-Eight Thousand Seven Hundred Discharge Date & Time 13-Jul-2026 3:28:27 PM\n1A1M Lm\nI\n11\n111\nIV\nV\nVI\nVII\nAdministrative Charges\nHospital Services\nNursing Charges\nPharmacy & Consumables\nProfessional Services\nWard I ICU Procedures\nm4\n2,500.00\n1 ,450.00\n1 ,400.00\n60,036.00\n2,100.00\n7,410.00\n2\nmo\nMi\nma Amount\niMmervicesiBmm-M@8TaFem\na\nTet Amount Before Tax\nno\nm7\nq+\nF @TWi:R?.aT. g\nSO •\\Fn SRObB_ ABb\n1]\n0.00\n0.49\n7\n6\nRound-Off Amount\net Amount\nr aunt\nr\nbaaqa\n,S s\nmt\nETii-gig\n-(8s.Nayana. V-L. (13-Jul-26 05:47:2qEM ) Page 1 of 6\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "FINAL_HOSPITAL_BILL",
+          "originalRawDocumentType": "FINAL_HOSPITAL_BILL",
+          "normalizedRawDocumentType": "FINAL_HOSPITAL_BILL",
+          "rawDocumentType": "FINAL_HOSPITAL_BILL",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 14,
+      "next_page_number": 16,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "83bb8b8f-20a9-4840-be48-88c6858beada",
+      "packet_id": "143611821",
+      "page_number": 16,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PAYMENT_RECEIPT",
+      "final_document_type": "PAYMENT_RECEIPT",
+      "confidence": 0.85,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "PAYMENT_RECEIPT",
+          "confidence": 0.85,
+          "reason": "Document contains payment details, patient name, IP number, bill number, and payment amounts indicating it is a payment receipt.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Mrs. VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": "KABHD-ICR-23139"
+      },
+      "financial_metadata": {
+        "document_date": "13-Jul-26",
+        "total_amount": "53644.00"
+      },
+      "evidence": {
+        "extracted_text": "\\\nZ;r B 3 B\nmr Mt=mmr=Ry:mciiig TDS\nDisallowance from Payer\nWe Mmmnount\nPatient Paid Amount\nD HD-DP-6401 2)\n0.00\n0.00\nm6\n15,150.00\n15,150.00\nRefund o\nPayment Details : Payment pending to be received sum of ? 53, W.00\nRupees Fifty-Three Thousand Six Hundred Forty-Four Onty\n0.00\nName & Signature of Patient/Attendant\nRelationship with Patient :\nMs.Nayana. V.L.\nCashier\nGenerated By (Date nme): Ms.Nayana. V.L. (l:3-Jul-26 05:47:25 PM ) Page 2 of 6\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PAYMENT_RECEIPT",
+          "originalRawDocumentType": "PAYMENT_RECEIPT",
+          "normalizedRawDocumentType": "PAYMENT_RECEIPT",
+          "rawDocumentType": "PAYMENT_RECEIPT",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 15,
+      "next_page_number": 17,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.85."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "3f3d9102-81ed-490f-a8e2-87da45360ac5",
+      "packet_id": "143611821",
+      "page_number": 17,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "BILL_CONTINUATION",
+      "final_document_type": "BILL_CONTINUATION",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "BILL_CONTINUATION",
+          "confidence": 0.95,
+          "reason": "The document contains detailed line-item charges, billing totals, patient name, IP number, and bill number, but it is labeled as page 3 of 6, indicating it is a continuation page of a hospital bill.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Mrs. VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": "KABHD-ICR-23139"
+      },
+      "financial_metadata": {
+        "document_date": "13-Jul-26",
+        "total_amount": "59774.01"
+      },
+      "evidence": {
+        "extracted_text": "\\,-\nName :\nSL.\nNo\nService\nCode Service Name- Doctor Name\nAccommodation Charges\n1 S11692 ROOM RENT-General-\nNursing Charges\n1 S1 1819 Nursing Charges.\nPharmacy\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\nProfessional Services\nbYAMANI H Mmr IP No : BHDIP33m\n[BMa PEjable\nAlias StartDateB QtyTMm\nCode EndDate(24hrs) ( in mins )\n13-Jul-26 1 1 :36\n13-Jul-26 11 :36\n& Consumables\n13-Jul-26 12:56\n13Jul-26 12:56\nVELFIX- T 7X9cM-DATr-\n(PMIS0510413086)\nSYRINGE 5ML LUER LOCK\n(KAREJET)-ROMSONS-\n(PMIS0510413086)\nSYRINGE 20ML LUER LOCK\n(KAREJET)-ROMSON-\n(PMIS0510413086)\nSYRINGE IOML LUER LOCK\n(KAREJET).ROMSON-\n(PMIS051 0413086)\nPARIDEM 40MG INJ VIAL-\n(PMIS051 0413086)\nNS (DENIS) 0.9% INJ 500ML\nGB-(PMIS0510413086)\nNS (DENIS) 0,9% INJ 100ML\nGB-(PMIS051 0413086)\nMICRO OPTIC GLOVES PF SIZE\n7.0-KURIAN-(PMIS051041 3086)\nIV CANNULA FLON SAFETY\nWING PORT 24GAMA-\n(PMIS051 0413086)\nHERCLON 440MG INJ VIAL-\n(PMIS051 0413086)\nGRANICIP 3MG INJ VIAL-\n(PMIS0510413086)\nTEMFIX 650MG TAB-\n(PMIS051 0413877)\nSPORLAC-DS TAB.\n(PMIS051 0413877)\n13-Jul-26 12:56\n13.Jul.26 12:56\n13-Jul-26 12:56\n13.Jul.26 12:56\n13-Jul-26 12:56\n13-Jul-26 12:56\n13Jul-26 12:56\n13-Jul-26 12:56\n13-Jul-26 12:56\n13-Jul-26 15: 15\n13-Jul-26 15: 15\n1\n1\n1\n1\n1\n1\n1\n1\n58.440.00\n104.61\n1\n10\n10\nDept Total Amount :\nDeDt Total Discount :\n:H#_:}:;„.'.-:'-\nHeaKh?!if.Fs:2 d CroSS9fnw#+fq20\nBill No : KABHtF\nUnit Agn Dis Bill Amount\nprice (%) Dis.(%)\n2,400.00 0 0.00 2,400.00 2,400.00\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n1.400.00 0 100.00 0.00\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n0 0.00\n0 0.00\n213.00\n33.10\n21 3.00\n33.10\n63.10 0 0.00 63.10\n48.20 0 0.00 48.20\n53.87 0 0.00\n0 0.00\n53.87\n44.00\n23.40\n124.00\n515.63\n44.00\n23.40\n124.00\n515.63\n0 0.00\n0 0.00\n0 0.00\n0 0.00 58.440.00\n0 0.00 104.61\n2.15\n8.96\n0 0.00\n0 0.00\n2.15\n8.96\nNet Running\nAmount Sum\n2,400.00\n2,400.00\n0.00\n2,400.00\n0.00 0.00\n1 ,400.00\n1 ,400.00\n0.00\n213.00\n33.10\n63.10\n213.00\n246.10\n48.20 357.40\n53.87\n44.00\n411.27\n455.27\n478.67\n602.67\n1 ,118.30\n23.40\n124.00\n515.63\n58,440.00\n104.61\n59,558.30\n59,662.91\n21.50\n89.60\n59,684.41\n59,774.01\n59,774.01\n0.00\n59,774.01\nGenerated By (Date nme): Ms.Nayana. V.L. (13-Jul-26 05:47:25 PM )\nqaiata Tre?_.p.Sqa\nPage 3 of 6\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "BILL_CONTINUATION",
+          "originalRawDocumentType": "BILL_CONTINUATION",
+          "normalizedRawDocumentType": "BILL_CONTINUATION",
+          "rawDocumentType": "BILL_CONTINUATION",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 16,
+      "next_page_number": 18,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "7d89b045-8a5f-4b39-bc6b-23a9403f828f",
+      "packet_id": "143611821",
+      "page_number": 18,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "BILL_CONTINUATION",
+      "final_document_type": "BILL_CONTINUATION",
+      "confidence": 0.85,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "BILL_CONTINUATION",
+          "confidence": 0.85,
+          "reason": "The document contains continuation of billing details with patient name, IP number, bill number, itemized charges, and totals but lacks a clear main title indicating a final bill page.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Mrs. VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": "KABHD-ICR-23139"
+      },
+      "financial_metadata": {
+        "document_date": "13-Jul-26",
+        "total_amount": "65044.05"
+      },
+      "evidence": {
+        "extracted_text": "r B K 39\n17 S13061 IP Visit Fee-Dr. Govind Babu\n(Medical Oncology)-\nBL 1\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n1 ,150.00\n0.00\n1 ,150.00\nWard / ICU Procedures\n1 93102 ( B ) Chemotherapy-(6933250) 13-Jul.26 15:10 7,250.00 0 76.28 1,720.04 1 ,720.04 1 ,720.04\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n7,250.00\n5,529.96\n1 ,720.04\nPayer Payable Total : 65,044.05\n(B) indicates bedside service\n(§) indicates stat service\n' Dual Occupancy\nGenerated By (Date nme); Ms.Nayana. V.L. (13-Jul-26 05:47:25 PM ) Page 4 of 6\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "BILL_CONTINUATION",
+          "originalRawDocumentType": "BILL_CONTINUATION",
+          "normalizedRawDocumentType": "BILL_CONTINUATION",
+          "rawDocumentType": "BILL_CONTINUATION",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 17,
+      "next_page_number": 19,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.85."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "f1ddbb95-aa80-4415-8e33-d3ba956e9f22",
+      "packet_id": "143611821",
+      "page_number": 19,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "BILL_CONTINUATION",
+      "final_document_type": "BILL_CONTINUATION",
+      "confidence": 0.85,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "BILL_CONTINUATION",
+          "confidence": 0.85,
+          "reason": "The document contains continuation details of a hospital bill including patient name, IP number, bill number, and bed details with dates, indicating it is a continuation page of a hospital bill.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Mrs. VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": "KABHD-ICR-23139"
+      },
+      "financial_metadata": {
+        "document_date": "13-Jul-2026",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "Name : Mrs. VIJAYAMANI HM IP No : BHDIP3m BilINo : KABHD-ICR-23139\n-ed Details\nI.No\n1\nFrom Date\n13-Jul-2026 11 :36 am\nTo Date\n13-Jul-2026 3:28 pm\nBed No\n62023\nBed Category\nGenerated By (Date Time): Ms.Nayana. V.L. (13-Jul-26 05:47:25 PM ) Page 5 of 6\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "BILL_CONTINUATION",
+          "originalRawDocumentType": "BILL_CONTINUATION",
+          "normalizedRawDocumentType": "BILL_CONTINUATION",
+          "rawDocumentType": "BILL_CONTINUATION",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 18,
+      "next_page_number": 20,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.85."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "24678af5-99d7-43e7-b1d7-8b5d52a89dfe",
+      "packet_id": "143611821",
+      "page_number": 20,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "FINAL_HOSPITAL_BILL",
+      "final_document_type": "FINAL_HOSPITAL_BILL",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "FINAL_HOSPITAL_BILL",
+          "confidence": 0.95,
+          "reason": "Document contains detailed billing information with patient name, IP number, bill number, service codes, charges, and total payable amount, matching the characteristics of a final hospital bill.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Mrs. VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": "KABHD-ICR-23139"
+      },
+      "financial_metadata": {
+        "document_date": "13-Jul-26",
+        "total_amount": "3749.00"
+      },
+      "evidence": {
+        "extracted_text": "mIP33803\nPatient Payable\nName : Mrs. VIJAYAMANI HM IP No :\nUnit\nprIce\n200.00\n900.00\n500.00\n900.00\natV/Duration\n(in min)\n1\n1\n1\n1\nStartDate\nEndDate(24hrs)\n13Jul-26 11 :36\n13Jul-26 11 :36\n13Jul-26 11 :36\n13.Jul-26 12:00\nS# Service Service Name- Doctor Name\ncode\nAdministrative Charges\n1 S28955 INFECTION CONTROL - BIOMEDICAL .\nGENERAL CONSUMABLE CHARGES-\n2 90013 MRD SERVICE CHARGES-\n3 98000 ADMISSION SERVICE-\nCASHLESS PROCEDURE SERVICES-4 98011\nHospital Services\n1 823941 DUTY DOCTOR FEES. 13Jul.26 11 :36 1\n13-Jul-26 11 :362 835348 INITIAL MEDICAL ASSESSMENT.\nPharmacY & Consumables\n1 NEEDLE 18GXI .51NCH-BD-\n2 NEEDLE 18GXI .51NCH-BD.\n3 IV SET VENTED-RMS-\n13Jul.26 12:56\n13.Jul.26 12:56\n13-Jul-26 12:56\n1\n1\n1\nProfessional Services\n1 S13060 HOSPITAL CHARGES-Dr. Govind Babu\n(Medical Oncology)-\n13Jul-26 11 :36 1\nWard / ICU Procedures\n1 96410 (B) INSERTION- INTRAVENOUS (IV)\nCANNULA CHARGES - IP SERVICE-\n13Jul.26 15:10\n(B) indicates bedside service\nB) indicates stat service\n(E) indicates dead patient\n+ Dual Occupancy\nP . J:':-'';''''\n: + 3 a : i i I &:: : ::II:i:i := t:::ifin + 9\nPage 6 of 6Generated By (Date Time): Ms.Nayana. V.L. (13-Jul-26 05:47:25 PM )\nBill No : KABHD-ICR-23139\nNet Running\nAmount Sum\nAmountAgr.Dis Bill\n(%) Dis(%)\n0 0.00\n0 0.00\n0 0.00\n0 0.00\n200.00\n1.100.00\n1 ,600.00\n2,500.00\n200.00\n900.00\n500.00\n900.00\n200.00\n900.00\n500.00\n900.00\n2,500.00\n0.00\n2,500.00\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n950.00 0 100.00 0.00 0.00 0.00\n500.00 0 100.00 0.00 0.00 0.00\n1 ,450.00\n1 ,450.00\n0.00\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n7.00\n13.50\n261 .50\n7.00\n6.50\n248.00\n7.00\n6.50\n248.00\n0 0.00\n0 0.00\n0 0.00\n7.00\n6.50\n248.00\n262.00\n0.00\n262.00\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n950.00 0 0.00 950.00 950.00 950.00\n950.00\n0.00\n950.00\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\n160.00 0 76.28 37.96 37.96 37.96\n160.00\n122.00\n38.00\n3,749.00\nDept Total Amount :\nDept Total Discount :\nDept Net Amount :\nPatient Payable Total :\nXBTaij3V\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "FINAL_HOSPITAL_BILL",
+          "originalRawDocumentType": "FINAL_HOSPITAL_BILL",
+          "normalizedRawDocumentType": "FINAL_HOSPITAL_BILL",
+          "rawDocumentType": "FINAL_HOSPITAL_BILL",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 19,
+      "next_page_number": 21,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "b8db2f43-9e3b-4ae7-b3ad-ee3eb9b179f5",
+      "packet_id": "143611821",
+      "page_number": 21,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "PAYMENT_RECEIPT",
+      "final_document_type": "PAYMENT_RECEIPT",
+      "confidence": 0.99,
+      "classification_source": "RULE",
+      "candidates": [
+        {
+          "document_type": "PAYMENT_RECEIPT",
+          "confidence": 0.95,
+          "reason": "Document is titled 'DEPOSIT RECEIPT' and contains payment details including patient name, UHID, deposit number, date, and transaction amount. This matches the PAYMENT_RECEIPT type.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "Mrs. VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "KABHD.0000152326",
+        "ip_number": "",
+        "payer_name": "",
+        "bill_number": "KABHD-DP-64042"
+      },
+      "financial_metadata": {
+        "document_date": "13-Jul-2026",
+        "total_amount": "15150.00"
+      },
+      "evidence": {
+        "extracted_text": "DEPOSIT RECEIPT\nUHID\nPatient Name\nKABHD.0000152326\nMrs. VIJAYAMANI H M\nPatient Identifier : BHDIP33803\nDeposit No\nDate &Time\nKABHD-DP-64042\nAge : 49 Yrs Gender : Female : 13-Jul-2026 5:42:30 pm\nFather's Name\nIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII\nAddress : #177,NEAR GANESHA TEMPLE ,CHIKKASANDRA\nBANGALORE ,Bangalore , Karnataka , India\nContact No. : 91-9901766209\nTransaction Type : DEPOSIT\nTransaction Amount : ? 15,150.00\nMode Of Payment Issuing Athourity\nDebitCARD hsbc bank\nInstrument Number\nXXXX >0(XX XXXX 9472\nTransaction Amount\nt 15.150.00\nReceipt Details : Received with thanks a sum of t15,150.00\nRupees Fifteen Thousand One Hundred And Fifty Only from Mrs. VIJAYAMANI H M\nNOTE: All Payments IncludIng Dr.Fees Should be PaId at BIlIIng Counter Only\nMs.Harshitha gabrieal R\nName & Signature of Patient/Attendant\nRelationship with Patient :\nGenerated By(Date Time): Ms.Harshitha gabrieal R ( 13-Jul-26 5.'42.'30 PM )\nLast Deposit Recipt Date 13-JUL-26 05:42:30 PM\nCashier\nPage 1 of 1\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "PAYMENT_RECEIPT",
+          "originalRawDocumentType": "PAYMENT_RECEIPT",
+          "normalizedRawDocumentType": "PAYMENT_RECEIPT",
+          "rawDocumentType": "PAYMENT_RECEIPT",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION",
+          "evidenceDecisions": [
+            {
+              "ruleCode": "PAYMENT_RECEIPT_EXPLICIT_TITLE",
+              "documentType": "PAYMENT_RECEIPT",
+              "confidence": 0.99,
+              "priority": 100,
+              "priorityName": "EXPLICIT_TITLE",
+              "mayOverrideClassification": true,
+              "reasons": [
+                "Receipt title is visible.",
+                "Transaction and payment evidence is present."
+              ]
+            }
+          ],
+          "evidenceRuleCode": "PAYMENT_RECEIPT_EXPLICIT_TITLE",
+          "classificationPriority": 100,
+          "classificationPriorityName": "EXPLICIT_TITLE",
+          "previousDocumentType": "PAYMENT_RECEIPT"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 20,
+      "next_page_number": 22,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95.",
+        "Evidence rule PAYMENT_RECEIPT_EXPLICIT_TITLE [EXPLICIT_TITLE]: Receipt title is visible. Transaction and payment evidence is present."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "17f3967c-10d4-42f4-ab52-307d08bc57b2",
+      "packet_id": "143611821",
+      "page_number": 22,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "CHEMO THERAPY ORDER FORM",
+      "final_document_type": "CHEMO THERAPY ORDER FORM",
+      "confidence": 0.8,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "CHEMO THERAPY ORDER FORM",
+          "confidence": 0.8,
+          "reason": "Document is clearly titled 'CHEMO THERAPY ORDER FORM' and contains detailed chemotherapy medication orders and administration instructions. No claim, billing, or patient identification numbers are visible.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "13/07/26",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "In\nQ\n£'\ng\ng\n8\n%BI\n0ZVI\n.TX\na\na\ng\n{{IH\nh>22A\ngAHaVI\naa\n&Ul\ngH•Ba\nHF\nCD\nGO\nAAA0\nI\nIn\nIg0HHA\nB\nby\nR\nF IaPh(b\n}}gggg\ngEn\nfre\ngBl\ngb\nBOb;\n! I(g1\n\\J\n1 g\nag\n;\n;\\ ONI Xilegg\nBQBa HE\nHI\n<ArH•\na\niniI\na\nhd\nP\ne\ni\nHIB\n1?yI\nCD\n0\n<\naR\ng ?\ni\nCo\ni-q3P\nd\n\\h\nq:\nP\n1\neI\n(B\n;\ng\n:\naoF\nCD\ng.I\nP\n>\naatD\nq\ninH+\ng\nA gH\ng=[g\nCD\nB\nI fIg\n\\\n= g = g\nIt\nDO\ng+dPa\nLA)\nLA)\nDO\n0LO\n#\ngE 11\nI\\caf'\nT\\bh .561RaIa1\nzIpI\n218\niIiI\nui\ngIl:\n;logs\nIt\nIV\n02\ng\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "UNKNOWN",
+          "originalRawDocumentType": "CHEMO THERAPY ORDER FORM",
+          "normalizedRawDocumentType": "CHEMO THERAPY ORDER FORM",
+          "rawDocumentType": "CHEMO THERAPY ORDER FORM",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 21,
+      "next_page_number": 23,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.80."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "1fe9f3b8-b869-4724-beee-167ace6a1314",
+      "packet_id": "143611821",
+      "page_number": 23,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "TREATMENT_ORDER",
+      "final_document_type": "TREATMENT_ORDER",
+      "confidence": 0.75,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "TREATMENT_ORDER",
+          "confidence": 0.75,
+          "reason": "Document contains structured tables and fields related to chemotherapy orders, drug names, dosages, and administration times, consistent with a treatment order form.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "",
+        "claim_number": "",
+        "mrn": "",
+        "ip_number": "",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "anI\nOH\n<\nVI\na\neD\na\nIt:-a\n8dI a\n132\nl:il£giiIi :aF\n/-'\nbO\n>\n0\nOUl\nq:a\nbet\nA•H\nA\nE\n>\nbel\n\\\\\n\\\nHI\ng).\n;\nBt\nE\n&\nUq)I\nUa0Q\nIiiqI\nBa-\nb5/2. 2\nDJlohan\n!alore\ni\n!)1\nE\n!)1a! ![)\nii\nnH\nin\nMA\ni0\ni\ngAAA0EAHQ\nI\n10\nnd\nhd\nbVI\ngI..i\n18 gB\n} Cr) qF IA\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "UNKNOWN",
+          "originalRawDocumentType": "TREATMENT_ORDER",
+          "normalizedRawDocumentType": "TREATMENT_ORDER",
+          "rawDocumentType": "TREATMENT_ORDER",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 22,
+      "next_page_number": 24,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.75."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "0e8b00bd-f7ad-481f-ba60-f59c9e09a88b",
+      "packet_id": "143611821",
+      "page_number": 24,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "DISCHARGE_SUMMARY",
+      "final_document_type": "DISCHARGE_SUMMARY",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "DISCHARGE_SUMMARY",
+          "confidence": 0.95,
+          "reason": "Document title is 'DISCHARGE SUMMARY' and contains diagnosis, treatment details, admission and discharge dates, patient name, and medical assessment.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "KABHD.0000152326",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "13/07/2026",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "BILLING CQpv\nThe Specialist\nin Cancer Care\nDISCHARGE SUMMARY\nVIJAYAMANI H MNAME OF THE PATIENT\nA(,E 48 PAYER\nGENDER FEMALE DATE OF REGISTRATION 04/08/2025\nUHID\nIPD NUMBER\nKABHD.0000 1 52326\nBHDIP3 3803\nDATE OF ADMISSION\nDATE OF DISCHARGE\n13/07/2026\n13/07 /2026\n13/07/2026ADMITTING DOCTOR DR. GOVIND BABU\nDR. GOVIND BABU\nDATE OF TREATMENT\nCO-MANAGED DOCTOR TYPE OF DISCHARGE Doctors Advice\nDEPARTMENT OF MEDICAL ONCOLOGY-DAY CARE\nDIAGNOSIS : Breast [ICD03] C50.9 01 Breast, NOS 0 0\nINITIAL ASSESSMENT•\nDate\nTime\nPhys-Daycare\nAssessment\n13/07/2026\n11:38 AM\nChief\ncomplaints\nCase of Carcinoma of Left Breast, post MRM (C50.9)\nAdmitted for 18th cycle of immunotherapy\nPatient had no fresh complaints / no pain\nThe patient presented with complaints of pain and swelling of left breast\nsince one month associated with generalized weakness. Then, She went\nto People Tree Hospitals where after biopsy surgery was done. After\nsurgery, the patient was referred to HCG for further management. The\n'ptient received 17th cycle of immunotherapy on 22/06/2026\n(e m\n}tal Signs: Stable.\nNo pallor, cyanosis, clubbing, lymph nodes or pedal edema.\nHistory :\nGeneral\nPhysical\nexarnrnatron:\nSystemic\nExamination:\ne CVS: Sl and S2 heard. RS: NVBS+. PA: Soft, bowel sound+\n18th cycle of immunotherapy\nProceed as per protocol. Regular monitoring ofvitals.\nDischarge after immunothera1\nPlan of Care .\nVITAL SIGNS\nDate\nTime\n'F'TemDerature\nieats /Mnts-Pulse\nRespiration ireaths/Mnts-\nBloomressure 'mmH\n'%SP02\nHeight (cm\n13/07/2026\n12:10 PM\n97.4 L\n100\n20 H\n120/70\nHealthCare Global Enterprises Ltd.\nHCG Double Road, No 44-45/2, 2 Cross, Rajaram Mohan Roy Extension (OfT Lalbagh Double Road), Bengaluru, Karnataka – 560027\nPh No.7406499999 1 query@hegel.com I hcRoncology.com I CIN: U15200KA1998PLC023489\nI\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "DISCHARGE_SUMMARY",
+          "originalRawDocumentType": "DISCHARGE_SUMMARY",
+          "normalizedRawDocumentType": "DISCHARGE_SUMMARY",
+          "rawDocumentType": "DISCHARGE_SUMMARY",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 23,
+      "next_page_number": 25,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "0106c76d-db5d-4aed-86cd-809249b75249",
+      "packet_id": "143611821",
+      "page_number": 25,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "DISCHARGE_SUMMARY",
+      "final_document_type": "DISCHARGE_SUMMARY",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "DISCHARGE_SUMMARY",
+          "confidence": 0.95,
+          "reason": "Document title is 'DISCHARGE SUMMARY' and contains patient details, admission and discharge dates, treatment plan, and clinical information consistent with a discharge summary.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "KABHD.0000152326",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "+\nAB H\nDISCHARGE SUMMARY\ntIL$\nThe Specialist\nin Cancer Care\nNAME OF THE PATIENT\nAGE\nVIJAYANLANI H M\n48 PAYER\nGENDER\nUHID\nIPD NUMBER\nFEMALE DATE OF REGISTRATION 04/08/2025\nKABHD.0000 1 52326\nBHDIP33803\nDATE OF ADMISSION\nDATE OF DISCnARGE\n13/07/2026\n13/07 12026\n13/07/2026ADMITTING DOCTOR\nCO-MANAGED DOCTOR\nDR. GOVIND BABU\nDR. GOVIND BABU\nDATE OF TREATMENT\nTYPE OF DISCHARGE Doctors Advice\nWejght . (k\nBSA(D) (m+2\nALLERGIES : NKDA.\n•ALERTS\nCOMORBIDITIES\n: NIL\n: K/C/O diabetes mellitus and hypertension and is on medication\nINVESTIGATIONS\nTREATMENT PLAN: INJ. ENDOXAN 900 MG ON DI + INJ. EPIRUBICIN 120 MG\nON Dl, INJ. 5 FLUOROURACIL 900 MG ON D2 + INJ. NEUPEG 6 MG ONCE IN 3\nWEEKS FOR 3 CYCLES.\nTHEN, INJ. DOCEAQUALIP 120 MG ON Dl + INJ. HERCLONE 440 MG ON D2,\nTHEN INJ. NEUPEG 6 MG ONCE IN 3 WEEKS FOR 3 CYCLES.\nTHEN, INJ. HERCLONE 440 MG 3 WEEKLY FOR ONE YEAR.\nTreatment Given: The patient received 18th cycle of chemotherapy.\nDATE\nDRUG\nINJ. ENDOXAN\nINJ. EPIRUBICIN\nINJ. 5 FLUOROURACIL\n13.05.2025\n1“ cycle\n900 m\n120 m\nm\n02.06.2025\n2nd cycle\nmr\n120 m\n900 m\n23.06.2025\n3Fd cycle\n900 m\n120 m\n900 m\nDATE\nDRUG\nINJ\nDOCEAQUALIP\nNJ. HERCLONE\n14.07.2025\nlst cycle\n120 mg\n440 m\n0 1 .2\n3rd cycle 4th CYCle 6th cycle2\"d cycle 5th 'cIe\nmm\n440 m 440 m 440 mg\n09.03.2026\n12th cycle\nPh No.7406499999 1 query@hegel.com I hcRoncoloRy.com ICIN: U15200KA1998PLC023489\n2\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "DISCHARGE_SUMMARY",
+          "originalRawDocumentType": "DISCHARGE_SUMMARY",
+          "normalizedRawDocumentType": "DISCHARGE_SUMMARY",
+          "rawDocumentType": "DISCHARGE_SUMMARY",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 24,
+      "next_page_number": 26,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "22588186-7e7a-4fb9-b61e-6a1ca65f4282",
+      "packet_id": "143611821",
+      "page_number": 26,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "DISCHARGE_SUMMARY",
+      "final_document_type": "DISCHARGE_SUMMARY",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "DISCHARGE_SUMMARY",
+          "confidence": 0.95,
+          "reason": "Document title is 'DISCHARGE SUMMARY' and contains patient details, admission and discharge dates, treatment details, and discharge advice.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "KABHD.0000152326",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "13/07/2026",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "NAME OF THE PATIENT\nAGE\nGENDER\nUHID\nIPD NUMBER\nADMITTING DOCTOR\nCO-MANAGED DOCTOR\ne\nHealthCare Global Enterprises Ltd.\nHCG Double Road, No 44-45/2, 2 Cross, Rajaram Mohan Roy Extension (Off Lalbagh Double Road), Bengaluru, Karnataka – 560027\nPh No.7406499999 1 query@hegel.com jhcgoncology.com ICIN: U15200KA1998PLC023489\n3\nDATE\nDRUG\nINJ\nDOCEAQUALIP\nINJ. HERCLON\nAlong with adequate IV hydration and supportive care\nCOURSE IN THE HOSPITAL: The patient was admitted and received 18th cycle of\nimmunotherapy. The patient tolerated the therapy with no toxicity. General condition is stable\nat the time of discharge.\nAdvice on Discharge Medication and others:\nTAB. IRON CIA\nTAB. PAN 40 MG\nTAB. GRANISET 3 MG\nTAB. DOLO 650 MG\nSYP. DUPHALAC 30 ML\nTAB. SPORLAC\nFollow up:\n• To do CBC on 02/08/2026.\n• To review reports with Dr. Govind Babu in OPD for next cycle of chemotherapy on\n03/08/2026\ns to watch out for and when to ergen\nc y, oral Ulcase of emergency,\nvisit HCG or callbleeding from any site, loose stools, In abdomen, vom\nFor Emergency contact HCG-DR- 080- 61306521 /61306610/61306513\n'a DharsanDr. AJAYDictated B\nDoctors :\nDr. Gout7r£i Bab%\nConsultant Medical Oncologist\nHi„$\nTho Specialist\nin Cancer Care\nDISCHARGE SUMMARY\nVIJAYAMANI H M\nPAYER48\n04/08/2025DATE OF REGISTRATIONFEMALE\n13/07/2026\n13/07/2026\n13/07/2026\nDATE OF ADMISSION\nDATE OF DISCHARGE\nKABHD.00001 52326\nBHDIP3 3803\nDATE OF TREATMENTDR. GOVIND BABU\nDR. GOVIND BABU Doctors AdviceTYPE OF DISCHARGE\n26 1 01.06.2026 1 22.06.2026 1 13.07.2026\n1 7th 18th1 5th 16th 'cIe13th 4th 'cIe 'cIe'cIe 'cIe’cle\n440 m\n0-1-0 X DAILY\n1-0-1 X 3 DAYS (BEFORE FOOD)\n1-0- 1 X 3 DAYS (BEFORE FOOD)\nSOS FOR PAIN/FEVER\nSOS FOR CONSTIPATION\nSOS FOR LOOSE STOOLS\nBM,\"=:\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "DISCHARGE_SUMMARY",
+          "originalRawDocumentType": "DISCHARGE_SUMMARY",
+          "normalizedRawDocumentType": "DISCHARGE_SUMMARY",
+          "rawDocumentType": "DISCHARGE_SUMMARY",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 25,
+      "next_page_number": 27,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    },
+    {
+      "page_id": "371490ae-6d57-4c33-bf60-57d9d944d966",
+      "packet_id": "143611821",
+      "page_number": 27,
+      "image_path": null,
+      "source_pdf_path": "data\\incoming-claim-packets\\14.07.vijaya.pdf",
+      "status": "CLASSIFIED",
+      "raw_document_type": "DISCHARGE_SUMMARY",
+      "final_document_type": "DISCHARGE_SUMMARY",
+      "confidence": 0.95,
+      "classification_source": "VISION",
+      "candidates": [
+        {
+          "document_type": "DISCHARGE_SUMMARY",
+          "confidence": 0.95,
+          "reason": "Document title is clearly 'DISCHARGE SUMMARY' with patient details, admission and discharge dates, and treatment information.",
+          "source": "VISION",
+          "evidence": []
+        }
+      ],
+      "identifiers": {
+        "patient_name": "VIJAYAMANI H M",
+        "claim_number": "",
+        "mrn": "KABHD.0000152326",
+        "ip_number": "BHDIP33803",
+        "payer_name": "",
+        "bill_number": ""
+      },
+      "financial_metadata": {
+        "document_date": "13/07/2026",
+        "total_amount": ""
+      },
+      "evidence": {
+        "extracted_text": "III,$\nThe Specialist\nin Cancer Care\nDISCHARGE SUMMARY\nVIJAYAMANI H M\n48 PAYER\nNAME OF THE PATIENT\nAGE\nGENDER FEMALE DATE OF REGISTRATION 04/08/2025\nUHID\nIPD NUMBER\nKABHD.00001 52326\nBHDIP3 3803\nDATE OF ADMISSION\nDATE OF DISCHARGE\n13/07/2026\n13/07 /2026\n13/07/2026ADMITTING DOCTOR DR. GOVIND BABU\nDR. GOVrND BABU\nDATE OF TREATMENT\nCO-MANAGED DOCTOR TYPE OF DISCHARGE Doctors Advice\nDischarge Summary hIS\nhanded over by:\nDisch,rg, S„mmyfPH\nqa\\a:\ndqBEn£uage pad,nt/,tt,„d„ „„d„,t,.d, &\nltOSU )\n,a\nFreceived by\nPlease call up & Fix appointo\nFor Appointments contact: 080- 61306521 /61306610/61306513\nFor Home Healthcare Services Contact: +91-9632566011\nHCG Offers Home Healthcare Services:\nNursing Services, Doctor Consultation, Lab services, Rehabilitation Services & Pharmacy\nDelivery. For Contact Details: 080-61562229 / 9632566011\nE-mail ID: homehealthservices@hegel.co\nYOU CAN NOW AVAIL 5% DISCOUNT ON ALL MEDICINES FROM OUR E-PI CY\n(EXCLUDING INJECTIONS AND CUT STRIPS)\nMedicine Discounts via HCG Care App: Up to 5% off for registered patients (nationwide home delivery). T&C\nApply. HCG Care App Support: Assistance in ordering medicines: Contact -635 88 888 01/ 7406499999\ne-mail: customercare.in@hcgel.com\nScan the QR Code to download the app and order medicines\nWHEN TO SEEK URGENT CARE:\nPatients and caregivers are advised to contact the Medical Oncology Department or the\ntreating consultant immediately or while on chemotherapy, targeted therapy, or\nimmunotherapy, urgent medical attention is needed if you experience:\n' Fever above 38'’C (100.4'’F) – this can be a sign of serious infection.\nBleeding or unusual bruising, blood in urine, stool, or vomiting blood.\nSevere nausea, vomiting, or diarrhea not controlled by medicines.\nShortness of breath, chest pain, fainting, or palpitations.\n' New or sudden weakness, confusion, seizures, or loss of bladder/bowel control.\n: aJ::EITo:ie:H=:::A::dr;sr:’eH:: swellinf.9Ag39H\nBgp96ld$Hb#8 tltd.,\nBIN!!;Wtf:IGyroa;I.,\nBan8ht.3 rs.560 027\nHealthCare Global Enterprises Ltd.\nHCC Double Roadl No 44-45/2, 2 Cross, Rajaram Mohan Roy Extension (Off Lalbagh Double Road), Bengaluru, Karnataka – 560027\nPh No.7406499999 1 query@hegel.com I hcRoncology.com ICIN: U15200KA1998PLC023489\n",
+        "headings": [],
+        "keywords": [],
+        "detected_labels": [],
+        "has_table": false,
+        "has_signature": false,
+        "has_hospital_logo": false,
+        "has_patient_identifier": false,
+        "has_page_number": false,
+        "page_number_text": "",
+        "header_text": "",
+        "footer_text": "",
+        "image_quality_score": null,
+        "ocr_confidence": null,
+        "visual_confidence": null,
+        "custom_features": {
+          "productionDocumentType": "DISCHARGE_SUMMARY",
+          "originalRawDocumentType": "DISCHARGE_SUMMARY",
+          "normalizedRawDocumentType": "DISCHARGE_SUMMARY",
+          "rawDocumentType": "DISCHARGE_SUMMARY",
+          "qualityStatus": "TEXT_READABLE",
+          "normalizationSource": "GENERIC_VISION_CLASSIFIER",
+          "source": "OPENAI_VISION"
+        }
+      },
+      "boundary_type": "UNKNOWN",
+      "document_group_id": null,
+      "previous_page_number": 26,
+      "next_page_number": null,
+      "review": {
+        "required": false,
+        "reason_code": null,
+        "priority": "LOW",
+        "message": "",
+        "suggested_action": "",
+        "alternatives": []
+      },
+      "processing_notes": [
+        "Page classified directly from Vision with confidence 0.95."
+      ],
+      "errors": []
+    }
+  ]
+}

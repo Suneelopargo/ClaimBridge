@@ -1,0 +1,568 @@
+{
+  "packetId": "143611821",
+  "totalPages": 27,
+  "groupCount": 14,
+  "groupedPages": 27,
+  "ungroupedPages": [],
+  "duplicatePages": [],
+  "integrityValid": true,
+  "groups": [
+    {
+      "group_id": "143611821-group-001",
+      "document_type": "COVERING_LETTER",
+      "document_family": "COVERING_LETTER",
+      "start_page": 1,
+      "end_page": 1,
+      "page_numbers": [
+        1
+      ],
+      "pages": [
+        {
+          "page_number": 1,
+          "document_type": "COVERING_LETTER",
+          "identity_relation": "FIRST_PAGE",
+          "boundary_type": "START",
+          "identity_confidence": 1.0,
+          "boundary_confidence": 1.0
+        }
+      ],
+      "confidence": 1.0,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-001"
+      ],
+      "reasons": [
+        "Started group at page 1: identity=FIRST_PAGE, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-002",
+      "document_type": "CHECKLIST",
+      "document_family": "CHECKLIST",
+      "start_page": 2,
+      "end_page": 2,
+      "page_numbers": [
+        2
+      ],
+      "pages": [
+        {
+          "page_number": 2,
+          "document_type": "CHECKLIST",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        }
+      ],
+      "confidence": 0.99,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-002"
+      ],
+      "reasons": [
+        "Started group at page 2: identity=NEW_DOCUMENT, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-003",
+      "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "document_family": "AUTHORIZATION",
+      "start_page": 3,
+      "end_page": 6,
+      "page_numbers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pages": [
+        {
+          "page_number": 3,
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.95,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 4,
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "CONTINUATION",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 5,
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.85625,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 6,
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "identity_relation": "UNCERTAIN",
+          "boundary_type": "AMBIGUOUS",
+          "identity_confidence": 0.55,
+          "boundary_confidence": 0.575
+        }
+      ],
+      "confidence": 0.8614,
+      "status": "REVIEW",
+      "identity_chain_ids": [
+        "143611821-identity-003"
+      ],
+      "reasons": [
+        "Started group at page 3: identity=NEW_DOCUMENT, boundary=START.",
+        "Attached page 4: identity=SAME_DOCUMENT, boundary=CONTINUATION.",
+        "Merged group beginning at page 5 using continuation evidence."
+      ],
+      "review_flags": [
+        "Page 6 has uncertain identity or boundary evidence."
+      ],
+      "pageCount": 4
+    },
+    {
+      "group_id": "143611821-group-004",
+      "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+      "document_family": "AUTHORIZATION",
+      "start_page": 7,
+      "end_page": 7,
+      "page_numbers": [
+        7
+      ],
+      "pages": [
+        {
+          "page_number": 7,
+          "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+          "identity_relation": "UNCERTAIN",
+          "boundary_type": "START",
+          "identity_confidence": 0.6,
+          "boundary_confidence": 0.99
+        }
+      ],
+      "confidence": 0.795,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-003"
+      ],
+      "reasons": [
+        "Started group at page 7: identity=UNCERTAIN, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-005",
+      "document_type": "PREAUTHORIZATION_FORM",
+      "document_family": "PREAUTHORIZATION",
+      "start_page": 8,
+      "end_page": 8,
+      "page_numbers": [
+        8
+      ],
+      "pages": [
+        {
+          "page_number": 8,
+          "document_type": "PREAUTHORIZATION_FORM",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        }
+      ],
+      "confidence": 0.99,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-004"
+      ],
+      "reasons": [
+        "Started group at page 8: identity=NEW_DOCUMENT, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-006",
+      "document_type": "GIPSA_DECLARATION",
+      "document_family": "DECLARATION",
+      "start_page": 9,
+      "end_page": 9,
+      "page_numbers": [
+        9
+      ],
+      "pages": [
+        {
+          "page_number": 9,
+          "document_type": "GIPSA_DECLARATION",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.91875,
+          "boundary_confidence": 0.99
+        }
+      ],
+      "confidence": 0.9544,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-005"
+      ],
+      "reasons": [
+        "Started group at page 9: identity=NEW_DOCUMENT, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-007",
+      "document_type": "PATIENT_ID_PROOF",
+      "document_family": "PATIENT_ID",
+      "start_page": 10,
+      "end_page": 11,
+      "page_numbers": [
+        10,
+        11
+      ],
+      "pages": [
+        {
+          "page_number": 10,
+          "document_type": "PATIENT_ID_PROOF",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.9866666666666666
+        },
+        {
+          "page_number": 11,
+          "document_type": "PATIENT_ID_PROOF",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "AMBIGUOUS",
+          "identity_confidence": 0.95,
+          "boundary_confidence": 0.6
+        }
+      ],
+      "confidence": 0.8817,
+      "status": "REVIEW",
+      "identity_chain_ids": [
+        "143611821-identity-006"
+      ],
+      "reasons": [
+        "Started group at page 10: identity=NEW_DOCUMENT, boundary=START.",
+        "Attached page 11: identity=SAME_DOCUMENT, boundary=AMBIGUOUS."
+      ],
+      "review_flags": [
+        "Page 11 has uncertain identity or boundary evidence."
+      ],
+      "pageCount": 2
+    },
+    {
+      "group_id": "143611821-group-008",
+      "document_type": "PROPOSER_ID_PROOF",
+      "document_family": "PROPOSER_ID",
+      "start_page": 12,
+      "end_page": 12,
+      "page_numbers": [
+        12
+      ],
+      "pages": [
+        {
+          "page_number": 12,
+          "document_type": "PROPOSER_ID_PROOF",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.9866666666666666
+        }
+      ],
+      "confidence": 0.9883,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-007"
+      ],
+      "reasons": [
+        "Started group at page 12: identity=NEW_DOCUMENT, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-009",
+      "document_type": "PATIENT_ID_PROOF",
+      "document_family": "PATIENT_ID",
+      "start_page": 13,
+      "end_page": 13,
+      "page_numbers": [
+        13
+      ],
+      "pages": [
+        {
+          "page_number": 13,
+          "document_type": "PATIENT_ID_PROOF",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.9866666666666666
+        }
+      ],
+      "confidence": 0.9883,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-008"
+      ],
+      "reasons": [
+        "Started group at page 13: identity=NEW_DOCUMENT, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-010",
+      "document_type": "PROPOSER_ID_PROOF",
+      "document_family": "PROPOSER_ID",
+      "start_page": 14,
+      "end_page": 14,
+      "page_numbers": [
+        14
+      ],
+      "pages": [
+        {
+          "page_number": 14,
+          "document_type": "PROPOSER_ID_PROOF",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.9533333333333334
+        }
+      ],
+      "confidence": 0.9717,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-009"
+      ],
+      "reasons": [
+        "Started group at page 14: identity=NEW_DOCUMENT, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-011",
+      "document_type": "FINAL_HOSPITAL_BILL",
+      "document_family": "BILL",
+      "start_page": 15,
+      "end_page": 20,
+      "page_numbers": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "pages": [
+        {
+          "page_number": 15,
+          "document_type": "FINAL_HOSPITAL_BILL",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 16,
+          "document_type": "BILL_CONTINUATION",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "CONTINUATION",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 17,
+          "document_type": "BILL_CONTINUATION",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "CONTINUATION",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 18,
+          "document_type": "BILL_CONTINUATION",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "CONTINUATION",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 19,
+          "document_type": "BILL_CONTINUATION",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "CONTINUATION",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 20,
+          "document_type": "FINAL_HOSPITAL_BILL",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "AMBIGUOUS",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.61
+        }
+      ],
+      "confidence": 0.9583,
+      "status": "REVIEW",
+      "identity_chain_ids": [
+        "143611821-identity-010"
+      ],
+      "reasons": [
+        "Started group at page 15: identity=NEW_DOCUMENT, boundary=START.",
+        "Attached page 16: identity=SAME_DOCUMENT, boundary=CONTINUATION.",
+        "Attached page 17: identity=SAME_DOCUMENT, boundary=CONTINUATION.",
+        "Attached page 18: identity=SAME_DOCUMENT, boundary=CONTINUATION.",
+        "Attached page 19: identity=SAME_DOCUMENT, boundary=CONTINUATION.",
+        "Attached page 20: identity=SAME_DOCUMENT, boundary=AMBIGUOUS."
+      ],
+      "review_flags": [
+        "Page 20 has uncertain identity or boundary evidence."
+      ],
+      "pageCount": 6
+    },
+    {
+      "group_id": "143611821-group-012",
+      "document_type": "PAYMENT_RECEIPT",
+      "document_family": "PAYMENT",
+      "start_page": 21,
+      "end_page": 21,
+      "page_numbers": [
+        21
+      ],
+      "pages": [
+        {
+          "page_number": 21,
+          "document_type": "PAYMENT_RECEIPT",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        }
+      ],
+      "confidence": 0.99,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-011"
+      ],
+      "reasons": [
+        "Started group at page 21: identity=NEW_DOCUMENT, boundary=START."
+      ],
+      "review_flags": [],
+      "pageCount": 1
+    },
+    {
+      "group_id": "143611821-group-013",
+      "document_type": "TREATMENT_ORDER",
+      "document_family": "TREATMENT_ORDER",
+      "start_page": 22,
+      "end_page": 23,
+      "page_numbers": [
+        22,
+        23
+      ],
+      "pages": [
+        {
+          "page_number": 22,
+          "document_type": "TREATMENT_ORDER",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.91875,
+          "boundary_confidence": 0.9533333333333334
+        },
+        {
+          "page_number": 23,
+          "document_type": "UNKNOWN",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "CONTINUATION",
+          "identity_confidence": 0.91875,
+          "boundary_confidence": 0.99
+        }
+      ],
+      "confidence": 0.9452,
+      "status": "RESOLVED",
+      "identity_chain_ids": [
+        "143611821-identity-012",
+        "143611821-identity-013"
+      ],
+      "reasons": [
+        "Started group at page 22: identity=NEW_DOCUMENT, boundary=START.",
+        "Attached page 23: identity=NEW_DOCUMENT, boundary=CONTINUATION."
+      ],
+      "review_flags": [],
+      "pageCount": 2
+    },
+    {
+      "group_id": "143611821-group-014",
+      "document_type": "DISCHARGE_SUMMARY",
+      "document_family": "DISCHARGE_SUMMARY",
+      "start_page": 24,
+      "end_page": 27,
+      "page_numbers": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "pages": [
+        {
+          "page_number": 24,
+          "document_type": "DISCHARGE_SUMMARY",
+          "identity_relation": "NEW_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 25,
+          "document_type": "DISCHARGE_SUMMARY",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.99,
+          "boundary_confidence": 0.99
+        },
+        {
+          "page_number": 26,
+          "document_type": "DISCHARGE_SUMMARY",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "AMBIGUOUS",
+          "identity_confidence": 0.95,
+          "boundary_confidence": 0.575
+        },
+        {
+          "page_number": 27,
+          "document_type": "DISCHARGE_SUMMARY",
+          "identity_relation": "SAME_DOCUMENT",
+          "boundary_type": "START",
+          "identity_confidence": 0.95,
+          "boundary_confidence": 0.99
+        }
+      ],
+      "confidence": 0.9281,
+      "status": "REVIEW",
+      "identity_chain_ids": [
+        "143611821-identity-014"
+      ],
+      "reasons": [
+        "Started group at page 24: identity=NEW_DOCUMENT, boundary=START.",
+        "Merged group beginning at page 25 using continuation evidence.",
+        "Merged group beginning at page 27 using continuation evidence."
+      ],
+      "review_flags": [
+        "Page 26 has uncertain identity or boundary evidence."
+      ],
+      "pageCount": 4
+    }
+  ]
+}

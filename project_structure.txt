@@ -1,0 +1,154 @@
+[DIR] app
+[DIR] architecture
+[DIR] legacy-assets
+[DIR] reports
+[DIR] scripts
+[DIR] tests
+[FILE] .dockerignore
+[FILE] .env
+[FILE] .env.example
+[FILE] .gitignore
+[FILE] create_tables.py
+[FILE] Dockerfile
+[FILE] package.json
+[FILE] project_structure.txt
+[FILE] Readme.md
+[FILE] requirements.txt
+[FILE] runtime.txt
+[FILE] seed_master_data.py
+  [DIR] connectors
+  [DIR] document_processing
+  [DIR] graph
+  [DIR] mappers
+  [DIR] models
+  [DIR] parsers
+  [DIR] reports
+  [DIR] repositories
+  [DIR] routers
+  [DIR] schemas
+  [DIR] services
+  [FILE] config.py
+  [FILE] database.py
+  [FILE] logging_config.py
+  [FILE] main.py
+  [FILE] models.py
+  [FILE] __init__.py
+    [DIR] ihx
+    [FILE] base_connector.py
+    [FILE] __init__.py
+      [FILE] ihx_connector.py
+      [FILE] reconciliation_connector.py
+      [FILE] selectors.py
+      [FILE] __init__.py
+    [FILE] packet_service.py
+    [FILE] graph_mail_client.py
+    [FILE] __init__.py
+    [FILE] claim_validation_mapper.py
+    [FILE] activity_log.py
+    [FILE] base.py
+    [FILE] claim_status_history.py
+    [FILE] claim_summary.py
+    [FILE] claim_validation_result.py
+    [FILE] claim_validation_run.py
+    [FILE] portal.py
+    [FILE] portal_connection.py
+    [FILE] reconciliation_import_batch.py
+    [FILE] reconciliation_manual_details.py
+    [FILE] reconciliation_summary.py
+    [FILE] user.py
+    [FILE] validation_rule.py
+    [FILE] validation_rule_document_type.py
+    [FILE] validation_rule_version.py
+    [FILE] __init__.py
+    [FILE] reconciliation_excel_parser.py
+    [FILE] reconciliation_field_mapping.py
+    [FILE] __init__.py
+    [FILE] claim_excel_report.py
+    [FILE] reconciliation_excel_report.py
+    [FILE] __init__.py
+    [FILE] claim_summary_repository.py
+    [FILE] reconciliation_query_repository.py
+    [FILE] reconciliation_repository.py
+    [FILE] __init__.py
+    [FILE] activity_log_router.py
+    [FILE] auth_router.py
+    [FILE] claim_dashboard_router.py
+    [FILE] claim_packet_router.py
+    [FILE] claim_validation_router.py
+    [FILE] ihx_router.py
+    [FILE] reconciliation_filter_router.py
+    [FILE] reconciliation_query_router.py
+    [FILE] reconciliation_report_router.py
+    [FILE] reconciliation_router.py
+    [FILE] report_router.py
+    [FILE] __init__.py
+    [FILE] activity_log_schemas.py
+    [FILE] auth_schemas.py
+    [FILE] claim_validation.py
+    [FILE] reconciliation_filter_schemas.py
+    [FILE] reconciliation_report_schemas.py
+    [FILE] reconciliation_schemas.py
+    [DIR] rule_engine
+    [DIR] sweet_engine
+    [FILE] auth_service.py
+    [FILE] claim_summary_service.py
+    [FILE] reconciliation_export_service.py
+    [FILE] reconciliation_field_catalog.py
+    [FILE] reconciliation_filter_catalog.py
+    [FILE] reconciliation_record_service.py
+    [FILE] reconciliation_service.py
+    [FILE] reconciliation_structured_query_service.py
+    [FILE] __init__.py
+      [DIR] operators
+      [FILE] applicability.py
+      [FILE] manifest_accessor.py
+      [FILE] models.py
+      [FILE] operator_registry.py
+      [FILE] orchestrator_factory.py
+      [FILE] registry_factory.py
+      [FILE] report_models.py
+      [FILE] rule_execution_service.py
+      [FILE] rule_executor.py
+      [FILE] rule_loader.py
+      [FILE] validation_orchestrator.py
+      [FILE] validation_run_repository.py
+      [FILE] __init__.py
+        [FILE]  __init__.py
+        [FILE] base.py
+        [FILE] document_exists.py
+      [DIR] evaluation
+      [FILE] context_resolver.py
+      [FILE] enums.py
+      [FILE] models.py
+      [FILE] page_inventory.py
+      [FILE] __init__.py
+        [FILE] evaluator.py
+        [FILE] metrics.py
+        [FILE] models.py
+        [FILE] report_builder.py
+        [FILE] __init__.py
+  [DIR] ADR
+  [FILE] API_Design.md
+  [FILE] Architecture.md
+  [FILE] Connector_Architecture.md
+  [FILE] Database_Design.md
+  [FILE] India_Claims_Automation_Platform_Architecture_and_Project_Context.docx
+  [FILE] Roadmap.md
+    [FILE] ADR-001-FastAPI.md.txt
+    [FILE] ADR-002-Portal-vs-PortalConnection.md.txt
+  [FILE] mailtest.py
+  [FILE] main.py
+  [FILE] portal_automation.py
+  [FILE] create_activity_logs_table.sql
+  [FILE] evaluate_hcg_inventory.py
+  [FILE] publish_initial_hcg_rules.py
+  [FILE] seed_hcg_rules.py
+  [FILE] test_document_exists_operator.py
+  [FILE] test_page_inventory.py
+  [FILE] test_published_hcg_rules.py
+  [FILE] test_reconciliation_parser.py
+  [FILE] test_rule_loader.py
+  [FILE] test_validation_orchestrator.py
+  [FILE] test_graph_otp.py
+  [FILE] test_ihx_login.py
+  [FILE] test_ihx_sync.py

@@ -31,6 +31,20 @@ from app.config import (
     CLAIM_PACKET_INPUT_DIR,
     CLAIM_PACKET_SEGREGATED_DIR,
 )
+
+from app.services.sweet_engine.adapters.hcg_packet_adapter import (
+    build_inventory_from_packet_manifest,
+)
+from app.services.sweet_engine.classify_and_segregate_pipeline import (
+    ClassifyAndSegregatePipeline,
+)
+from app.services.sweet_engine.document_registry import (
+    allowed_document_types,
+    document_family,
+    is_standalone_document,
+    normalize_document_type,
+    normalize_page_role,
+)
 import os
 
 from dotenv import load_dotenv
@@ -197,66 +211,59 @@ def derive_packet_metadata(
 
 def normalize_generic_packet_page(item: dict) -> dict:
     """
-    Generic normalization for newly uploaded customer PDFs.
+    Normalize a Vision page result using the canonical SWEET document
+    registry.
 
-    Important:
-    - No fixed page-number rules.
-    - No Jain Sangita-specific mappings.
-    - Low-confidence pages are marked UNKNOWN.
+    The raw Vision candidate is always preserved. A low confidence score
+    no longer erases a supported candidate; it marks the page for review.
     """
 
     normalized = dict(item)
 
-    document_type = str(
-        item.get("documentType") or "UNKNOWN"
-    ).upper().strip()
+    raw_document_type = str(
+        item.get("rawDocumentType")
+        or item.get("documentType")
+        or "UNKNOWN"
+    ).strip()
 
-    confidence = float(item.get("confidence") or 0)
+    document_type = normalize_document_type(raw_document_type)
 
-    allowed_types = {
-        "COVERING_LETTER",
-        "CLAIM_FORM",
-        "GIPSA_DECLARATION",
-        "APPROVAL_LETTER",
-        "GOP_PRE_APPROVAL",
-        "GOP_FINAL_APPROVAL",
-        "CASHLESS_AUTHORIZATION_LETTER",
-        "PREAUTHORIZATION_FORM",
-        "KYC_DOCUMENT",
-        "PROPOSER_ID_PROOF",
-        "PATIENT_ID_PROOF",
-        "PATIENT_PHOTO",
-        "FINAL_HOSPITAL_BILL",
-        "DETAILED_BILL_BREAKUP",
-        "BILL_CONTINUATION",
-        "DISCHARGE_SUMMARY",
-        "PAYMENT_RECEIPT",
-        "REFUND_RECEIPT",
-        "CASE_PAPER",
-        "OT_NOTES",
-        "INVESTIGATION_REPORT",
-        "LAB_REPORT",
-        "RADIOLOGY_REPORT",
-        "PHARMACY_BILL",
-        "PHARMACY_DETAILS",
-        "IMPLANT_STICKER_INVOICE",
-        "BLOOD_COMPONENT_STICKER",
-        "CONSENT_FORM",
-        "PRESCRIPTION",
-        "NON_MEDICAL_DETAILS",
-        "CHECKLIST",
-    }
+    try:
+        confidence = float(item.get("confidence") or 0)
+    except (TypeError, ValueError):
+        confidence = 0.0
 
-    if document_type not in allowed_types or confidence < 0.70:
-        document_type = "UNKNOWN"
-
+    normalized["rawDocumentType"] = raw_document_type.upper()
     normalized["documentType"] = document_type
-    normalized["normalized"] = False
-    normalized["normalizationSource"] = "GENERIC_VISION_CLASSIFIER"
-    normalized["reviewRequired"] = document_type == "UNKNOWN"
+    normalized["documentFamily"] = document_family(document_type)
+    normalized["pageRole"] = normalize_page_role(
+        item.get("pageRole")
+    )
+    normalized["standaloneDocument"] = bool(
+        item.get("standaloneDocument")
+        if item.get("standaloneDocument") is not None
+        else is_standalone_document(document_type)
+    )
+    normalized["explicitDocumentStart"] = bool(
+        item.get("explicitDocumentStart", False)
+    )
+    normalized["explicitDocumentEnd"] = bool(
+        item.get("explicitDocumentEnd", False)
+    )
+    normalized["normalized"] = (
+        document_type != raw_document_type.upper()
+    )
+    normalized["normalizationSource"] = (
+        "SWEET_DOCUMENT_REGISTRY"
+    )
+
+    normalized["reviewRequired"] = (
+        document_type == "UNKNOWN"
+        or confidence < 0.70
+        or normalized["pageRole"] == "UNKNOWN"
+    )
 
     return normalized
-
 
 def safe_folder_name(value: str):
     value = value.lower().strip()
@@ -308,38 +315,53 @@ async def classify_and_segregate_claim_packet(
     patient_name: str | None = None,
 ):
     """
-    Generic customer claim packet processor.
+    Classify and physically segregate an uploaded claim packet using
+    the complete SWEET resolver chain.
 
     Flow:
-    1. Save uploaded PDF.
-    2. Render every page as an image.
-    3. Classify each page using OpenAI Vision.
-    4. Derive patient and claim metadata dynamically.
-    5. Save individual segregated pages.
-    6. Build grouped payer-ready PDFs.
-    7. Build dispatch checklist status.
-    8. Create manifest.json.
+    1. Save and render the uploaded PDF.
+    2. Classify each page with Vision.
+    3. Normalize page-level candidates without packet-specific rules.
+    4. Write individual page PDFs and create the inventory manifest.
+    5. Run Context, Identity, Boundary and DocumentGroup resolvers.
+    6. Physically create one PDF per logical document group.
+    7. Build checklist status and persist the final manifest.
     """
 
     temp_image_paths: list[str] = []
 
     try:
         # ---------------------------------------------------------
-        # Step 1: Save uploaded PDF
+        # Step 1: Validate and save uploaded PDF
         # ---------------------------------------------------------
-        base_upload_dir = CLAIM_PACKET_INPUT_DIR
-        base_upload_dir.mkdir(parents=True, exist_ok=True)
+        safe_input_name = Path(
+            file.filename or "customer-packet.pdf"
+        ).name
 
-        safe_input_name = Path(file.filename or "customer-packet.pdf").name
-        input_pdf_path = base_upload_dir / safe_input_name
+        if Path(safe_input_name).suffix.lower() != ".pdf":
+            raise ValueError("Only PDF claim packets are supported")
 
-        with open(input_pdf_path, "wb") as buffer:
+        CLAIM_PACKET_INPUT_DIR.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        # Avoid overwriting an unrelated upload with the same name.
+        upload_token = datetime.now().strftime("%Y%m%d%H%M%S%f")
+        input_pdf_path = (
+            CLAIM_PACKET_INPUT_DIR
+            / f"{upload_token}_{safe_input_name}"
+        )
+
+        with input_pdf_path.open("wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
 
         reader = PdfReader(str(input_pdf_path))
 
-        if len(reader.pages) == 0:
-            raise ValueError("Uploaded PDF does not contain any pages")
+        if not reader.pages:
+            raise ValueError(
+                "Uploaded PDF does not contain any pages"
+            )
 
         images = convert_from_bytes(
             input_pdf_path.read_bytes(),
@@ -368,11 +390,14 @@ async def classify_and_segregate_claim_packet(
                 images[index].save(image_path, "PNG")
                 temp_image_paths.append(image_path)
 
-            classification = classify_page_with_vision(image_path)
+            classification = classify_page_with_vision(
+                image_path
+            )
             classification["source"] = "OPENAI_VISION"
 
-            document_type = str(
-                classification.get("documentType") or "UNKNOWN"
+            raw_document_type = str(
+                classification.get("documentType")
+                or "UNKNOWN"
             ).upper().strip()
 
             try:
@@ -382,26 +407,93 @@ async def classify_and_segregate_claim_packet(
             except (TypeError, ValueError):
                 confidence = 0.0
 
-            if confidence < 0.70:
-                document_type = "UNKNOWN"
-
+            # Preserve the Vision candidate. Generic normalization and
+            # EvidenceResolver decide whether it remains usable.
             raw_docs.append({
                 "pageNumber": page_number,
-                "documentType": document_type,
-                "rawDocumentType": str(
-                    classification.get("documentType") or "UNKNOWN"
-                ).upper().strip(),
+                "documentType": raw_document_type,
+                "rawDocumentType": raw_document_type,
+                "documentFamily": classification.get(
+                    "documentFamily", ""
+                ),
+                "visibleTitle": classification.get(
+                    "visibleTitle", ""
+                ),
+                "sectionTitle": classification.get(
+                    "sectionTitle", ""
+                ),
+                "pageRole": classification.get(
+                    "pageRole", "UNKNOWN"
+                ),
+                "printedPageNumber": classification.get(
+                    "printedPageNumber"
+                ),
+                "printedTotalPages": classification.get(
+                    "printedTotalPages"
+                ),
+                "explicitDocumentStart": bool(
+                    classification.get(
+                        "explicitDocumentStart", False
+                    )
+                ),
+                "explicitDocumentEnd": bool(
+                    classification.get(
+                        "explicitDocumentEnd", False
+                    )
+                ),
+                "standaloneDocument": classification.get(
+                    "standaloneDocument"
+                ),
+                "templateHint": classification.get(
+                    "templateHint", ""
+                ),
+                "headerSignature": classification.get(
+                    "headerSignature", ""
+                ),
+                "footerSignature": classification.get(
+                    "footerSignature", ""
+                ),
+                "continuationIndicators": classification.get(
+                    "continuationIndicators", []
+                ),
+                "candidateDocumentTypes": classification.get(
+                    "candidateDocumentTypes", []
+                ),
                 "confidence": confidence,
                 "source": classification.get("source"),
                 "reason": classification.get("reason", ""),
-                "patientName": classification.get("patientName", ""),
-                "claimNumber": classification.get("claimNumber", ""),
+                "patientName": classification.get(
+                    "patientName", ""
+                ),
+                "claimNumber": classification.get(
+                    "claimNumber", ""
+                ),
                 "mrn": classification.get("mrn", ""),
-                "ipNumber": classification.get("ipNumber", ""),
-                "payerName": classification.get("payerName", ""),
-                "billNumber": classification.get("billNumber", ""),
-                "documentDate": classification.get("documentDate", ""),
-                "totalAmount": classification.get("totalAmount", ""),
+                "ipNumber": classification.get(
+                    "ipNumber", ""
+                ),
+                "payerName": classification.get(
+                    "payerName", ""
+                ),
+                "billNumber": classification.get(
+                    "billNumber", ""
+                ),
+                "authorizationNumber": classification.get(
+                    "authorizationNumber", ""
+                ),
+                "policyNumber": classification.get(
+                    "policyNumber", ""
+                ),
+                "memberId": classification.get(
+                    "memberId", ""
+                ),
+                "documentDate": classification.get(
+                    "documentDate", ""
+                ),
+                "totalAmount": classification.get(
+                    "totalAmount", ""
+                ),
+                "extractedText": page_text,
                 "qualityStatus": (
                     "TEXT_READABLE"
                     if page_text.strip()
@@ -410,7 +502,7 @@ async def classify_and_segregate_claim_packet(
             })
 
         # ---------------------------------------------------------
-        # Step 3: Derive patient and claim metadata dynamically
+        # Step 3: Derive packet metadata
         # ---------------------------------------------------------
         all_text = "\n".join(
             (page.extract_text() or "")
@@ -427,50 +519,59 @@ async def classify_and_segregate_claim_packet(
 
         final_patient_name = derived["patientName"]
         final_claim_id = derived["claimId"]
-        patient_folder = safe_folder_name(final_patient_name)
+        patient_folder = safe_folder_name(
+            final_patient_name
+        )
 
-        segregated_dir =CLAIM_PACKET_SEGREGATED_DIR / final_claim_id
+        segregated_dir = (
+            CLAIM_PACKET_SEGREGATED_DIR
+            / final_claim_id
+        )
+        grouped_output_root = (
+            CLAIM_PACKET_GROUPED_DIR
+            / patient_folder
+        )
 
-        claim_pack_dir = CLAIM_PACKET_GROUPED_DIR / patient_folder
-
-        # Remove stale output from earlier processing attempts.
         if segregated_dir.exists():
             shutil.rmtree(segregated_dir)
 
-        if claim_pack_dir.exists():
-            shutil.rmtree(claim_pack_dir)
+        # PhysicalDocumentBuilder cleans only the packet-specific
+        # directory, not the complete patient folder.
+        packet_group_dir = (
+            grouped_output_root / final_claim_id
+        )
+        if packet_group_dir.exists():
+            shutil.rmtree(packet_group_dir)
 
-        segregated_dir.mkdir(parents=True, exist_ok=True)
-        claim_pack_dir.mkdir(parents=True, exist_ok=True)
+        segregated_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+        grouped_output_root.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
 
         # ---------------------------------------------------------
-        # Step 4: Generic page normalization
+        # Step 4: Normalize and write individual page PDFs
         # ---------------------------------------------------------
         detected_docs: list[dict] = []
 
         for item in raw_docs:
             normalized = normalize_generic_packet_page(item)
-
             normalized["outputFile"] = output_file_for_doc(
                 normalized["documentType"],
                 normalized["pageNumber"],
             )
-
             normalized["reviewRequired"] = (
                 normalized["documentType"] == "UNKNOWN"
             )
-
             detected_docs.append(normalized)
 
-        # ---------------------------------------------------------
-        # Step 5: Write individual segregated page PDFs
-        # ---------------------------------------------------------
         for item in detected_docs:
             page_index = item["pageNumber"] - 1
-            output_file = item["outputFile"]
-
             segregated_file_path = (
-                segregated_dir / output_file
+                segregated_dir / item["outputFile"]
             )
 
             write_single_page_pdf(
@@ -478,22 +579,81 @@ async def classify_and_segregate_claim_packet(
                 page_index,
                 segregated_file_path,
             )
-
             item["segregatedFile"] = str(
                 segregated_file_path
             )
 
-        # ---------------------------------------------------------
-        # Step 6: Build grouped payer-ready PDFs
-        # ---------------------------------------------------------
-        grouped_documents = build_grouped_documents(
-            reader=reader,
-            detected_docs=detected_docs,
-            output_dir=claim_pack_dir,
+        # This manifest is the adapter input for PageInventory.
+        inventory_manifest = {
+            "claimId": final_claim_id,
+            "packetId": final_claim_id,
+            "patientName": final_patient_name,
+            "patientFolder": patient_folder,
+            "sourceFile": str(input_pdf_path),
+            "segregatedFolder": str(segregated_dir),
+            "totalPages": len(reader.pages),
+            "documentsDetected": detected_docs,
+        }
+
+        inventory_manifest_path = (
+            segregated_dir / "inventory_manifest.json"
         )
+        with inventory_manifest_path.open(
+            "w",
+            encoding="utf-8",
+        ) as manifest_file:
+            json.dump(
+                inventory_manifest,
+                manifest_file,
+                indent=2,
+                ensure_ascii=False,
+            )
 
         # ---------------------------------------------------------
-        # Step 7: Build dispatch checklist mapping
+        # Step 5: Run the current SWEET resolver chain and perform
+        # physical document grouping.
+        # ---------------------------------------------------------
+        inventory = build_inventory_from_packet_manifest(
+            inventory_manifest,
+            run_context_resolution=True,
+        )
+
+        pipeline_result = (
+            ClassifyAndSegregatePipeline().run(
+                inventory=inventory,
+                source_pdf=input_pdf_path,
+                output_root=grouped_output_root,
+            )
+        )
+
+        claim_pack_dir = Path(
+            pipeline_result.output_directory
+        )
+
+        grouped_documents = [
+            {
+                "groupId": document["groupId"],
+                "groupCode": document["documentType"],
+                "displayName": document["documentType"].replace(
+                    "_", " "
+                ).title(),
+                "documentType": document["documentType"],
+                "documentFamily": document[
+                    "documentFamily"
+                ],
+                "outputFile": document["fileName"],
+                "filePath": document["filePath"],
+                "pageNumbers": document["sourcePages"],
+                "pageCount": document["pageCount"],
+                "confidence": document["confidence"],
+                "status": document["status"],
+                "reviewFlags": document["reviewFlags"],
+            }
+            for document in pipeline_result.documents
+        ]
+
+        # ---------------------------------------------------------
+        # Step 6: Build checklist status from final physical groups
         # ---------------------------------------------------------
         checklist_status = build_dispatch_checklist_status(
             detected_docs=detected_docs,
@@ -505,7 +665,9 @@ async def classify_and_segregate_claim_packet(
                 "pageNumber": item.get("pageNumber"),
                 "outputFile": item.get("outputFile"),
                 "documentType": item.get("documentType"),
-                "rawDocumentType": item.get("rawDocumentType"),
+                "rawDocumentType": item.get(
+                    "rawDocumentType"
+                ),
                 "confidence": item.get("confidence"),
                 "reason": item.get("reason", ""),
             }
@@ -513,35 +675,67 @@ async def classify_and_segregate_claim_packet(
             if item.get("reviewRequired")
         ]
 
-        identified_pages = len([
-            item
+        review_required_groups = [
+            group
+            for group in grouped_documents
+            if group.get("status") == "REVIEW"
+        ]
+
+        identified_pages = sum(
+            1
             for item in detected_docs
             if item.get("documentType") != "UNKNOWN"
-        ])
+        )
 
         # ---------------------------------------------------------
-        # Step 8: Build and save manifest
+        # Step 7: Build and save the final API manifest
         # ---------------------------------------------------------
         manifest = {
             "claimId": final_claim_id,
+            "packetId": final_claim_id,
             "patientName": final_patient_name,
             "patientFolder": patient_folder,
             "sourceFile": str(input_pdf_path),
             "segregatedFolder": str(segregated_dir),
             "claimPackFolder": str(claim_pack_dir),
+            "inventoryManifest": str(
+                inventory_manifest_path
+            ),
+            "groupedManifest": (
+                pipeline_result.grouped_manifest_path
+            ),
             "totalPages": len(reader.pages),
             "documentsDetected": detected_docs,
             "groupedDocuments": grouped_documents,
             "checklistStatus": checklist_status,
             "reviewRequiredPages": review_required_pages,
+            "reviewRequiredGroups": review_required_groups,
+            "logicalGroupingIntegrityValid": (
+                pipeline_result
+                .logical_grouping_integrity_valid
+            ),
+            "physicalGroupingIntegrityValid": (
+                pipeline_result
+                .physical_grouping_integrity_valid
+            ),
             "summary": {
                 "totalPages": len(reader.pages),
                 "identifiedPages": identified_pages,
-                "groupedDocumentCount": len(grouped_documents),
-                "reviewRequiredPages": len(review_required_pages),
+                "groupedDocumentCount": len(
+                    grouped_documents
+                ),
+                "reviewRequiredPages": len(
+                    review_required_pages
+                ),
+                "reviewRequiredGroups": len(
+                    review_required_groups
+                ),
                 "status": (
                     "REVIEW_REQUIRED"
-                    if review_required_pages
+                    if (
+                        review_required_pages
+                        or review_required_groups
+                    )
                     else "PROCESSED"
                 ),
             },
@@ -550,38 +744,28 @@ async def classify_and_segregate_claim_packet(
         segregated_manifest_path = (
             segregated_dir / "manifest.json"
         )
-
         claim_pack_manifest_path = (
             claim_pack_dir / "manifest.json"
         )
 
-        with open(
+        for manifest_path in (
             segregated_manifest_path,
-            "w",
-            encoding="utf-8",
-        ) as manifest_file:
-            json.dump(
-                manifest,
-                manifest_file,
-                indent=2,
-                ensure_ascii=False,
-            )
-
-        with open(
             claim_pack_manifest_path,
-            "w",
-            encoding="utf-8",
-        ) as manifest_file:
-            json.dump(
-                manifest,
-                manifest_file,
-                indent=2,
-                ensure_ascii=False,
-            )
+        ):
+            with manifest_path.open(
+                "w",
+                encoding="utf-8",
+            ) as manifest_file:
+                json.dump(
+                    manifest,
+                    manifest_file,
+                    indent=2,
+                    ensure_ascii=False,
+                )
 
         return {
             "success": True,
-            "source": "GENERIC_VISION_PACKET_PROCESSING",
+            "source": "SWEET_RESOLVER_PACKET_PROCESSING",
             "result": manifest,
         }
 
@@ -593,12 +777,11 @@ async def classify_and_segregate_claim_packet(
 
         return {
             "success": False,
-            "source": "GENERIC_VISION_PACKET_PROCESSING",
+            "source": "SWEET_RESOLVER_PACKET_PROCESSING",
             "error": str(exc),
         }
 
     finally:
-        # Always delete temporary page images.
         for image_path in temp_image_paths:
             try:
                 if os.path.exists(image_path):
@@ -606,71 +789,120 @@ async def classify_and_segregate_claim_packet(
             except Exception:
                 pass
 
-
 def classify_page_with_vision(image_path: str):
     base64_image = image_to_base64(image_path)
 
-    prompt = """
-You are classifying one page from a real Indian hospital insurance claim packet.
+    allowed_types = ",\n".join(
+        allowed_document_types()
+    )
 
-Return STRICT JSON only.
+    prompt = f"""
+You are extracting structured evidence from ONE page of a real Indian
+hospital insurance claim packet.
 
-Fields:
-{
+The page may be scanned, handwritten, stamped, rotated, low quality, or
+may contain only one section of a larger multi-page document.
+
+Return STRICT JSON only. Do not use markdown.
+
+Required JSON schema:
+{{
   "documentType": "",
+  "candidateDocumentTypes": [
+    {{"type": "", "confidence": 0.0}}
+  ],
+  "documentFamily": "",
+  "visibleTitle": "",
+  "sectionTitle": "",
+  "pageRole": "START|CONTINUATION|END|STANDALONE|UNKNOWN",
+  "printedPageNumber": null,
+  "printedTotalPages": null,
+  "explicitDocumentStart": false,
+  "explicitDocumentEnd": false,
+  "standaloneDocument": false,
+  "templateHint": "",
+  "headerSignature": "",
+  "footerSignature": "",
+  "continuationIndicators": [],
   "patientName": "",
   "claimNumber": "",
   "mrn": "",
   "ipNumber": "",
   "payerName": "",
   "billNumber": "",
+  "authorizationNumber": "",
+  "policyNumber": "",
+  "memberId": "",
   "documentDate": "",
   "totalAmount": "",
   "confidence": 0.0,
   "reason": ""
-}
+}}
 
 Allowed documentType values:
-COVERING_LETTER,
-CLAIM_FORM,
-GIPSA_DECLARATION,
-APPROVAL_LETTER,
-PREAUTHORIZATION_FORM,
-KYC_DOCUMENT,
-PATIENT_ID_PROOF,
-PATIENT_PHOTO,
-FINAL_HOSPITAL_BILL,
-DETAILED_BILL_BREAKUP,
-BILL_CONTINUATION,
-DISCHARGE_SUMMARY,
-PAYMENT_RECEIPT,
-REFUND_RECEIPT,
-CASE_PAPER,
-OT_NOTES,
-INVESTIGATION_REPORT,
-LAB_REPORT,
-RADIOLOGY_REPORT,
-PHARMACY_BILL,
-PHARMACY_DETAILS,
-IMPLANT_STICKER_INVOICE,
-CONSENT_FORM,
-PRESCRIPTION,
-NON_MEDICAL_DETAILS,
-CHECKLIST,
-UNKNOWN
+{allowed_types}
 
-Rules:
-- This may be scanned, handwritten, stamped, rotated, or low quality.
-- If it is a continuation page of a hospital bill, use BILL_CONTINUATION.
-- If unsure, return UNKNOWN with low confidence.
-- Do not invent missing values.
-- Classify using the visible document title, heading, table structure, and form labels.
-- Do not classify only because another document name appears somewhere in body text.
-- A dispatch checklist must be classified as CHECKLIST.
-- A final hospital bill must visibly contain billing totals, invoice details, patient billing details, or line-item charges.
-- A discharge summary must visibly contain diagnosis, hospital course, treatment, procedure, discharge condition, or follow-up advice.
-- If the visible title and page content conflict, return UNKNOWN.
-- If confidence is below 0.70, return UNKNOWN.
+Critical interpretation rules:
+
+1. Classify the physical DOCUMENT PAGE, not every section mentioned in
+   its body.
+
+2. A payment/refund section inside a multi-page hospital bill remains
+   BILL_CONTINUATION when page numbering, bill number, IP number,
+   patient name, header, or template show that it belongs to the bill.
+
+3. Deduction tables, package break-ups, payable amounts, medicine
+   charges, investigation charges, authorization summaries, terms and
+   conditions, or "documents to be provided" sections inside an
+   authorization letter are AUTHORIZATION_CONTINUATION, not hospital
+   bills or covering letters.
+
+4. Sections such as:
+   - TO BE FILLED BY TREATING DOCTOR/HOSPITAL
+   - DETAILS OF PATIENT ADMITTED
+   - DECLARATION BY PATIENT / REPRESENTATIVE
+   - HOSPITAL DECLARATION
+   - TERMS AND CONDITIONS
+   are usually FORM_CONTINUATION when they are pages of an existing
+   preauthorization/cashless form. Do not label them standalone
+   TREATMENT_ORDER or GIPSA_DECLARATION unless the page is clearly a
+   separate independent document.
+
+5. A visible "Page X of Y" is strong evidence. Extract both numbers.
+   Page 2 of 7 is normally CONTINUATION, not STANDALONE.
+
+6. Use START only when the page visibly begins a document: explicit
+   title/letter opening, printed page 1, new reference number, new form
+   front page, or clearly independent card/receipt/report.
+
+7. Use STANDALONE for an independent one-page receipt, ID card,
+   covering letter, justification letter, checklist, or declaration.
+
+8. Use END when the page visibly closes the document, is printed as the
+   last page, contains final signatures/end-of-report, or completes a
+   numbered sequence.
+
+9. Do not invent missing identifiers. Use empty strings or null.
+
+10. candidateDocumentTypes should contain up to three plausible types,
+    ordered strongest first. documentType is the strongest candidate.
+
+11. Confidence measures evidence strength. Do not erase a recognizable
+    candidate merely because confidence is below 0.70.
+
+12. visibleTitle must be the actual main visible heading. sectionTitle
+    is a subsection heading and must not automatically determine the
+    document type.
+
+13. headerSignature/footerSignature should be short normalized visible
+    identifiers useful for comparing adjacent pages, for example:
+    patient|IP|bill number or insurer|authorization reference.
+
+14. continuationIndicators should list concise visible evidence such
+    as "page 3 of 7", "same bill number", "continued deduction table",
+    "same authorization template", or "end of report".
+
+Return exactly one JSON object.
 """
 
     response = client.chat.completions.create(
@@ -678,7 +910,11 @@ Rules:
         messages=[
             {
                 "role": "system",
-                "content": "You classify scanned healthcare claim packet pages.",
+                "content": (
+                    "You extract structured evidence from scanned "
+                    "healthcare claim packet pages. You distinguish "
+                    "whole-document identity from subsection content."
+                ),
             },
             {
                 "role": "user",
@@ -687,7 +923,10 @@ Rules:
                     {
                         "type": "image_url",
                         "image_url": {
-                            "url": f"data:image/png;base64,{base64_image}"
+                            "url": (
+                                "data:image/png;base64,"
+                                f"{base64_image}"
+                            )
                         },
                     },
                 ],
@@ -697,14 +936,62 @@ Rules:
     )
 
     try:
-        return clean_json_response(response.choices[0].message.content)
-    except Exception:
+        result = clean_json_response(
+            response.choices[0].message.content
+        )
+
+        if not isinstance(result, dict):
+            raise ValueError(
+                "Vision response is not a JSON object"
+            )
+
+        result["documentType"] = normalize_document_type(
+            result.get("documentType")
+        )
+        result["documentFamily"] = document_family(
+            result["documentType"]
+        )
+        result["pageRole"] = normalize_page_role(
+            result.get("pageRole")
+        )
+
+        if not isinstance(
+            result.get("continuationIndicators"),
+            list,
+        ):
+            result["continuationIndicators"] = []
+
+        if not isinstance(
+            result.get("candidateDocumentTypes"),
+            list,
+        ):
+            result["candidateDocumentTypes"] = []
+
+        return result
+
+    except Exception as exc:
         return {
             "documentType": "UNKNOWN",
+            "candidateDocumentTypes": [],
+            "documentFamily": "UNKNOWN",
+            "visibleTitle": "",
+            "sectionTitle": "",
+            "pageRole": "UNKNOWN",
+            "printedPageNumber": None,
+            "printedTotalPages": None,
+            "explicitDocumentStart": False,
+            "explicitDocumentEnd": False,
+            "standaloneDocument": False,
+            "templateHint": "",
+            "headerSignature": "",
+            "footerSignature": "",
+            "continuationIndicators": [],
             "confidence": 0.2,
-            "reason": "Vision response could not be parsed",
+            "reason": (
+                "Vision response could not be parsed: "
+                f"{exc}"
+            ),
         }
-
 
 def write_single_page_pdf(reader: PdfReader, page_index: int, output_path: Path):
     writer = PdfWriter()
@@ -765,7 +1052,12 @@ def build_dispatch_checklist_status(
         matched_group_files = [
             doc.get("outputFile")
             for doc in grouped_docs
-            if doc.get("groupCode") in rule.get("groupCodes", [])
+            if (
+                doc.get("groupCode")
+                in rule.get("groupCodes", [])
+                or doc.get("documentType")
+                in rule["documentTypes"]
+            )
         ]
 
         matched_page_files = [

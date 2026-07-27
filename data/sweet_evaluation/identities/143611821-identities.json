@@ -1,0 +1,1268 @@
+{
+  "packetId": "143611821",
+  "totalPages": 27,
+  "identityChains": [
+    "143611821-identity-001",
+    "143611821-identity-002",
+    "143611821-identity-003",
+    "143611821-identity-004",
+    "143611821-identity-005",
+    "143611821-identity-006",
+    "143611821-identity-007",
+    "143611821-identity-008",
+    "143611821-identity-009",
+    "143611821-identity-010",
+    "143611821-identity-011",
+    "143611821-identity-012",
+    "143611821-identity-013",
+    "143611821-identity-014"
+  ],
+  "uncertainPages": [
+    6,
+    7
+  ],
+  "pages": [
+    {
+      "pageNumber": 1,
+      "previousPageNumber": null,
+      "relation": "FIRST_PAGE",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 100,
+      "netScore": 100,
+      "confidence": 1.0,
+      "identityChainId": "143611821-identity-001",
+      "fingerprint": {
+        "page_number": 1,
+        "document_type": "COVERING_LETTER",
+        "document_family": "COVERING_LETTER",
+        "title_type": null,
+        "header_signature": "47c35037bfefe4f1",
+        "template_signature": "47c35037bfefe4f1",
+        "patient_name": "vijayamaniuhm",
+        "claim_number": "143611821",
+        "authorization_number": null,
+        "bill_number": "icr23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "14072026",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "5c32c4688c2988e4"
+      },
+      "signals": [
+        {
+          "code": "FIRST_PACKET_PAGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 100,
+          "reason": "First packet page begins the first identity chain."
+        }
+      ]
+    },
+    {
+      "pageNumber": 2,
+      "previousPageNumber": 1,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 30,
+      "newDocumentScore": 120,
+      "netScore": 90,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-002",
+      "fingerprint": {
+        "page_number": 2,
+        "document_type": "CHECKLIST",
+        "document_family": "CHECKLIST",
+        "title_type": null,
+        "header_signature": "c9fb1a1bf256424f",
+        "template_signature": "c9fb1a1bf256424f",
+        "patient_name": "vijayamani",
+        "claim_number": "143611821",
+        "authorization_number": null,
+        "bill_number": "1cq23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "130726",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "da51ddb752a023e7"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "SAME_CLAIM_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 30,
+          "reason": "claim_number matches the previous page."
+        },
+        {
+          "code": "BILL_NUMBER_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 50,
+          "reason": "bill_number changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "LIKELY_STANDALONE_TYPE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 15,
+          "reason": "Current type is usually a standalone document."
+        }
+      ]
+    },
+    {
+      "pageNumber": 3,
+      "previousPageNumber": 2,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 60,
+      "newDocumentScore": 100,
+      "netScore": 40,
+      "confidence": 0.95,
+      "identityChainId": "143611821-identity-003",
+      "fingerprint": {
+        "page_number": 3,
+        "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+        "document_family": "AUTHORIZATION",
+        "title_type": "CASHLESS_AUTHORIZATION_LETTER",
+        "header_signature": "60e053d969bea1ed",
+        "template_signature": "107a22a33a33aebc",
+        "patient_name": "vijayamanihm",
+        "claim_number": "143611821",
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul2026",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "359bb22a01f4602d"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "SAME_CLAIM_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 30,
+          "reason": "claim_number matches the previous page."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "NEW_HEADER_TITLE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 45,
+          "reason": "A different explicit title appears in the current page header."
+        },
+        {
+          "code": "CONTINUATION_LANGUAGE",
+          "direction": "SAME_DOCUMENT",
+          "weight": 30,
+          "reason": "Current page contains continuation or carried-forward language."
+        }
+      ]
+    },
+    {
+      "pageNumber": 4,
+      "previousPageNumber": 3,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 55,
+      "newDocumentScore": 0,
+      "netScore": -55,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-003",
+      "fingerprint": {
+        "page_number": 4,
+        "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+        "document_family": "AUTHORIZATION",
+        "title_type": null,
+        "header_signature": "2b8e62fb6908f93e",
+        "template_signature": "2b8e62fb6908f93e",
+        "patient_name": null,
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "d7c12f21ad0ccd13"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "CONTINUATION_LANGUAGE",
+          "direction": "SAME_DOCUMENT",
+          "weight": 30,
+          "reason": "Current page contains continuation or carried-forward language."
+        }
+      ]
+    },
+    {
+      "pageNumber": 5,
+      "previousPageNumber": 4,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 25,
+      "newDocumentScore": 0,
+      "netScore": -25,
+      "confidence": 0.85625,
+      "identityChainId": "143611821-identity-003",
+      "fingerprint": {
+        "page_number": 5,
+        "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+        "document_family": "AUTHORIZATION",
+        "title_type": "CASHLESS_AUTHORIZATION_LETTER",
+        "header_signature": "d23cd2cf37a89ee2",
+        "template_signature": "baf43c17c3555438",
+        "patient_name": "vijayamanihm",
+        "claim_number": "143611821",
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "12jul2026",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "cbe71c55ab5316bd"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        }
+      ]
+    },
+    {
+      "pageNumber": 6,
+      "previousPageNumber": 5,
+      "relation": "UNCERTAIN",
+      "sameDocumentScore": 55,
+      "newDocumentScore": 45,
+      "netScore": -10,
+      "confidence": 0.55,
+      "identityChainId": "143611821-identity-003",
+      "fingerprint": {
+        "page_number": 6,
+        "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+        "document_family": "AUTHORIZATION",
+        "title_type": "FINAL_HOSPITAL_BILL",
+        "header_signature": "e38aaf45f9354313",
+        "template_signature": "1d178b796eb87648",
+        "patient_name": null,
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "12jul2026",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "c090599a22a281ef"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "NEW_HEADER_TITLE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 45,
+          "reason": "A different explicit title appears in the current page header."
+        },
+        {
+          "code": "CONTINUATION_LANGUAGE",
+          "direction": "SAME_DOCUMENT",
+          "weight": 30,
+          "reason": "Current page contains continuation or carried-forward language."
+        }
+      ]
+    },
+    {
+      "pageNumber": 7,
+      "previousPageNumber": 6,
+      "relation": "UNCERTAIN",
+      "sameDocumentScore": 25,
+      "newDocumentScore": 45,
+      "netScore": 20,
+      "confidence": 0.6,
+      "identityChainId": "143611821-identity-003",
+      "fingerprint": {
+        "page_number": 7,
+        "document_type": "CASHLESS_AUTHORIZATION_LETTER",
+        "document_family": "AUTHORIZATION",
+        "title_type": "PREAUTHORIZATION_FORM",
+        "header_signature": "093e67649f53b933",
+        "template_signature": "2e3192c134673782",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13092022",
+        "printed_page_number": 1,
+        "printed_total_pages": 2,
+        "identity_key": "9ad8606639a5acfc"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "NEW_HEADER_TITLE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 45,
+          "reason": "A different explicit title appears in the current page header."
+        }
+      ]
+    },
+    {
+      "pageNumber": 8,
+      "previousPageNumber": 7,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 100,
+      "netScore": 100,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-004",
+      "fingerprint": {
+        "page_number": 8,
+        "document_type": "PREAUTHORIZATION_FORM",
+        "document_family": "PREAUTHORIZATION",
+        "title_type": "PREAUTHORIZATION_FORM",
+        "header_signature": "a411a21d863acaf2",
+        "template_signature": "a411a21d863acaf2",
+        "patient_name": "vijayamani",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": 1,
+        "printed_total_pages": 2,
+        "identity_key": "0b9265a06061c6eb"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        },
+        {
+          "code": "PRINTED_PAGE_NUMBER_RESTART",
+          "direction": "NEW_DOCUMENT",
+          "weight": 45,
+          "reason": "Printed page numbering restarts at page 1."
+        }
+      ]
+    },
+    {
+      "pageNumber": 9,
+      "previousPageNumber": 8,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 15,
+      "newDocumentScore": 50,
+      "netScore": 35,
+      "confidence": 0.91875,
+      "identityChainId": "143611821-identity-005",
+      "fingerprint": {
+        "page_number": 9,
+        "document_type": "GIPSA_DECLARATION",
+        "document_family": "DECLARATION",
+        "title_type": null,
+        "header_signature": "f3c3e06b590cd7b3",
+        "template_signature": "f3c3e06b590cd7b3",
+        "patient_name": "vijayamani",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "130726",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "ed103caf983c6a63"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        },
+        {
+          "code": "LIKELY_STANDALONE_TYPE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 15,
+          "reason": "Current type is usually a standalone document."
+        }
+      ]
+    },
+    {
+      "pageNumber": 10,
+      "previousPageNumber": 9,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 55,
+      "netScore": 55,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-006",
+      "fingerprint": {
+        "page_number": 10,
+        "document_type": "PATIENT_ID_PROOF",
+        "document_family": "PATIENT_ID",
+        "title_type": null,
+        "header_signature": "4948a1a6bff736c3",
+        "template_signature": "4948a1a6bff736c3",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "e33eb9fe9a954a88"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 11,
+      "previousPageNumber": 10,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 40,
+      "newDocumentScore": 0,
+      "netScore": -40,
+      "confidence": 0.95,
+      "identityChainId": "143611821-identity-006",
+      "fingerprint": {
+        "page_number": 11,
+        "document_type": "PATIENT_ID_PROOF",
+        "document_family": "PATIENT_ID",
+        "title_type": null,
+        "header_signature": "c0877d564e3f1a88",
+        "template_signature": "c0877d564e3f1a88",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "baff32e8ad6cb076"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        }
+      ]
+    },
+    {
+      "pageNumber": 12,
+      "previousPageNumber": 11,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 55,
+      "netScore": 55,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-007",
+      "fingerprint": {
+        "page_number": 12,
+        "document_type": "PROPOSER_ID_PROOF",
+        "document_family": "PROPOSER_ID",
+        "title_type": null,
+        "header_signature": "f085fe274878cb94",
+        "template_signature": "f085fe274878cb94",
+        "patient_name": "bharathb",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "f50db782e12055fe"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 13,
+      "previousPageNumber": 12,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 55,
+      "netScore": 55,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-008",
+      "fingerprint": {
+        "page_number": 13,
+        "document_type": "PATIENT_ID_PROOF",
+        "document_family": "PATIENT_ID",
+        "title_type": null,
+        "header_signature": "67b2abcfad1804f8",
+        "template_signature": "67b2abcfad1804f8",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "0e89b4ca94e24348"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 14,
+      "previousPageNumber": 13,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 55,
+      "netScore": 55,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-009",
+      "fingerprint": {
+        "page_number": 14,
+        "document_type": "PROPOSER_ID_PROOF",
+        "document_family": "PROPOSER_ID",
+        "title_type": null,
+        "header_signature": "361222375b4f98f0",
+        "template_signature": "361222375b4f98f0",
+        "patient_name": "byregowdab",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "27072023",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "ca961e374d3b3929"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 15,
+      "previousPageNumber": 14,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 55,
+      "netScore": 55,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-010",
+      "fingerprint": {
+        "page_number": 15,
+        "document_type": "FINAL_HOSPITAL_BILL",
+        "document_family": "BILL",
+        "title_type": null,
+        "header_signature": "b61eb7102e042403",
+        "template_signature": "4f6341cb4ecb060c",
+        "patient_name": "mrsvijayamanihm",
+        "claim_number": "143611821",
+        "authorization_number": null,
+        "bill_number": "kabhdicr23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul2026",
+        "printed_page_number": 1,
+        "printed_total_pages": 6,
+        "identity_key": "d308ac199eef5864"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "PATIENT_NAME_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 20,
+          "reason": "patient_name changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 16,
+      "previousPageNumber": 15,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 145,
+      "newDocumentScore": 0,
+      "netScore": -145,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-010",
+      "fingerprint": {
+        "page_number": 16,
+        "document_type": "BILL_CONTINUATION",
+        "document_family": "BILL",
+        "title_type": null,
+        "header_signature": "a5ee4d6598529127",
+        "template_signature": "83e54a03babb24af",
+        "patient_name": "mrsvijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": "kabhdicr23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul26",
+        "printed_page_number": 2,
+        "printed_total_pages": 6,
+        "identity_key": "c041872d7cc9aecc"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_BILL_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 40,
+          "reason": "bill_number matches the previous page."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        },
+        {
+          "code": "SEQUENTIAL_PRINTED_PAGE_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 65,
+          "reason": "Printed page numbering continues sequentially."
+        }
+      ]
+    },
+    {
+      "pageNumber": 17,
+      "previousPageNumber": 16,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 145,
+      "newDocumentScore": 0,
+      "netScore": -145,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-010",
+      "fingerprint": {
+        "page_number": 17,
+        "document_type": "BILL_CONTINUATION",
+        "document_family": "BILL",
+        "title_type": null,
+        "header_signature": "353c0e9136b3b27d",
+        "template_signature": "155c83d820b14960",
+        "patient_name": "mrsvijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": "kabhdicr23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul26",
+        "printed_page_number": 3,
+        "printed_total_pages": 6,
+        "identity_key": "12853177f15678f4"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_BILL_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 40,
+          "reason": "bill_number matches the previous page."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        },
+        {
+          "code": "SEQUENTIAL_PRINTED_PAGE_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 65,
+          "reason": "Printed page numbering continues sequentially."
+        }
+      ]
+    },
+    {
+      "pageNumber": 18,
+      "previousPageNumber": 17,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 145,
+      "newDocumentScore": 0,
+      "netScore": -145,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-010",
+      "fingerprint": {
+        "page_number": 18,
+        "document_type": "BILL_CONTINUATION",
+        "document_family": "BILL",
+        "title_type": null,
+        "header_signature": "ead5a14bce7f6747",
+        "template_signature": "b468c6ccc799dfc2",
+        "patient_name": "mrsvijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": "kabhdicr23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul26",
+        "printed_page_number": 4,
+        "printed_total_pages": 6,
+        "identity_key": "ebd486a67eb3f2d3"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_BILL_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 40,
+          "reason": "bill_number matches the previous page."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        },
+        {
+          "code": "SEQUENTIAL_PRINTED_PAGE_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 65,
+          "reason": "Printed page numbering continues sequentially."
+        }
+      ]
+    },
+    {
+      "pageNumber": 19,
+      "previousPageNumber": 18,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 145,
+      "newDocumentScore": 0,
+      "netScore": -145,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-010",
+      "fingerprint": {
+        "page_number": 19,
+        "document_type": "BILL_CONTINUATION",
+        "document_family": "BILL",
+        "title_type": null,
+        "header_signature": "57eb9e4a60a85c58",
+        "template_signature": "f8b26518c7b3219c",
+        "patient_name": "mrsvijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": "kabhdicr23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul2026",
+        "printed_page_number": 5,
+        "printed_total_pages": 6,
+        "identity_key": "29aaee44210d6724"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_BILL_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 40,
+          "reason": "bill_number matches the previous page."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        },
+        {
+          "code": "SEQUENTIAL_PRINTED_PAGE_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 65,
+          "reason": "Printed page numbering continues sequentially."
+        }
+      ]
+    },
+    {
+      "pageNumber": 20,
+      "previousPageNumber": 19,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 80,
+      "newDocumentScore": 0,
+      "netScore": -80,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-010",
+      "fingerprint": {
+        "page_number": 20,
+        "document_type": "FINAL_HOSPITAL_BILL",
+        "document_family": "BILL",
+        "title_type": null,
+        "header_signature": "d11292a3955c8f2d",
+        "template_signature": "d11292a3955c8f2d",
+        "patient_name": "mrsvijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": "kabhdicr23139",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul26",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "c0140aa92a13d321"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_BILL_NUMBER",
+          "direction": "SAME_DOCUMENT",
+          "weight": 40,
+          "reason": "bill_number matches the previous page."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        }
+      ]
+    },
+    {
+      "pageNumber": 21,
+      "previousPageNumber": 20,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 15,
+      "newDocumentScore": 145,
+      "netScore": 130,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-011",
+      "fingerprint": {
+        "page_number": 21,
+        "document_type": "PAYMENT_RECEIPT",
+        "document_family": "PAYMENT",
+        "title_type": "PAYMENT_RECEIPT",
+        "header_signature": "c7ac62d612e1c51d",
+        "template_signature": "63c2e01f07c2a74c",
+        "patient_name": "mrsvijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": "kabhddp64042",
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13jul2026",
+        "printed_page_number": 1,
+        "printed_total_pages": 1,
+        "identity_key": "fe0474040f2810fa"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "BILL_NUMBER_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 50,
+          "reason": "bill_number changed between adjacent pages."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        },
+        {
+          "code": "NEW_HEADER_TITLE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 45,
+          "reason": "A different explicit title appears in the current page header."
+        },
+        {
+          "code": "LIKELY_STANDALONE_TYPE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 15,
+          "reason": "Current type is usually a standalone document."
+        }
+      ]
+    },
+    {
+      "pageNumber": 22,
+      "previousPageNumber": 21,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 35,
+      "netScore": 35,
+      "confidence": 0.91875,
+      "identityChainId": "143611821-identity-012",
+      "fingerprint": {
+        "page_number": 22,
+        "document_type": "TREATMENT_ORDER",
+        "document_family": "TREATMENT_ORDER",
+        "title_type": null,
+        "header_signature": "0e6f59b98f32ab98",
+        "template_signature": "0e6f59b98f32ab98",
+        "patient_name": null,
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "130726",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "a8d55733b9c8add7"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 23,
+      "previousPageNumber": 22,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 35,
+      "netScore": 35,
+      "confidence": 0.91875,
+      "identityChainId": "143611821-identity-013",
+      "fingerprint": {
+        "page_number": 23,
+        "document_type": "UNKNOWN",
+        "document_family": "UNKNOWN",
+        "title_type": null,
+        "header_signature": "9c8f0e07464730ac",
+        "template_signature": "9c8f0e07464730ac",
+        "patient_name": null,
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "c6e2030d6e988168"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        }
+      ]
+    },
+    {
+      "pageNumber": 24,
+      "previousPageNumber": 23,
+      "relation": "NEW_DOCUMENT",
+      "sameDocumentScore": 0,
+      "newDocumentScore": 80,
+      "netScore": 80,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-014",
+      "fingerprint": {
+        "page_number": 24,
+        "document_type": "DISCHARGE_SUMMARY",
+        "document_family": "DISCHARGE_SUMMARY",
+        "title_type": "DISCHARGE_SUMMARY",
+        "header_signature": "7c6a8b3ed7c9f201",
+        "template_signature": "ff1f9fc1844b6bf9",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13072026",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "566971fde47d8108"
+      },
+      "signals": [
+        {
+          "code": "DOCUMENT_FAMILY_CHANGE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 35,
+          "reason": "Normalized document family changed between adjacent pages."
+        },
+        {
+          "code": "NEW_HEADER_TITLE",
+          "direction": "NEW_DOCUMENT",
+          "weight": 45,
+          "reason": "A different explicit title appears in the current page header."
+        }
+      ]
+    },
+    {
+      "pageNumber": 25,
+      "previousPageNumber": 24,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 60,
+      "newDocumentScore": 0,
+      "netScore": -60,
+      "confidence": 0.99,
+      "identityChainId": "143611821-identity-014",
+      "fingerprint": {
+        "page_number": 25,
+        "document_type": "DISCHARGE_SUMMARY",
+        "document_family": "DISCHARGE_SUMMARY",
+        "title_type": "DISCHARGE_SUMMARY",
+        "header_signature": "00a294b162ab7b92",
+        "template_signature": "96bfc80f09a9fc61",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": null,
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "b4a09342c1d733e4"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        },
+        {
+          "code": "REPEATED_TITLE_WITHIN_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 20,
+          "reason": "Repeated title is treated as running-header evidence."
+        }
+      ]
+    },
+    {
+      "pageNumber": 26,
+      "previousPageNumber": 25,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 40,
+      "newDocumentScore": 0,
+      "netScore": -40,
+      "confidence": 0.95,
+      "identityChainId": "143611821-identity-014",
+      "fingerprint": {
+        "page_number": 26,
+        "document_type": "DISCHARGE_SUMMARY",
+        "document_family": "DISCHARGE_SUMMARY",
+        "title_type": null,
+        "header_signature": "068f8acf97c46e1a",
+        "template_signature": "df6a718691f21b40",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13072026",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "355574208acbdae3"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        }
+      ]
+    },
+    {
+      "pageNumber": 27,
+      "previousPageNumber": 26,
+      "relation": "SAME_DOCUMENT",
+      "sameDocumentScore": 40,
+      "newDocumentScore": 0,
+      "netScore": -40,
+      "confidence": 0.95,
+      "identityChainId": "143611821-identity-014",
+      "fingerprint": {
+        "page_number": 27,
+        "document_type": "DISCHARGE_SUMMARY",
+        "document_family": "DISCHARGE_SUMMARY",
+        "title_type": "DISCHARGE_SUMMARY",
+        "header_signature": "7b72f149e07dd262",
+        "template_signature": "51da2d8a081c0050",
+        "patient_name": "vijayamanihm",
+        "claim_number": null,
+        "authorization_number": null,
+        "bill_number": null,
+        "policy_number": null,
+        "member_id": null,
+        "document_date": "13072026",
+        "printed_page_number": null,
+        "printed_total_pages": null,
+        "identity_key": "bda9c1872cff731c"
+      },
+      "signals": [
+        {
+          "code": "SAME_DOCUMENT_FAMILY",
+          "direction": "SAME_DOCUMENT",
+          "weight": 25,
+          "reason": "Adjacent pages belong to the same normalized document family."
+        },
+        {
+          "code": "SAME_PATIENT_NAME",
+          "direction": "SAME_DOCUMENT",
+          "weight": 15,
+          "reason": "patient_name matches the previous page."
+        }
+      ]
+    }
+  ]
+}

@@ -19,7 +19,10 @@ from app.schemas.claim_packet_checklist_review_schema import (
 
 from app.document_processing.packet_service import (
     classify_and_segregate_claim_packet,
+    get_claim_packet_checklist_item_detail,
+    get_claim_packet_checklist_review,
     get_claim_packet_review,
+    get_claim_packet_reviewed_list,
     resolve_claim_packet_group_preview,
     resolve_claim_packet_page_preview,
     resolve_reviewed_group_preview,
@@ -71,6 +74,31 @@ def review_claim_packet(
     return get_claim_packet_review(
         claim_id=claim_id,
     )
+
+
+# Reviewed list workspace
+@router.get(
+    "/{claim_id}/reviewedlist",
+    summary="Get reviewed claim packet list",
+    description="Reads and lists reviewed files and manifest under the claim ID /reviewed folder",
+)
+@router.get(
+    "/{claim_id}/reviewed-list",
+    include_in_schema=False,
+)
+def review_claim_packet_list(
+    claim_id: str,
+):
+    try:
+        return get_claim_packet_reviewed_list(
+            claim_id=claim_id,
+        )
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+
 
 
 # Individual page preview
@@ -174,6 +202,62 @@ def validate_packet(claim_id: str):
     return validate_against_dispatch_checklist(
         claim_id=claim_id,
     )
+
+
+@router.get(
+    "/{claim_id}/checklist-review",
+    summary="Get Checklist Review Document",
+    description="Returns the checklist review JSON document containing items, decisions, and statuses",
+)
+@router.get(
+    "/{claim_id}/checklist-items",
+    summary="Get Checklist Items Review Document",
+    description="Alias to fetch the checklist_review.json document",
+)
+def get_checklist_review_document(claim_id: str):
+    try:
+        return get_claim_packet_checklist_review(claim_id=claim_id)
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc),
+        ) from exc
+
+
+@router.get(
+    "/{claim_id}/checklist-items/{checklist_item_id}",
+    summary="Get Specific Checklist Item Details",
+    description="Returns item detail containing checklistItemId, itemNo, systemStatus, etc., for the given item ID or item number",
+)
+@router.get(
+    "/{claim_id}/checklist-review/items/{checklist_item_id}",
+    summary="Get Specific Checklist Item Details (Alias)",
+    description="Alias to fetch a single checklist item detail from checklist_review.json",
+)
+def get_checklist_item_detail(
+    claim_id: str,
+    checklist_item_id: str,
+):
+    try:
+        return get_claim_packet_checklist_item_detail(
+            claim_id=claim_id,
+            checklist_item_id=checklist_item_id,
+        )
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc),
+        ) from exc
 
 
 @router.patch(

@@ -2326,6 +2326,102 @@ def get_or_create_checklist_review(
     return review_path, review_document
 
 
+def get_claim_packet_checklist_review(
+    claim_id: str,
+) -> dict[str, Any]:
+    """
+    Retrieve the checklist review JSON document for a given claim ID.
+    Reads from checklist_review.json or generates initial review state.
+    """
+    clean_claim_id = str(
+        claim_id or ""
+    ).strip()
+
+    if not clean_claim_id:
+        raise ValueError(
+            "claim_id is required"
+        )
+
+    review_path, review_document = (
+        get_or_create_checklist_review(
+            clean_claim_id
+        )
+    )
+
+    return {
+        "success": True,
+        "source": "CLAIM_PACKET_CHECKLIST_REVIEW",
+        "result": review_document,
+    }
+
+
+def get_claim_packet_checklist_item_detail(
+    claim_id: str,
+    checklist_item_id: str,
+) -> dict[str, Any]:
+    """
+    Retrieve specific checklist item details (including checklistItemId) for a claim ID.
+    """
+    clean_claim_id = str(
+        claim_id or ""
+    ).strip()
+
+    clean_item_id = str(
+        checklist_item_id or ""
+    ).strip().upper()
+
+    if not clean_claim_id:
+        raise ValueError(
+            "claim_id is required"
+        )
+
+    if not clean_item_id:
+        raise ValueError(
+            "checklist_item_id is required"
+        )
+
+    review_path, review_document = (
+        get_or_create_checklist_review(
+            clean_claim_id
+        )
+    )
+
+    items = review_document.get("items", [])
+    if not isinstance(items, list):
+        items = []
+
+    target_chk_id = (
+        _checklist_item_id(clean_item_id)
+        if clean_item_id.isdigit()
+        else clean_item_id
+    )
+
+    selected_item = next(
+        (
+            item
+            for item in items
+            if str(
+                item.get("checklistItemId") or ""
+            ).upper() in (clean_item_id, target_chk_id)
+            or str(
+                item.get("itemNo") or ""
+            ).upper() == clean_item_id
+        ),
+        None,
+    )
+
+    if selected_item is None:
+        raise FileNotFoundError(
+            f"Checklist item not found: {clean_item_id}"
+        )
+
+    return {
+        "success": True,
+        "source": "CLAIM_PACKET_CHECKLIST_ITEM_DETAIL",
+        "result": selected_item,
+    }
+
+
 def _safe_int(value: Any) -> int | None:
     """
     Convert manifest values to int without raising errors.
@@ -2385,12 +2481,18 @@ def update_claim_packet_checklist_item(
             [],
         )
 
+        target_chk_id = _checklist_item_id(clean_item_id) if clean_item_id.isdigit() else clean_item_id
+
         selected_item = next(
             (
                 item
                 for item in items
                 if str(
                     item.get("checklistItemId")
+                    or ""
+                ).upper() in (clean_item_id, target_chk_id)
+                or str(
+                    item.get("itemNo")
                     or ""
                 ).upper() == clean_item_id
             ),
@@ -3700,6 +3802,149 @@ def resolve_reviewed_group_preview(
     )
 
 
+def resolve_reviewed_folder_and_manifest(
+    claim_id: str,
+) -> tuple[Path, Path | None, dict | None]:
+    clean_claim_id = str(claim_id or "").strip()
+
+    if not clean_claim_id:
+        raise ValueError("claim_id is required")
+
+    reviewed_root: Path | None = None
+
+    segregated_manifest_path = (
+        CLAIM_PACKET_SEGREGATED_DIR
+        / clean_claim_id
+        / "manifest.json"
+    )
+
+    if segregated_manifest_path.exists():
+        manifest = _read_json_file(segregated_manifest_path)
+        patient_folder = str(
+            manifest.get("patientFolder") or ""
+        ).strip()
+
+        if patient_folder:
+            candidate = (
+                CLAIM_PACKET_GROUPED_DIR
+                / patient_folder
+                / clean_claim_id
+                / "reviewed"
+            )
+            if candidate.exists():
+                reviewed_root = candidate
+
+    if not reviewed_root:
+        candidate = (
+            CLAIM_PACKET_SEGREGATED_DIR
+            / clean_claim_id
+            / "reviewed"
+        )
+        if candidate.exists():
+            reviewed_root = candidate
+
+    if not reviewed_root and CLAIM_PACKET_GROUPED_DIR.exists():
+        for subfolder in CLAIM_PACKET_GROUPED_DIR.iterdir():
+            if subfolder.is_dir():
+                candidate = subfolder / clean_claim_id / "reviewed"
+                if candidate.exists():
+                    reviewed_root = candidate
+                    break
+
+    if not reviewed_root or not reviewed_root.exists():
+        raise FileNotFoundError(
+            f"No reviewed folder found for claim_id={clean_claim_id}"
+        )
+
+    reviewed_manifest_path = (
+        reviewed_root / "reviewed_manifest.json"
+    )
+    reviewed_manifest = None
+
+    if reviewed_manifest_path.exists():
+        reviewed_manifest = _read_json_file(
+            reviewed_manifest_path
+        )
+
+    return (
+        reviewed_root,
+        reviewed_manifest_path if reviewed_manifest_path.exists() else None,
+        reviewed_manifest,
+    )
+
+
+def get_claim_packet_reviewed_list(
+    claim_id: str,
+) -> dict[str, Any]:
+    """
+    Build the Reviewed Document List response by reading files
+    and manifest under the claim ID /reviewed folder.
+    """
+    clean_claim_id = str(claim_id or "").strip()
+
+    if not clean_claim_id:
+        return {
+            "success": False,
+            "source": "CLAIM_PACKET_REVIEWED_LIST",
+            "error": "claim_id is required",
+        }
+
+    reviewed_root, reviewed_manifest_path, reviewed_manifest = (
+        resolve_reviewed_folder_and_manifest(clean_claim_id)
+    )
+
+    files_in_reviewed_folder: list[dict[str, Any]] = []
+    if reviewed_root and reviewed_root.exists():
+        for path in sorted(reviewed_root.iterdir()):
+            if path.is_file():
+                stat = path.stat()
+                files_in_reviewed_folder.append({
+                    "fileName": path.name,
+                    "filePath": str(path),
+                    "fileSize": stat.st_size,
+                    "modifiedAt": datetime.fromtimestamp(
+                        stat.st_mtime
+                    ).isoformat(),
+                })
+
+    manifest_data = reviewed_manifest or {}
+    grouped_documents = manifest_data.get("groupedDocuments", [])
+    if isinstance(grouped_documents, list):
+        for doc in grouped_documents:
+            if isinstance(doc, dict) and "groupId" in doc:
+                group_id = doc["groupId"]
+                doc["previewUrl"] = (
+                    f"/api/claim-packets/{clean_claim_id}"
+                    f"/reviewed-groups/{group_id}/preview"
+                )
+
+    return {
+        "success": True,
+        "source": "CLAIM_PACKET_REVIEWED_LIST",
+        "result": {
+            "claimId": manifest_data.get("claimId", clean_claim_id),
+            "packetId": manifest_data.get("packetId", clean_claim_id),
+            "patientName": manifest_data.get(
+                "patientName", "Unknown Patient"
+            ),
+            "patientFolder": manifest_data.get("patientFolder", ""),
+            "reviewStatus": manifest_data.get("reviewStatus", "REVIEWED"),
+            "reviewedAt": manifest_data.get("reviewedAt"),
+            "reviewerRemarks": manifest_data.get("reviewerRemarks", ""),
+            "totalPages": manifest_data.get("totalPages", 0),
+            "reviewedFolder": str(reviewed_root),
+            "reviewedManifestPath": (
+                str(reviewed_manifest_path)
+                if reviewed_manifest_path
+                else None
+            ),
+            "groups": grouped_documents,
+            "files": files_in_reviewed_folder,
+        },
+    }
+
+
+
 def upload_claim_packet_checklist_document(
     claim_id: str,
     checklist_item_id: str,
@@ -3765,14 +4010,18 @@ def upload_claim_packet_checklist_document(
         if not isinstance(items, list):
             items = []
 
+        target_chk_id = _checklist_item_id(clean_item_id) if clean_item_id.isdigit() else clean_item_id
+
         selected_item = next(
             (
                 item
                 for item in items
                 if str(
-                    item.get(
-                        "checklistItemId"
-                    )
+                    item.get("checklistItemId")
+                    or ""
+                ).upper() in (clean_item_id, target_chk_id)
+                or str(
+                    item.get("itemNo")
                     or ""
                 ).upper() == clean_item_id
             ),

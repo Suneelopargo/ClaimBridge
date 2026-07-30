@@ -3,10 +3,19 @@ from pathlib import Path
 from fastapi import (
     APIRouter,
     File,
+    Form,
     HTTPException,
     UploadFile,
 )
 from fastapi.responses import FileResponse
+
+from app.schemas.claim_packet_review_schema import (
+    SaveClaimPacketReviewRequest,
+)
+
+from app.schemas.claim_packet_checklist_review_schema import (
+    ChecklistItemDecisionRequest,
+)
 
 from app.document_processing.packet_service import (
     classify_and_segregate_claim_packet,
@@ -15,10 +24,9 @@ from app.document_processing.packet_service import (
     resolve_claim_packet_page_preview,
     resolve_reviewed_group_preview,
     save_and_regenerate_claim_packet_review,
+    update_claim_packet_checklist_item,
     validate_against_dispatch_checklist,
-)
-from app.schemas.claim_packet_review_schema import (
-    SaveClaimPacketReviewRequest,
+    upload_claim_packet_checklist_document,
 )
 
 
@@ -165,4 +173,112 @@ def preview_reviewed_claim_packet_group(
 def validate_packet(claim_id: str):
     return validate_against_dispatch_checklist(
         claim_id=claim_id,
+    )
+
+
+@router.patch(
+    "/{claim_id}/checklist-items/"
+    "{checklist_item_id}"
+)
+def update_checklist_item_decision(
+    claim_id: str,
+    checklist_item_id: str,
+    request: ChecklistItemDecisionRequest,
+):
+    result = (
+        update_claim_packet_checklist_item(
+            claim_id=claim_id,
+            checklist_item_id=(
+                checklist_item_id
+            ),
+            payload=request.model_dump(),
+        )
+    )
+
+    if result.get("success"):
+        return result
+
+    error_code = result.get(
+        "errorCode"
+    )
+
+    if error_code == "NOT_FOUND":
+        raise HTTPException(
+            status_code=404,
+            detail=result.get("error"),
+        )
+
+    if error_code == "VALIDATION_ERROR":
+        raise HTTPException(
+            status_code=422,
+            detail=result.get("error"),
+        )
+
+    raise HTTPException(
+        status_code=500,
+        detail=result.get(
+            "error",
+            "Unable to update checklist item",
+        ),
+    )
+
+
+@router.post(
+    "/{claim_id}/checklist-items/"
+    "{checklist_item_id}/documents"
+)
+def upload_missing_checklist_document(
+    claim_id: str,
+    checklist_item_id: str,
+    file: UploadFile = File(...),
+    documentType: str | None = Form(
+        default=None
+    ),
+    displayName: str | None = Form(
+        default=None
+    ),
+    reviewerRemarks: str | None = Form(
+        default=None
+    ),
+):
+    result = (
+        upload_claim_packet_checklist_document(
+            claim_id=claim_id,
+            checklist_item_id=(
+                checklist_item_id
+            ),
+            file=file,
+            document_type=documentType,
+            display_name=displayName,
+            reviewer_remarks=(
+                reviewerRemarks
+            ),
+        )
+    )
+
+    if result.get("success"):
+        return result
+
+    error_code = result.get(
+        "errorCode"
+    )
+
+    if error_code == "NOT_FOUND":
+        raise HTTPException(
+            status_code=404,
+            detail=result.get("error"),
+        )
+
+    if error_code == "VALIDATION_ERROR":
+        raise HTTPException(
+            status_code=422,
+            detail=result.get("error"),
+        )
+
+    raise HTTPException(
+        status_code=500,
+        detail=result.get(
+            "error",
+            "Unable to upload document",
+        ),
     )

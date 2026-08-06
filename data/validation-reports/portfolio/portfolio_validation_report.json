@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-08-06T22:32:42.477046",
+  "reportType": "HCG_CLAIM_VALIDATION_PORTFOLIO",
+  "ruleSet": {
+    "name": "HCG Document Validation MVP",
+    "version": "MVP-1.0",
+    "configuredRuleCount": 28,
+    "catalogueRuleCount": 72
+  },
+  "summary": {
+    "totalClaimsDiscovered": 2,
+    "successfulClaims": 2,
+    "failedClaims": 0,
+    "totalDocuments": 46,
+    "applicableChecks": 282,
+    "passCount": 237,
+    "failCount": 0,
+    "reviewCount": 45,
+    "naCount": 1006,
+    "confirmedReadinessPercent": 100.0,
+    "decisionCoveragePercent": 84.04,
+    "humanReviewBurdenPercent": 15.96
+  },
+  "claims": [
+    {
+      "claimId": "MD10456211",
+      "patientName": "MRUNALINI S DESHPANDE",
+      "payerCode": "THE NEW INDIA ASSURANCE COMPANY LIM",
+      "documentCount": 24,
+      "passCount": 116,
+      "failCount": 0,
+      "reviewCount": 26,
+      "naCount": 530,
+      "confirmedReadinessPercent": 100.0,
+      "decisionCoveragePercent": 81.69,
+      "humanReviewBurdenPercent": 18.31,
+      "overallStatus": "REVIEW_REQUIRED"
+    },
+    {
+      "claimId": "14006286",
+      "patientName": "RAM BAHADUR",
+      "payerCode": "THE NEW INDIA ASSURANCE CO. LTD",
+      "documentCount": 22,
+      "passCount": 121,
+      "failCount": 0,
+      "reviewCount": 19,
+      "naCount": 476,
+      "confirmedReadinessPercent": 100.0,
+      "decisionCoveragePercent": 86.43,
+      "humanReviewBurdenPercent": 13.57,
+      "overallStatus": "REVIEW_REQUIRED"
+    }
+  ],
+  "portfolioInsights": {
+    "claimsWithFailures": 0,
+    "claimsRequiringReview": 2,
+    "claimsFullyDecided": 0,
+    "mostFailedRules": [],
+    "mostUncertainRules": [
+      {
+        "ruleNumber": 37,
+        "ruleName": "Document Naming Validation",
+        "count": 20
+      },
+      {
+        "ruleNumber": 7,
+        "ruleName": "Patient Identity Validation",
+        "count": 13
+      },
+      {
+        "ruleNumber": 29,
+        "ruleName": "Date Consistency",
+        "count": 8
+      },
+      {
+        "ruleNumber": 53,
+        "ruleName": "GIPSA PPN Declaration",
+        "count": 3
+      },
+      {
+        "ruleNumber": 60,
+        "ruleName": "Indoor Case Papers",
+        "count": 1
+      }
+    ],
+    "priorityClaims": [
+      {
+        "claimId": "MD10456211",
+        "patientName": "MRUNALINI S DESHPANDE",
+        "payerCode": "THE NEW INDIA ASSURANCE COMPANY LIM",
+        "documentCount": 24,
+        "passCount": 116,
+        "failCount": 0,
+        "reviewCount": 26,
+        "naCount": 530,
+        "confirmedReadinessPercent": 100.0,
+        "decisionCoveragePercent": 81.69,
+        "humanReviewBurdenPercent": 18.31,
+        "overallStatus": "REVIEW_REQUIRED"
+      },
+      {
+        "claimId": "14006286",
+        "patientName": "RAM BAHADUR",
+        "payerCode": "THE NEW INDIA ASSURANCE CO. LTD",
+        "documentCount": 22,
+        "passCount": 121,
+        "failCount": 0,
+        "reviewCount": 19,
+        "naCount": 476,
+        "confirmedReadinessPercent": 100.0,
+        "decisionCoveragePercent": 86.43,
+        "humanReviewBurdenPercent": 13.57,
+        "overallStatus": "REVIEW_REQUIRED"
+      }
+    ]
+  },
+  "errors": []
+}

@@ -41,6 +41,7 @@ import uuid
 from datetime import datetime
 from fastapi import UploadFile
 from pypdf import PdfReader
+from collections import Counter
 
 load_dotenv()
 logger = logging.getLogger(__name__)
@@ -48,6 +49,26 @@ logger = logging.getLogger(__name__)
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
 )
+
+INVALID_PATIENT_NAME_VALUES = {
+            "",
+            "unknown",
+            "unknown patient",
+            "not found",
+            "na",
+            "n/a",
+            "none",
+            "null",
+            "ihx",
+            "mediassist",
+            "medi assist",
+            "medibuddy",
+            "fhpl",
+            "vidal",
+            "health india",
+            "customer packet",
+            "claim packet",
+        }
 
 
 def clean_metadata_value(value: str) -> str:
@@ -67,13 +88,11 @@ def clean_metadata_value(value: str) -> str:
     return value.title()
 
 
-def patient_name_from_filename(filename: str) -> str:
+def patient_name_from_filename(
+    filename: str,
+) -> str:
     stem = Path(filename).stem
 
-    # Examples:
-    # 14.07.vijaya.pdf -> Vijaya
-    # 14-07-vijaya.pdf -> Vijaya
-    # 4325_customer_packet.pdf -> Customer Packet
     cleaned = re.sub(
         r"^[\d.\-_\s]+",
         "",
@@ -86,10 +105,106 @@ def patient_name_from_filename(filename: str) -> str:
         cleaned,
     )
 
-    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    cleaned = re.sub(
+        r"\s+",
+        " ",
+        cleaned,
+    ).strip()
 
-    return cleaned.title() if cleaned else "Unknown Patient"
+    candidate = (
+        cleaned.title()
+        if cleaned
+        else ""
+    )
 
+    if (
+        not candidate
+        or candidate.lower()
+        in INVALID_PATIENT_NAME_VALUES
+    ):
+        return "Unknown Patient"
+
+    return candidate
+
+
+def _normalized_candidate_key(
+        value: str | None,
+) -> str:
+    return re.sub(
+        r"[^A-Z0-9]",
+        "",
+        str(value or "").upper(),
+    )
+
+
+def _consensus_vision_candidate(
+        raw_docs: list[dict],
+        field_name: str,
+        minimum_occurrences: int = 2,
+) -> str:
+    candidates: list[str] = []
+
+    for document in raw_docs:
+        candidate_map = document.get(
+            "visionIdentityCandidates",
+            {},
+        )
+
+        if not isinstance(candidate_map, dict):
+            continue
+
+        value = str(
+            candidate_map.get(field_name) or ""
+        ).strip()
+
+        if not value:
+            continue
+
+        if (
+                field_name == "patientName"
+                and value.lower()
+                in INVALID_PATIENT_NAME_VALUES
+        ):
+            continue
+
+        candidates.append(value)
+
+    if not candidates:
+        return ""
+
+    normalized_to_original: dict[str, str] = {}
+    normalized_candidates: list[str] = []
+
+    for candidate in candidates:
+        normalized = _normalized_candidate_key(
+            candidate
+        )
+
+        if not normalized:
+            continue
+
+        normalized_candidates.append(
+            normalized
+        )
+        normalized_to_original.setdefault(
+            normalized,
+            candidate,
+        )
+
+    if not normalized_candidates:
+        return ""
+
+    counts = Counter(normalized_candidates)
+    normalized_value, occurrence_count = (
+        counts.most_common(1)[0]
+    )
+
+    if occurrence_count < minimum_occurrences:
+        return ""
+
+    return normalized_to_original[
+        normalized_value
+    ]
 
 def derive_packet_metadata(
     raw_docs: list[dict],
@@ -111,7 +226,36 @@ def derive_packet_metadata(
 
     final_patient_name = (patient_name or "").strip() or None
     final_claim_id = (claim_id or "").strip() or None
+    # Use repeated Vision evidence only for packet identity.
+    # These values remain non-authoritative at the individual-page level.
+    if not final_patient_name:
+        candidate = _consensus_vision_candidate(
+            raw_docs=raw_docs,
+            field_name="patientName",
+            minimum_occurrences=2,
+        )
 
+        if candidate:
+            final_patient_name = clean_metadata_value(
+                candidate
+            )
+
+    if not final_claim_id:
+        candidate = _consensus_vision_candidate(
+            raw_docs=raw_docs,
+            field_name="claimNumber",
+            minimum_occurrences=2,
+        )
+
+        if not candidate:
+            candidate = _consensus_vision_candidate(
+                raw_docs=raw_docs,
+                field_name="ipNumber",
+                minimum_occurrences=2,
+            )
+
+        if candidate:
+            final_claim_id = candidate
     invalid_values = {
         "",
         "unknown",
@@ -444,6 +588,7 @@ def validate_classification_identifiers(
 
     return classification
 
+
 async def classify_and_segregate_claim_packet(
     file: UploadFile = File(...),
     claim_id: str | None = None,
@@ -529,24 +674,45 @@ async def classify_and_segregate_claim_packet(
                 image_path
             )
 
+            # Preserve Vision output separately before verification clears
+            # unsupported identifiers on scanned pages.
+            vision_identity_candidates = {
+                "patientName": str(
+                    classification.get("patientName") or ""
+                ).strip(),
+                "claimNumber": str(
+                    classification.get("claimNumber") or ""
+                ).strip(),
+                "ipNumber": str(
+                    classification.get("ipNumber") or ""
+                ).strip(),
+                "mrn": str(
+                    classification.get("mrn") or ""
+                ).strip(),
+            }
+
             classification = validate_classification_identifiers(
                 classification=classification,
                 page_text=page_text,
             )
-            logger.warning(
-                "PAGE %s -> %s",
-                page_number,
-                json.dumps(
-                    {
-                        "patientName": classification.get("patientName"),
-                        "claimNumber": classification.get("claimNumber"),
-                        "ipNumber": classification.get("ipNumber"),
-                        "status": classification.get("identifierVerificationStatus"),
-                        "rejected": classification.get("rejectedIdentifiers"),
-                    },
-                    indent=2,
-                ),
+
+            classification["visionIdentityCandidates"] = (
+                vision_identity_candidates
             )
+            # logger.warning(
+            #     "PAGE %s -> %s",
+            #     page_number,
+            #     json.dumps(
+            #         {
+            #             "patientName": classification.get("patientName"),
+            #             "claimNumber": classification.get("claimNumber"),
+            #             "ipNumber": classification.get("ipNumber"),
+            #             "status": classification.get("identifierVerificationStatus"),
+            #             "rejected": classification.get("rejectedIdentifiers"),
+            #         },
+            #         indent=2,
+            #     ),
+            # )
             classification["source"] = "OPENAI_VISION"
 
             raw_document_type = str(
@@ -652,6 +818,19 @@ async def classify_and_segregate_claim_packet(
                     "TEXT_READABLE"
                     if page_text.strip()
                     else "SCANNED_IMAGE"
+                ),
+
+                "visionIdentityCandidates": classification.get(
+                    "visionIdentityCandidates",
+                    {},
+                ),
+                "rejectedIdentifiers": classification.get(
+                    "rejectedIdentifiers",
+                    [],
+                ),
+                "identifierVerificationStatus": classification.get(
+                    "identifierVerificationStatus",
+                    "",
                 ),
             })
 
@@ -3128,6 +3307,12 @@ def get_claim_packet_review(
             and len(set(all_grouped_pages)) == total_pages
         )
 
+        supplemental_documents = (
+            _load_supplemental_documents(
+                clean_claim_id
+            )
+        )
+
         return {
             "success": True,
             "source": "CLAIM_PACKET_REVIEW",
@@ -3162,6 +3347,9 @@ def get_claim_packet_review(
                     ),
                     "totalPages": total_pages,
                 },
+                "uploadedDocuments": (
+                    supplemental_documents
+                ),
                 "summary": {
                     "totalPages": total_pages,
                     "documentGroupCount": len(
@@ -3194,6 +3382,16 @@ def get_claim_packet_review(
                             "physicalGroupingIntegrityValid",
                             integrity_valid,
                         )
+                    ),
+
+                    "uploadedDocumentCount": len(
+                        supplemental_documents
+                    ),
+                    "unassignedUploadedDocumentCount": sum(
+                        1
+                        for document in supplemental_documents
+                        if document.get("assignmentStatus")
+                        == "UNASSIGNED"
                     ),
                 },
                 "groups": review_groups,
@@ -4519,5 +4717,98 @@ def _validate_supplemental_pdf(
     return page_count
 
 
+def _load_supplemental_documents(
+    claim_id: str,
+) -> list[dict[str, Any]]:
+    supplemental_root = (
+        _resolve_supplemental_root(
+            claim_id
+        )
+    )
 
+    if not supplemental_root.exists():
+        return []
+
+    documents: list[dict[str, Any]] = []
+
+    for upload_directory in sorted(
+        supplemental_root.iterdir()
+    ):
+        if not upload_directory.is_dir():
+            continue
+
+        metadata_path = (
+            upload_directory
+            / "metadata.json"
+        )
+
+        if not metadata_path.exists():
+            continue
+
+        try:
+            metadata = _read_json_file(
+                metadata_path
+            )
+        except Exception:
+            logger.exception(
+                "Unable to read supplemental metadata: %s",
+                metadata_path,
+            )
+            continue
+
+        uploaded_document_id = str(
+            metadata.get(
+                "uploadedDocumentId"
+            )
+            or upload_directory.name
+        )
+
+        metadata["uploadedDocumentId"] = (
+            uploaded_document_id
+        )
+
+        metadata["previewUrl"] = (
+            f"/api/claim-packets/{claim_id}"
+            f"/uploaded-documents/"
+            f"{uploaded_document_id}"
+            f"/preview"
+        )
+
+        documents.append(metadata)
+
+    return documents
+
+
+def resolve_uploaded_document_preview(
+    claim_id: str,
+    uploaded_document_id: str,
+) -> Path:
+    clean_upload_id = str(
+        uploaded_document_id or ""
+    ).strip()
+
+    if not clean_upload_id:
+        raise ValueError(
+            "uploaded_document_id is required"
+        )
+
+    supplemental_root = (
+        _resolve_supplemental_root(
+            claim_id
+        )
+    )
+
+    document_path = (
+        supplemental_root
+        / clean_upload_id
+        / "original.pdf"
+    )
+
+    if not document_path.exists():
+        raise FileNotFoundError(
+            "Uploaded document not found: "
+            f"{clean_upload_id}"
+        )
+
+    return document_path
 

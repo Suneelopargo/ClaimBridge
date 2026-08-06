@@ -1,14 +1,18 @@
 from pathlib import Path
 
+import json
+
 from fastapi import (
     APIRouter,
     File,
     Form,
     HTTPException,
     UploadFile,
+    Query
 )
 from fastapi.responses import FileResponse
 
+from app.config import CLAIM_PACKET_SEGREGATED_DIR
 from app.schemas.claim_packet_review_schema import (
     SaveClaimPacketReviewRequest,
 )
@@ -29,7 +33,23 @@ from app.document_processing.packet_service import (
     save_and_regenerate_claim_packet_review,
     update_claim_packet_checklist_item,
     validate_against_dispatch_checklist,
-    upload_claim_packet_checklist_document,
+    upload_claim_packet_checklist_document, resolve_uploaded_document_preview,
+)
+
+from app.services.rule_engine.segregated_packet_inventory_service import (
+    SegregatedPacketInventoryService,
+)
+
+from app.services.rule_engine.segregated_document_report_service import (
+    SegregatedDocumentReportService,
+)
+
+from app.services.rule_engine.portfolio_validation_report_service import (
+    PortfolioValidationReportService,
+)
+
+from app.services.rule_engine.portfolio_excel_service import (
+    PortfolioExcelService,
 )
 
 
@@ -42,8 +62,12 @@ router = APIRouter(
 @router.post("/classify-and-segregate")
 async def process_claim_packet(
     file: UploadFile = File(...),
-    claim_id: str | None = None,
-    patient_name: str | None = None,
+    claim_id: str | None = Form(
+        default=None
+    ),
+    patient_name: str | None = Form(
+        default=None
+    ),
 ):
     filename = Path(
         file.filename or ""
@@ -366,3 +390,365 @@ def upload_missing_checklist_document(
             "Unable to upload document",
         ),
     )
+
+@router.get(
+    "/{claim_id}/uploaded-documents/"
+    "{uploaded_document_id}/preview"
+)
+def preview_uploaded_document(
+    claim_id: str,
+    uploaded_document_id: str,
+):
+    try:
+        path = resolve_uploaded_document_preview(
+            claim_id=claim_id,
+            uploaded_document_id=(
+                uploaded_document_id
+            ),
+        )
+
+        return FileResponse(
+            path=str(path),
+            media_type="application/pdf",
+            filename=path.name,
+            content_disposition_type="inline",
+        )
+
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+
+
+
+@router.get(
+    "/document-reports/segregated-claims"
+)
+def list_segregated_claim_packets():
+    try:
+        service = (
+            SegregatedPacketInventoryService()
+        )
+
+        items = service.list_claim_packets()
+
+        return {
+            "success": True,
+            "source": (
+                "SEGREGATED_PACKET_INVENTORY"
+            ),
+            "result": {
+                "totalClaims": len(items),
+                "claims": [
+                    item.to_dict()
+                    for item in items
+                ],
+            },
+        }
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.post(
+    "/document-reports/"
+    "segregated-claims/run-all"
+)
+def run_all_segregated_document_reports():
+    try:
+        service = (
+            PortfolioValidationReportService()
+        )
+
+        portfolio = service.generate_all()
+
+        return {
+            "success": True,
+            "source": (
+                "SEGREGATED_PORTFOLIO_REPORT"
+            ),
+            "result": portfolio,
+        }
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.get(
+    "/document-reports/"
+    "segregated-claims/{claim_id}"
+)
+def get_segregated_claim_packet(
+    claim_id: str,
+):
+    try:
+        service = (
+            SegregatedPacketInventoryService()
+        )
+
+        item, manifest = (
+            service.get_claim_packet(
+                claim_id
+            )
+        )
+
+        return {
+            "success": True,
+            "source": (
+                "SEGREGATED_PACKET_INVENTORY"
+            ),
+            "result": {
+                "claim": item.to_dict(),
+                "documents": (
+                    service.extract_documents(
+                        manifest
+                    )
+                ),
+            },
+        }
+
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=422,
+            detail=str(exc),
+        ) from exc
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.post(
+    "/document-reports/"
+    "segregated-claims/{claim_id}/run"
+)
+def run_segregated_document_report(
+    claim_id: str,
+):
+    try:
+        service = (
+            SegregatedDocumentReportService()
+        )
+
+        report = service.generate_report(
+            claim_id
+        )
+
+        return {
+            "success": True,
+            "source": (
+                "SEGREGATED_DOCUMENT_REPORT"
+            ),
+            "result": report.to_dict(),
+        }
+
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=422,
+            detail=str(exc),
+        ) from exc
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.get(
+    "/document-reports/"
+    "portfolio/report"
+)
+def get_portfolio_validation_report():
+    report_path = (
+        CLAIM_PACKET_SEGREGATED_DIR.parent
+        / "validation-reports"
+        / "portfolio"
+        / "portfolio_validation_report.json"
+    )
+
+    if not report_path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                "Portfolio validation report "
+                "has not been generated"
+            ),
+        )
+
+    try:
+        with report_path.open(
+            "r",
+            encoding="utf-8",
+        ) as file:
+            result = json.load(file)
+
+        return {
+            "success": True,
+            "source": (
+                "SEGREGATED_PORTFOLIO_REPORT"
+            ),
+            "result": result,
+        }
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.post(
+    "/document-reports/portfolio/excel"
+)
+def generate_portfolio_excel():
+    try:
+        service = PortfolioExcelService()
+
+        output_path = service.generate_excel()
+
+        return {
+            "success": True,
+            "source": "PORTFOLIO_EXCEL_REPORT",
+            "result": {
+                "fileName": output_path.name,
+                "filePath": str(output_path),
+            },
+        }
+
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.get(
+    "/document-reports/portfolio/excel/download"
+)
+def download_portfolio_excel():
+    try:
+        service = PortfolioExcelService()
+
+        output_path = (
+            service.output_root
+            / "portfolio"
+            / "HCG_Claim_Validation_Report.xlsx"
+        )
+
+        if not output_path.exists():
+            output_path = (
+                service.generate_excel()
+            )
+
+        return FileResponse(
+            path=str(output_path),
+            filename=output_path.name,
+            media_type=(
+                "application/vnd.openxmlformats-"
+                "officedocument.spreadsheetml.sheet"
+            ),
+        )
+
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc),
+        ) from exc
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.post(
+    "/document-reports/portfolio/generate"
+)
+def generate_complete_portfolio_report():
+    try:
+        portfolio_service = (
+            PortfolioValidationReportService()
+        )
+
+        portfolio = (
+            portfolio_service.generate_all()
+        )
+
+        excel_service = PortfolioExcelService(
+            output_root=(
+                portfolio_service.output_root
+            )
+        )
+
+        excel_path = (
+            excel_service.generate_excel(
+                portfolio=portfolio
+            )
+        )
+
+        json_path = (
+            portfolio_service.output_root
+            / "portfolio"
+            / "portfolio_validation_report.json"
+        )
+
+        return {
+            "success": True,
+            "source": (
+                "COMPLETE_PORTFOLIO_REPORT"
+            ),
+            "result": {
+                "summary": (
+                    portfolio.get("summary")
+                ),
+                "portfolioInsights": (
+                    portfolio.get(
+                        "portfolioInsights"
+                    )
+                ),
+                "jsonReportPath": str(
+                    json_path
+                ),
+                "excelReportPath": str(
+                    excel_path
+                ),
+                "excelFileName": (
+                    excel_path.name
+                ),
+            },
+        }
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc

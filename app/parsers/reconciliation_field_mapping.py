@@ -1,5 +1,5 @@
 """
-Canonical mapping between the exact IHX Excel headers and database attributes.
+Canonical mapping between IHX Excel headers and database attributes.
 
 Do not rename Excel headers here unless the portal export itself changes.
 """
@@ -51,6 +51,13 @@ IHX_RECONCILIATION_FIELD_MAPPING = {
 }
 
 EXPECTED_IHX_HEADERS = tuple(IHX_RECONCILIATION_FIELD_MAPPING.keys())
+
+# IHX may include these identifiers in exports, but they have no destination
+# in the reconciliation summary model and must not affect synchronization.
+IGNORED_IHX_HEADERS = frozenset({
+    "CL_Number",
+    "AL_Number",
+})
 
 DATE_FIELDS = {
     "date_of_admission",

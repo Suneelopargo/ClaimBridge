@@ -45,7 +45,7 @@ node_modules/
 package-lock.json
 legacy-assets/
 # Test scripts
-tests/
+
 
 data/reconciliation/downloads/
 data/reconciliation/processed/

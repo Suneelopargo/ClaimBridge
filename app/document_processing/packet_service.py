@@ -28,6 +28,10 @@ from app.services.sweet_engine.document_registry import (
     normalize_page_role,
 )
 
+from app.services.document_intelligence.patient_name_extractor import (
+    PatientNameExtractor,
+)
+
 from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
@@ -654,7 +658,7 @@ async def classify_and_segregate_claim_packet(
             )
 
         raw_docs: list[dict] = []
-
+        patient_name_extractor = PatientNameExtractor()
         # ---------------------------------------------------------
         # Step 2: Classify every page with Vision
         # ---------------------------------------------------------
@@ -726,6 +730,37 @@ async def classify_and_segregate_claim_packet(
                 )
             except (TypeError, ValueError):
                 confidence = 0.0
+            # ---------------------------------------------------------
+            # Specialized patient-name intelligence
+            # ---------------------------------------------------------
+            patient_name_intelligence = None
+
+            if (
+                    raw_document_type == "CLAIM_FORM"
+                    and not page_text.strip()
+            ):
+                patient_name_resolution = (
+                    patient_name_extractor.extract_from_image(
+                        image_path=image_path,
+                        expected_patient_name=patient_name,
+                        document_type=raw_document_type,
+                    )
+                )
+
+                patient_name_intelligence = (
+                    patient_name_resolution.to_dict()
+                )
+
+                logger.info(
+                    "PATIENT NAME INTELLIGENCE page=%s "
+                    "genericVision=%s specialized=%s "
+                    "status=%s confidence=%.2f",
+                    page_number,
+                    vision_identity_candidates.get("patientName"),
+                    patient_name_resolution.resolved_value,
+                    patient_name_resolution.status,
+                    patient_name_resolution.confidence,
+                )
 
             # Preserve the Vision candidate. Generic normalization and
             # EvidenceResolver decide whether it remains usable.
@@ -824,6 +859,11 @@ async def classify_and_segregate_claim_packet(
                     "visionIdentityCandidates",
                     {},
                 ),
+
+                "patientNameIntelligence": (
+                    patient_name_intelligence
+                ),
+
                 "rejectedIdentifiers": classification.get(
                     "rejectedIdentifiers",
                     [],

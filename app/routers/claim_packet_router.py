@@ -651,9 +651,9 @@ def generate_portfolio_excel():
 
 
 @router.get(
-    "/document-reports/portfolio/excel/download"
+    "/document-reports/portfolio/excel/availability"
 )
-def download_portfolio_excel():
+def get_portfolio_excel_availability():
     try:
         service = PortfolioExcelService()
 
@@ -663,10 +663,49 @@ def download_portfolio_excel():
             / "HCG_Claim_Validation_Report.xlsx"
         )
 
-        if not output_path.exists():
+        return {
+            "success": True,
+            "source": "PORTFOLIO_EXCEL_REPORT",
+            "result": {
+                "available": output_path.exists(),
+                "fileName": output_path.name,
+                "filePath": str(output_path),
+            },
+        }
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc
+
+
+@router.get(
+    "/document-reports/portfolio/excel/download"
+)
+def download_portfolio_excel(
+    force_refresh: bool = Query(
+        default=True,
+    ),
+):
+    try:
+        service = PortfolioExcelService()
+
+        if force_refresh:
             output_path = (
                 service.generate_excel()
             )
+        else:
+            output_path = (
+                service.output_root
+                / "portfolio"
+                / "HCG_Claim_Validation_Report.xlsx"
+            )
+
+            if not output_path.exists():
+                output_path = (
+                    service.generate_excel()
+                )
 
         return FileResponse(
             path=str(output_path),
@@ -675,6 +714,11 @@ def download_portfolio_excel():
                 "application/vnd.openxmlformats-"
                 "officedocument.spreadsheetml.sheet"
             ),
+            headers={
+                "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+                "Pragma": "no-cache",
+                "Expires": "0",
+            },
         )
 
     except FileNotFoundError as exc:

@@ -16,6 +16,7 @@ from app.parsers.reconciliation_field_mapping import (
     DATE_FIELDS,
     DECIMAL_FIELDS,
     EXPECTED_IHX_HEADERS,
+    IGNORED_IHX_HEADERS,
     IHX_RECONCILIATION_FIELD_MAPPING,
 )
 
@@ -67,7 +68,8 @@ class ReconciliationExcelParser:
     Parses the complete IHX Power BI reconciliation export.
 
     Responsibilities:
-    - validate the exact 43-column export structure;
+    - validate the 43 required export columns;
+    - ignore recognized IHX metadata columns without persistence mappings;
     - normalize strings, dates and decimal values;
     - reject rows without IHX Ref Id;
     - calculate a stable hash for change detection;
@@ -212,10 +214,14 @@ class ReconciliationExcelParser:
         unexpected = [
             header
             for header in actual_headers
-            if header and header not in expected
+            if (
+                header
+                and header not in expected
+                and header not in IGNORED_IHX_HEADERS
+            )
         ]
 
-        if missing or unexpected or len(actual_headers) != len(expected):
+        if missing or unexpected:
             messages = []
 
             if missing:
@@ -226,12 +232,6 @@ class ReconciliationExcelParser:
             if unexpected:
                 messages.append(
                     "unexpected headers: " + ", ".join(unexpected)
-                )
-
-            if len(actual_headers) != len(expected):
-                messages.append(
-                    f"expected {len(expected)} columns but found "
-                    f"{len(actual_headers)}"
                 )
 
             raise ReconciliationParserError(
@@ -247,6 +247,9 @@ class ReconciliationExcelParser:
         parsed: Dict[str, Any] = {}
 
         for index, header in enumerate(headers):
+            if header in IGNORED_IHX_HEADERS:
+                continue
+
             attribute_name = IHX_RECONCILIATION_FIELD_MAPPING[header]
             raw_value = cells[index] if index < len(cells) else None
 

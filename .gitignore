@@ -53,3 +53,5 @@ data/reconciliation/failed/
 data/claim-pack
 data/incoming-claim-packets
 data/segregated
+# Generated validation reports
+data/validation-reports/

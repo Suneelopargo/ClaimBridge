@@ -27,13 +27,16 @@ from app.document_processing.packet_service import (
     get_claim_packet_checklist_review,
     get_claim_packet_review,
     get_claim_packet_reviewed_list,
+    update_claim_packet_checklist_item,
+    validate_against_dispatch_checklist,
+    upload_claim_packet_checklist_document, save_and_regenerate_claim_packet_review,
+)
+
+from app.document_processing.packet_preview_service import (
     resolve_claim_packet_group_preview,
     resolve_claim_packet_page_preview,
     resolve_reviewed_group_preview,
-    save_and_regenerate_claim_packet_review,
-    update_claim_packet_checklist_item,
-    validate_against_dispatch_checklist,
-    upload_claim_packet_checklist_document, resolve_uploaded_document_preview,
+    resolve_uploaded_document_preview,
 )
 
 from app.services.rule_engine.segregated_packet_inventory_service import (

@@ -8,6 +8,14 @@ import base64
 from fastapi import UploadFile, File
 from pypdf import PdfReader, PdfWriter
 
+from app.document_processing.packet_storage import (
+    read_json_file,
+    resolve_claim_packet_manifest,
+    resolve_claim_packet_source_pdf,
+    resolve_review_manifest_path,
+    resolve_supplemental_root,
+)
+
 from app.config import (
     CLAIM_PACKET_GROUPED_DIR,
     CLAIM_PACKET_INPUT_DIR,
@@ -2123,30 +2131,6 @@ def validate_against_dispatch_checklist(
         }
 
 
-def _read_json_file(path: Path) -> dict[str, Any]:
-    """
-    Read and validate a JSON object from disk.
-    """
-
-    if not path.exists():
-        raise FileNotFoundError(f"JSON file not found: {path}")
-
-    try:
-        with path.open("r", encoding="utf-8") as file:
-            payload = json.load(file)
-    except json.JSONDecodeError as exc:
-        raise ValueError(
-            f"Invalid JSON file: {path}"
-        ) from exc
-
-    if not isinstance(payload, dict):
-        raise ValueError(
-            f"Expected JSON object in file: {path}"
-        )
-
-    return payload
-
-
 CHECKLIST_REVIEW_FILE_NAME = "checklist_review.json"
 
 
@@ -2268,7 +2252,7 @@ def _resolve_checklist_review_path(
 
     The original system validation remains separate.
     """
-    manifest_path = _resolve_review_manifest_path(
+    manifest_path = resolve_review_manifest_path(
         claim_id
     )
 
@@ -2528,7 +2512,7 @@ def get_or_create_checklist_review(
     if review_path.exists():
         return (
             review_path,
-            _read_json_file(review_path),
+            read_json_file(review_path),
         )
 
     review_document = (
@@ -2779,7 +2763,7 @@ def update_claim_packet_checklist_item(
             review_document=review_document,
         )
 
-        persisted_review = _read_json_file(
+        persisted_review = read_json_file(
             review_path
         )
 
@@ -3060,66 +3044,6 @@ def _group_source_pages(
     return pages
 
 
-def _resolve_review_manifest_path(
-    claim_id: str,
-) -> Path:
-    """
-    Resolve the most appropriate manifest for document review.
-
-    Priority:
-    1. Find the claim-pack manifest whose claimId matches.
-    2. Fall back to the segregated claim manifest.
-    """
-
-    # First try the segregated manifest only to identify
-    # patientFolder / claimPackFolder.
-    segregated_manifest_path = (
-        CLAIM_PACKET_SEGREGATED_DIR
-        / claim_id
-        / "manifest.json"
-    )
-
-    if segregated_manifest_path.exists():
-        segregated_manifest = _read_json_file(
-            segregated_manifest_path
-        )
-
-        patient_folder = str(
-            segregated_manifest.get("patientFolder")
-            or ""
-        ).strip()
-
-        if patient_folder:
-            claim_pack_manifest_path = (
-                CLAIM_PACKET_GROUPED_DIR
-                / patient_folder
-                / "manifest.json"
-            )
-
-            if claim_pack_manifest_path.exists():
-                return claim_pack_manifest_path
-
-        claim_pack_folder = str(
-            segregated_manifest.get("claimPackFolder")
-            or ""
-        ).strip()
-
-        if claim_pack_folder:
-            claim_pack_manifest_path = (
-                Path(claim_pack_folder)
-                / "manifest.json"
-            )
-
-            if claim_pack_manifest_path.exists():
-                return claim_pack_manifest_path
-
-    # Fallback for older packets or incomplete claim-pack output.
-    if segregated_manifest_path.exists():
-        return segregated_manifest_path
-
-    raise FileNotFoundError(
-        f"No review manifest found for claim_id={claim_id}"
-    )
 
 def get_claim_packet_review(
     claim_id: str,
@@ -3143,12 +3067,12 @@ def get_claim_packet_review(
             "error": "claim_id is required",
         }
 
-    manifest_path = _resolve_review_manifest_path(
+    manifest_path = resolve_review_manifest_path(
         clean_claim_id
     )
 
     try:
-        manifest = _read_json_file(manifest_path)
+        manifest = read_json_file(manifest_path)
 
         detected_pages = manifest.get(
             "documentsDetected",
@@ -3500,56 +3424,6 @@ def identifier_exists_in_text(
         return False
 
     return normalized_value in normalized_text
-
-
-def resolve_claim_packet_manifest(
-    claim_id: str,
-) -> tuple[Path, dict]:
-    clean_claim_id = str(claim_id or "").strip()
-
-    if not clean_claim_id:
-        raise ValueError("claim_id is required")
-
-    manifest_path = (
-        CLAIM_PACKET_SEGREGATED_DIR
-        / clean_claim_id
-        / "manifest.json"
-    )
-
-    if not manifest_path.exists():
-        raise FileNotFoundError(
-            f"Claim packet manifest not found: {manifest_path}"
-        )
-
-    manifest = _read_json_file(manifest_path)
-
-    return manifest_path, manifest
-
-
-def resolve_claim_packet_source_pdf(
-    claim_id: str,
-) -> tuple[Path, dict]:
-    _, manifest = resolve_claim_packet_manifest(
-        claim_id
-    )
-
-    source_file = str(
-        manifest.get("sourceFile") or ""
-    ).strip()
-
-    if not source_file:
-        raise ValueError(
-            "sourceFile is missing from claim manifest"
-        )
-
-    source_pdf_path = Path(source_file)
-
-    if not source_pdf_path.exists():
-        raise FileNotFoundError(
-            f"Source PDF not found: {source_pdf_path}"
-        )
-
-    return source_pdf_path, manifest
 
 
 def validate_review_page_arrangement(
@@ -3943,10 +3817,10 @@ def resolve_claim_packet_group_preview(
     claim_id: str,
     group_id: str,
 ) -> Path:
-    manifest_path = _resolve_review_manifest_path(
+    manifest_path = resolve_review_manifest_path(
         claim_id
     )
-    manifest = _read_json_file(
+    manifest = read_json_file(
         manifest_path
     )
 
@@ -4013,7 +3887,7 @@ def resolve_reviewed_group_preview(
         / "reviewed_manifest.json"
     )
 
-    reviewed_manifest = _read_json_file(
+    reviewed_manifest = read_json_file(
         reviewed_manifest_path
     )
 
@@ -4057,7 +3931,7 @@ def resolve_reviewed_folder_and_manifest(
     )
 
     if segregated_manifest_path.exists():
-        manifest = _read_json_file(segregated_manifest_path)
+        manifest = read_json_file(segregated_manifest_path)
         patient_folder = str(
             manifest.get("patientFolder") or ""
         ).strip()
@@ -4100,7 +3974,7 @@ def resolve_reviewed_folder_and_manifest(
     reviewed_manifest = None
 
     if reviewed_manifest_path.exists():
-        reviewed_manifest = _read_json_file(
+        reviewed_manifest = read_json_file(
             reviewed_manifest_path
         )
 
@@ -4361,7 +4235,7 @@ def upload_claim_packet_checklist_document(
         )
 
         supplemental_root = (
-            _resolve_supplemental_root(
+            resolve_supplemental_root(
                 clean_claim_id
             )
         )
@@ -4566,7 +4440,7 @@ def upload_claim_packet_checklist_document(
         )
 
         persisted_review = (
-            _read_json_file(
+            read_json_file(
                 review_path
             )
         )
@@ -4715,21 +4589,6 @@ def _safe_upload_filename(
     return cleaned_name
 
 
-def _resolve_supplemental_root(
-    claim_id: str,
-) -> Path:
-    manifest_path = (
-        _resolve_review_manifest_path(
-            claim_id
-        )
-    )
-
-    return (
-        manifest_path.parent
-        / "supplemental"
-    )
-
-
 def _validate_supplemental_pdf(
     file_path: Path,
 ) -> int:
@@ -4761,7 +4620,7 @@ def _load_supplemental_documents(
     claim_id: str,
 ) -> list[dict[str, Any]]:
     supplemental_root = (
-        _resolve_supplemental_root(
+        resolve_supplemental_root(
             claim_id
         )
     )
@@ -4786,7 +4645,7 @@ def _load_supplemental_documents(
             continue
 
         try:
-            metadata = _read_json_file(
+            metadata = read_json_file(
                 metadata_path
             )
         except Exception:
@@ -4833,7 +4692,7 @@ def resolve_uploaded_document_preview(
         )
 
     supplemental_root = (
-        _resolve_supplemental_root(
+        resolve_supplemental_root(
             claim_id
         )
     )

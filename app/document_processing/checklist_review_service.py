@@ -595,6 +595,14 @@ def update_claim_packet_checklist_item(
             )
         )
 
+        previous_decision = selected_item.get(
+            "reviewerDecision"
+        )
+
+        previous_disposition = selected_item.get(
+            "reviewerDisposition"
+        )
+
         selected_item["reviewerDecision"] = (
             reviewer_decision
         )
@@ -614,14 +622,6 @@ def update_claim_packet_checklist_item(
         )
         selected_item["updatedAt"] = (
             datetime.now().isoformat()
-        )
-
-        previous_decision = selected_item.get(
-            "reviewerDecision"
-        )
-
-        previous_disposition = selected_item.get(
-            "reviewerDisposition"
         )
 
         _recalculate_checklist_review_summary(

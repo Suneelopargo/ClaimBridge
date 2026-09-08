@@ -25,7 +25,7 @@ from app.document_processing.packet_service import (
     classify_and_segregate_claim_packet,
     get_claim_packet_review,
     get_claim_packet_reviewed_list,
-    upload_claim_packet_checklist_document, save_and_regenerate_claim_packet_review,
+    save_and_regenerate_claim_packet_review,
 )
 
 from app.document_processing.packet_preview_service import (
@@ -59,6 +59,10 @@ from app.document_processing.checklist_review_service import (
     get_claim_packet_checklist_item_detail,
     get_claim_packet_checklist_review,
     update_claim_packet_checklist_item,
+)
+
+from app.document_processing.supplemental_document_service import (
+    upload_claim_packet_checklist_document,
 )
 
 

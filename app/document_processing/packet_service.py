@@ -44,15 +44,14 @@ from app.document_processing.checklist_rules import (
     DISPATCH_CHECKLIST_RULES,
 )
 
-from app.document_processing.checklist_review_service import (
-    apply_uploaded_document_to_checklist_review,
-    find_checklist_review_item,
-    get_or_create_checklist_review,
-)
-
 from app.document_processing.supplemental_document_service import (
     load_supplemental_documents,
     )
+
+from app.document_processing.packet_pdf_service import (
+    write_merged_pdf,
+    write_single_page_pdf,
+)
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -1392,22 +1391,7 @@ Return exactly one JSON object.
         }
 
 
-def write_single_page_pdf(reader: PdfReader, page_index: int, output_path: Path):
-    writer = PdfWriter()
-    writer.add_page(reader.pages[page_index])
 
-    with open(output_path, "wb") as f:
-        writer.write(f)
-
-
-def write_merged_pdf(reader: PdfReader, page_numbers: list[int], output_path: Path):
-    writer = PdfWriter()
-
-    for page_number in page_numbers:
-        writer.add_page(reader.pages[page_number - 1])
-
-    with open(output_path, "wb") as f:
-        writer.write(f)
 
 
 def build_grouped_documents(reader: PdfReader, detected_docs: list[dict], output_dir: Path):

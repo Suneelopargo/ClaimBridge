@@ -7,6 +7,7 @@ from app.database import get_db
 from app.models.user import User
 from app.schemas.auth_schemas import LoginRequest, LoginResponse
 from app.services.auth_service import verify_password
+from app.services.token_service import create_access_token
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
@@ -25,12 +26,21 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)):
     if not verify_password(payload.password, user.password_hash):
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
+    access_token, expires_in = create_access_token(
+        user_id=user.id,
+        username=user.username,
+        role=user.role,
+    )
+
     user.last_login_at = datetime.utcnow()
     db.commit()
 
     return {
         "success": True,
         "message": "Authentication successful",
+        "accessToken": access_token,
+        "tokenType": "bearer",
+        "expiresIn": expires_in,
         "user": {
             "id": user.id,
             "username": user.username,

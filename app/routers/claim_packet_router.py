@@ -140,7 +140,6 @@ def review_claim_packet_list(
         ) from exc
 
 
-
 # Individual page preview
 @router.get(
     "/{claim_id}/pages/{page_number}/preview"

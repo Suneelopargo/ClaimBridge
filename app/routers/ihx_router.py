@@ -1,10 +1,9 @@
-from fastapi import APIRouter
 from app.connectors.ihx.ihx_connector import IHXConnector
 from app.database import SessionLocal
 from app.repositories.claim_summary_repository import ClaimSummaryRepository
 from app.services.claim_summary_service import ClaimSummaryService
 import logging
-import traceback
+
 from app.config import (
     IHX_HOSPITAL_NAME,
     IHX_PASSWORD,
@@ -13,6 +12,10 @@ from app.config import (
 )
 
 from fastapi import APIRouter, HTTPException
+from fastapi import Depends
+
+from app.dependencies.auth_dependencies import require_role
+from app.models.user import User
 
 router = APIRouter(prefix="/api/ihx", tags=["IHX"])
 logger = logging.getLogger(__name__)
@@ -22,6 +25,9 @@ logger = logging.getLogger(__name__)
 def sync_ihx_claims(
     start_page: int = 1,
     max_pages: int | None = 25,
+    current_user: User = Depends(
+        require_role("SUPERUSER")
+    ),
 ):
     db = SessionLocal()
     stage = "initialization"

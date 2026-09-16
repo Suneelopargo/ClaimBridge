@@ -8,6 +8,11 @@ from app.schemas.activity_log_schemas import (
     ActivityLogItem,
     ActivityLogListResponse,
 )
+from app.dependencies.auth_dependencies import (
+    get_current_user,
+    require_role,
+)
+from app.models.user import User
 
 router = APIRouter(prefix="/api/activity-logs", tags=["Activity Logs"])
 
@@ -17,9 +22,10 @@ def create_activity_log(
     payload: ActivityLogCreateRequest,
     request: Request,
     db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
     activity_log = ActivityLog(
-        username=payload.username,
+        username=current_user.username,
         action_type=payload.action_type,
         target=payload.target,
         details=payload.details,
@@ -36,13 +42,13 @@ def create_activity_log(
 
 @router.get("", response_model=ActivityLogListResponse)
 def list_activity_logs(
-    requester_role: str = Query(..., min_length=1),
     page: int = Query(1, ge=1),
     page_size: int = Query(25, ge=1, le=200),
+    current_user: User = Depends(
+        require_role("SUPERUSER")
+    ),
     db: Session = Depends(get_db),
 ):
-    if requester_role.strip().lower() != "superuser":
-        raise HTTPException(status_code=403, detail="Only superuser can access activity logs")
 
     base_query = db.query(ActivityLog)
     total = base_query.count()

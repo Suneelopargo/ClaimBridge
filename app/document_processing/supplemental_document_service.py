@@ -31,6 +31,7 @@ MAX_SUPPLEMENTAL_FILE_SIZE = (
     10 * 1024 * 1024
 )
 
+
 def upload_claim_packet_checklist_document(
     claim_id: str,
     checklist_item_id: str,

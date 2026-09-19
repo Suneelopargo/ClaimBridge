@@ -12,10 +12,16 @@ from app.services.reconciliation_record_service import (
     ReconciliationRecordService,
 )
 
+from fastapi import Depends
+from app.dependencies.auth_dependencies import get_current_user
+
 
 router = APIRouter(
     prefix="/api/reconciliation",
     tags=["Reconciliation"],
+    dependencies=[
+        Depends(get_current_user),
+    ],
 )
 
 logger = logging.getLogger(__name__)

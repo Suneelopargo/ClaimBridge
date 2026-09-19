@@ -3,8 +3,12 @@ from sqlalchemy import func
 
 from app.database import SessionLocal
 from app.models.claim_summary import ClaimSummary
+from fastapi import Depends
+from app.dependencies.auth_dependencies import get_current_user
 
-router = APIRouter(prefix="/api/dashboard", tags=["Dashboard"])
+router = APIRouter(prefix="/api/dashboard", tags=["Dashboard"],  dependencies=[
+        Depends(get_current_user),
+    ],)
 
 
 @router.get("/claim-status-summary")

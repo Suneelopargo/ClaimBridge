@@ -7,8 +7,13 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.schemas.reconciliation_report_schemas import ReconciliationReportExportRequest
 from app.services.reconciliation_export_service import ReconciliationExportError, ReconciliationExportService
+from fastapi import Depends
+from app.dependencies.auth_dependencies import get_current_user
 
-router = APIRouter(prefix="/api/reconciliation/reports", tags=["Reconciliation Reports"])
+router = APIRouter(prefix="/api/reconciliation/reports", tags=["Reconciliation Reports"], dependencies=[
+    Depends(get_current_user),
+],)
+
 
 @router.post("/export")
 def export_reconciliation_report(

@@ -4,6 +4,7 @@ import json
 
 from fastapi import (
     APIRouter,
+    Depends,
     File,
     Form,
     HTTPException,
@@ -68,10 +69,15 @@ from app.document_processing.packet_review_service import (
     save_and_regenerate_claim_packet_review,
 )
 
+from app.dependencies.auth_dependencies import get_current_user
+
 
 router = APIRouter(
     prefix="/api/claim-packets",
     tags=["Claim Packet Processing"],
+    dependencies=[
+        Depends(get_current_user),
+    ],
 )
 
 

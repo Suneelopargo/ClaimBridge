@@ -18,11 +18,15 @@ from app.services.reconciliation_service import (
     ReconciliationImportError,
     ReconciliationService,
 )
-
+from fastapi import Depends
+from app.dependencies.auth_dependencies import require_role
 
 router = APIRouter(
     prefix="/api/reconciliation",
     tags=["Reconciliation"],
+    dependencies=[
+        Depends(require_role("SUPERUSER")),
+    ],
 )
 
 logger = logging.getLogger(__name__)

@@ -10,8 +10,12 @@ from app.services.reconciliation_structured_query_service import (
     ReconciliationFilterError,
     ReconciliationStructuredQueryService,
 )
+from fastapi import Depends
+from app.dependencies.auth_dependencies import get_current_user
 
-router = APIRouter(prefix="/api/reconciliation", tags=["Reconciliation Filters"])
+router = APIRouter(prefix="/api/reconciliation", tags=["Reconciliation Filters"], dependencies=[
+    Depends(get_current_user),
+],)
 
 DISTINCT_COLUMNS = {
     "claimStatus": ReconciliationSummary.claim_status,
